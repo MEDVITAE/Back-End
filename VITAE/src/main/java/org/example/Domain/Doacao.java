@@ -17,4 +17,5 @@ public class Doacao {
     private Long id;
     private Double quantidade;
     private int fkAgenda;
+
 }
