@@ -3,6 +3,7 @@ package org.example.Domain;
 import jakarta.persistence.*;
 
 import lombok.*;
+import org.example.Records.RecordUsuario;
 
 @Table(name = "Usuario")
 @Entity(name = "Usuario")
@@ -22,4 +23,11 @@ public class Usuario {
     private String senha;
     private String telefone;
 
+    public Usuario(RecordUsuario CadastroMedico) {
+
+        this.nome = CadastroMedico.nome();
+        this.Email = CadastroMedico.email();
+        this.senha = CadastroMedico.senha();
+        this.telefone = CadastroMedico.telefone();
+    }
 }
