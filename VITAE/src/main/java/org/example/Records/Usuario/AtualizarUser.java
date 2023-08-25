@@ -4,15 +4,15 @@ import org.example.Domain.Usuario;
 
 public record AtualizarUser (
         String nome,
-        String telefone,
+        String email,
         String senha,
-        String email
+        String telefone
 
 )
 {
     public AtualizarUser(Usuario usuario){
         this(
-                usuario.getNome(), usuario.getTelefone(), usuario.getEmail(), usuario.getSenha()
+                usuario.getNome(), usuario.getEmail(), usuario.getSenha(), usuario.getTelefone()
         );
     }
 }
