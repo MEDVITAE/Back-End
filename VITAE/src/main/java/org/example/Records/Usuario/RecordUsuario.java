@@ -1,4 +1,4 @@
-package org.example.Records;
+package org.example.Records.Usuario;
 
 public record RecordUsuario(String nome,
                             String email,
