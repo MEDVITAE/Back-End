@@ -1,5 +1,6 @@
 package org.example.Controller;
 
+import jakarta.transaction.Transactional;
 import org.example.Domain.Usuario;
 import org.example.Records.Usuario.AtualizarUser;
 import org.example.Records.Usuario.RecordUsuario;
@@ -24,6 +25,7 @@ public class UsuarioController {
         );
     }
     @GetMapping
+    @Transactional
     public ResponseEntity<List<Usuario>> listar(){
         if(repository.findAll().isEmpty()) {
             return ResponseEntity.status(204).build();
@@ -32,12 +34,17 @@ public class UsuarioController {
 
     }
    @PutMapping("{id}")
+   @Transactional
     public  ResponseEntity atualizarUser(@RequestBody AtualizarUser dados, @PathVariable long id){
         var usuario = repository.getReferenceById(id);
-
        usuario.AtualiazarUsuario(dados);
-
        return ResponseEntity.ok(new AtualizarUser(usuario));
+    }
+    @DeleteMapping("{id}")
+    @Transactional
+    public  ResponseEntity DeletaUser(@PathVariable long id){
+        repository.deleteById(id);
+        return ResponseEntity.status(204).build();
     }
 
 }
