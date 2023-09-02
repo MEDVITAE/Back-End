@@ -34,8 +34,8 @@ public class TokenService {
     public String usuarioDoToken(String token) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
-            System.out.println("token gerado para o user :" + token);
 
+            System.out.println("token gerado para o user :" + token);
             return JWT.require(algorithm)
                     .withIssuer("vitae-servicos").build()
                     .verify(token).getSubject();

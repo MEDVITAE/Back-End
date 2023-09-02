@@ -20,18 +20,17 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @EqualsAndHashCode(of= "id")
 public class Usuario implements UserDetails {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
     @Column(name = "Email")
     private String email;
     private String senha;
-    private String telefone;
+
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
@@ -42,20 +41,10 @@ public class Usuario implements UserDetails {
         this.role = role;
     }
 
-    public Usuario(RecordUsuario dados) {
-        this.nome = dados.nome();
-        this.email = dados.email();
-        this.senha = dados.senha();
-        this.telefone = dados.telefone();
-
-    }
 
     public void Atualiza(AtualizarUser atualizarDados) {
-        this.nome = atualizarDados.nome();
         this.email = atualizarDados.email();
         this.senha = atualizarDados.senha();
-        this.telefone = atualizarDados.telefone();
-
     }
 
 

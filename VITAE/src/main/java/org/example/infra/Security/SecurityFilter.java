@@ -27,6 +27,8 @@ public class SecurityFilter extends OncePerRequestFilter {
         System.out.println("meu token" + token );
         if (token != null){
          var email = tokenService.usuarioDoToken(token);
+
+            System.out.println(email);
             UserDetails usuario = repository.findByEmail(email);
 
             var authetication = new UsernamePasswordAuthenticationToken(usuario,null, usuario.getAuthorities());
@@ -38,6 +40,6 @@ public class SecurityFilter extends OncePerRequestFilter {
     private String recuperaTokenFormatado(HttpServletRequest request) {
         var authHeader = request.getHeader("Authorization");
         if(authHeader == null) return null;
-        return authHeader.replace("Bearer", "");
+        return authHeader.replace("Bearer", "").strip();
     }
 }
