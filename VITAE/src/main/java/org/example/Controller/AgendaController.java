@@ -13,6 +13,7 @@ import org.example.interfaces.AgendaRepository;
 import org.example.interfaces.HospitalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,11 +25,13 @@ public class AgendaController {
     @Autowired
     private AgendaRepository repository;
     @GetMapping
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('EMFERMEIRA') ")
     public ResponseEntity<List<Agenda>> listar(){
         return ResponseEntity.status(200).body(repository.findAll());
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE')")
     public ResponseEntity cadastrar(@RequestBody RecordAgenda dados){
         System.out.println( dados);
         return ResponseEntity.status(201).body(repository.save(new Agenda(dados)));
@@ -36,6 +39,7 @@ public class AgendaController {
 
     @PutMapping("/{id}")
     @Transactional
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE')")
     public ResponseEntity atualizar(@PathVariable Long id , @RequestBody AtualizaAgenda dados){
         if (repository.existsById(id)){
             var agenda = repository.getReferenceById(id);
@@ -47,6 +51,7 @@ public class AgendaController {
 
     @DeleteMapping("{id}")
     @Transactional
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE')")
     public  ResponseEntity DeletaUser(@PathVariable long id){
         repository.deleteById(id);
 

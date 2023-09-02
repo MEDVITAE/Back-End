@@ -37,7 +37,7 @@ public class UsuarioController {
    @Transactional
     public  ResponseEntity atualizarUser(@RequestBody AtualizarUser dados, @PathVariable long id){
         var usuario = repository.getReferenceById(id);
-       usuario.AtualiazarUsuario(dados);
+       usuario.Atualiza(dados);
        return ResponseEntity.ok(new AtualizarUser(usuario));
     }
     @DeleteMapping("{id}")
