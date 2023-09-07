@@ -6,6 +6,9 @@ import org.example.Enums.Usuarios.UserRole;
 import org.example.Records.Usuario.AtualizarUser;
 import org.example.Records.Usuario.RecordUsuario;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Table(name = "Paciente")
 @Entity(name = "Paciente")
 @Getter
@@ -15,16 +18,21 @@ public class Paciente extends Usuario{
 
     private String nome;
 
-    private Long fkCaracteristicas;
+    @OneToMany
+    @JoinColumn(name = "fkUsuario",unique = true)
+    private List<Doacao> doacao = new ArrayList<>();
+    @OneToMany
+    @JoinColumn(name = "fkUsuario",unique = true)
+    private List<Caracteristicas> fkCaracteristicas = new ArrayList<>(1);
 
     public Paciente(String nome) {
         this.nome = nome;
     }
 
-    public Paciente(String email, String senha, UserRole role, String nome, Long fkCaracteristicas) {
+    public Paciente(String email, String senha, UserRole role, String nome) {
         super(email, senha, role);
         this.nome = nome;
-        this.fkCaracteristicas = fkCaracteristicas;
+
     }
 
     public Paciente(RecordUsuario dados) {
@@ -35,10 +43,12 @@ public class Paciente extends Usuario{
     }
 
 
+
     @Override
     public void Atualiza(AtualizarUser dados) {
         super.Atualiza(dados);
         this.nome =  dados.nome();
 
     }
+
 }

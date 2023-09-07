@@ -4,7 +4,7 @@ public enum UserRole {
     ADMIN("admin"),
     PACIENTE("paciente"),
     RECEPCAO("recepcao"),
-    EMFERMEIRA("emfermera");
+    ENFERMEIRA("enfermeira");
     private String role;
 
     UserRole(String role){

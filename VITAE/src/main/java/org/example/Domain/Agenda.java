@@ -11,18 +11,34 @@ import java.time.LocalDateTime;
 
 @Table(name = "Agenda")
 @Entity(name = "Agenda")
-@Getter
-@Setter
+
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of= "id")
 public class Agenda {
+    @Getter
+    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Getter
+    @Setter
     private LocalDateTime Horario;
+    @Getter
+    @Setter
+
+
     private int fkUsuario;
+    @Getter
+    @Setter
     private int fkHospital;
+
+    @ManyToOne
+    @JoinColumn(name = "fkUsuarios", referencedColumnName = "idUsuario",insertable = false, updatable = false)
+    private Usuario usuarios;
+    @ManyToOne
+    @JoinColumn(name = "fkHospitals", referencedColumnName = "idHospital",insertable = false, updatable = false)
+    private Hospital hospitals;
 
     public Agenda(RecordAgenda dados) {
 

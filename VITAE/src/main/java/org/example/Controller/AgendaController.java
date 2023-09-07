@@ -25,7 +25,7 @@ public class AgendaController {
     @Autowired
     private AgendaRepository repository;
     @GetMapping
-    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('EMFERMEIRA') ")
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') ")
     public ResponseEntity<List<Agenda>> listar(){
         return ResponseEntity.status(200).body(repository.findAll());
     }
@@ -51,7 +51,7 @@ public class AgendaController {
 
     @DeleteMapping("{id}")
     @Transactional
-    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE')")
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('ENFERMEIRA')")
     public  ResponseEntity DeletaUser(@PathVariable long id){
         repository.deleteById(id);
 

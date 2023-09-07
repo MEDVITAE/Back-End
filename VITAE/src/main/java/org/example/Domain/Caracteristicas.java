@@ -9,21 +9,42 @@ import java.util.Date;
 
 @Table(name = "Caracteristicas")
 @Entity(name = "Caracteristicas")
-@Getter
-@Setter
+
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of= "id")
+@EqualsAndHashCode(of= "idCaracteristicas")
 public class Caracteristicas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idCaracteristicas;
+    @Getter
+    @Setter
     private String peso;
+    @Getter
+    @Setter
     private String altura;
+    @Getter
+    @Setter
     private boolean tatto;
+    @Getter
+    @Setter
     private String sexo;
+    @Getter
+    @Setter
     private Date dtNascimento;
-    private Long fkUsuario;
+    @Getter
+    @Setter
+    private  Long fkUsuario;
+    @ManyToOne
+    @JoinColumn(name = "fkUsuario", referencedColumnName = "idUsuario",insertable = false, updatable = false)
+    private Usuario usuario;
+
+
+
+
+
+
+
 
     public Caracteristicas(RecordCaracteristicas dados) {
         this.peso = dados.peso();

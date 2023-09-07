@@ -1,6 +1,8 @@
 package org.example.Records.Endereco;
 
 import org.example.Domain.Endereco;
+import org.example.Domain.Hospital;
+import org.example.Domain.Usuario;
 
 public record AtualizaEndereco(String cidade,
                                String bairro,

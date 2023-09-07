@@ -8,6 +8,7 @@ import org.example.Records.Usuario.AtualizarUser;
 import org.example.interfaces.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,19 +18,19 @@ import java.util.List;
 public class EnderecoController {
     @Autowired
     private EnderecoRepository repository;
-
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') ")
     @GetMapping
-
     public ResponseEntity<List<Endereco>> listar() {
         return ResponseEntity.status(200).body(repository.findAll());
     }
-
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') ")
     @PostMapping
     public ResponseEntity cadastar(@RequestBody RecordEndereco dados) {
         return ResponseEntity.status(200).body(repository.save(new Endereco(dados)));
     }
 
     @PutMapping("{id}")
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') ")
     @Transactional
     public ResponseEntity AtualizaEndereco(@PathVariable Long id,@RequestBody AtualizaEndereco dados) {
         var endereco = repository.getReferenceById(id);
@@ -37,6 +38,7 @@ public class EnderecoController {
         return ResponseEntity.status(200).body((new AtualizaEndereco(endereco)));
     }
     @Transactional
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') ")
     @DeleteMapping("{id}")
     public  ResponseEntity DeletaUser(@PathVariable long id){
         repository.deleteById(id);

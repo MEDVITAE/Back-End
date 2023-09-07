@@ -1,6 +1,6 @@
 package org.example.Records.Usuario;
 
-import org.example.Domain.Emfermeira;
+import org.example.Domain.Enfermeira;
 import org.example.Domain.Paciente;
 import org.example.Domain.Recepcao;
 import org.example.Domain.Usuario;
@@ -19,7 +19,7 @@ public record AtualizarUser (
                 paciente.getNome(), usuario.getEmail(), usuario.getSenha(),usuario.getRole()
         );
     }
-    public AtualizarUser(Usuario usuario,Emfermeira emfermeira){
+    public AtualizarUser(Usuario usuario, Enfermeira emfermeira){
         this(
                 emfermeira.getNome(),usuario.getEmail(),usuario.getSenha(),usuario.getRole()
         );

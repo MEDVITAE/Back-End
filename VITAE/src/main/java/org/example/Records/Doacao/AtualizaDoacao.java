@@ -5,9 +5,9 @@ import org.example.Domain.Doacao;
 public record AtualizaDoacao(
         Double quantidade,
         String tipo,
-        Long fkAgenda
+        Long fkHospital
       ) {
     public AtualizaDoacao(Doacao doacao){
-       this(doacao.getQuantidade(),doacao.getTipo(),doacao.getFkAgenda());
+       this(doacao.getQuantidade(),doacao.getTipo(),doacao.getFkHospital());
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -26,13 +27,19 @@ public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idUsuario;
     @Column(name = "Email")
     private String email;
     private String senha;
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
+    @OneToMany(mappedBy = "fkUsuario")
+    private List<Endereco> enderecos = new ArrayList<>();
+    @OneToMany(mappedBy = "fkUsuario")
+    private List<Agenda> agendamentos = new ArrayList<>();
+
+
 
 
     public Usuario(String email, String senha, UserRole role){
@@ -55,12 +62,12 @@ public class Usuario implements UserDetails {
         if (this.role == UserRole.ADMIN)
             return List.of(
                       new SimpleGrantedAuthority("ROLE_ADMIN")
-                    , new SimpleGrantedAuthority("ROLE_EMFERMEIRA")
+                    , new SimpleGrantedAuthority("ROLE_ENFERMEIRA")
                     , new SimpleGrantedAuthority("ROLE_RECEPCAO"));
 
-        else if (this.role == UserRole.EMFERMEIRA)
+        else if (this.role == UserRole.ENFERMEIRA)
             return List.of(
-                    new SimpleGrantedAuthority("ROLE_EMFERMERA"));
+                    new SimpleGrantedAuthority("ROLE_ENFERMEIRA"));
 
         else if (this.role == UserRole.RECEPCAO)
             return List.of(new SimpleGrantedAuthority("ROLE_RECEPCAO"));

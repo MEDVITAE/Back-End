@@ -6,7 +6,7 @@ public record RecordDoacao(
 
         Double quantidade,
         String tipo,
-        Long fkAgenda
+        Long fkHospital
 
       ) {
 }

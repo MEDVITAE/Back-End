@@ -19,19 +19,27 @@ public class Doacao {
     private Long id;
     private Double quantidade;
     private String tipo;
-    private Long fkAgenda;
+    private Long fkHospital;
+    @ManyToOne
+    @JoinColumn(name = "fkHospitals", referencedColumnName = "idHospital",insertable = false, updatable = false)
+    private Hospital hospital;
+
+
+    @ManyToOne
+    @JoinColumn(name = "fkUsuario", referencedColumnName = "idUsuario",insertable = false, updatable = false)
+    private Usuario usuario;
 
 
     public Doacao(RecordDoacao dados) {
         this.quantidade = dados.quantidade();
         this.tipo = dados.tipo();
-        this.fkAgenda = dados.fkAgenda();
+        this.fkHospital = dados.fkHospital();
 
     }
     public void atualizaDoacao(AtualizaDoacao dados){
         this.quantidade = dados.quantidade();
         this.tipo = dados.tipo();
-        this.fkAgenda = dados.fkAgenda();
+        this.fkHospital = dados.fkHospital();
 
     }
 }
