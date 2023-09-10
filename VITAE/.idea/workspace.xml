@@ -5,55 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b105c72-4bb6-4aa5-aca3-0e9471db4dca" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_validation_jakarta_validation_api_3_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_angus_jakarta_mail_1_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_8_0_0_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_mail_3_0_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_3_0_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_6_0_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/EmailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/DTO/emailDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Email.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Enums/Usuarios/EnumEmail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Service/EmailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/interfaces/EmailRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/VITAE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VITAE.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/AgendaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/AgendaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/CaracteristicasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/CaracteristicasController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/DoacaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/DoacaoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/EnderecoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/EnderecoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/HospitalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/HospitalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Agenda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Agenda.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Caracteristicas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Caracteristicas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Doacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Doacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Emfermeira.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Enfermeira.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Endereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Endereco.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Hospital.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Hospital.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Paciente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Enums/Usuarios/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Enums/Usuarios/UserRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Records/Doacao/AtualizaDoacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/Doacao/AtualizaDoacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Records/Doacao/RecordDoacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/Doacao/RecordDoacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Records/Endereco/AtualizaEndereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/Endereco/AtualizaEndereco.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Records/Endereco/RecordEndereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/Endereco/RecordEndereco.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Records/Usuario/AtualizarUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/Usuario/AtualizarUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Records/Usuario/RecordUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/Usuario/RecordUsuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/infra/Security/SecurityConfigutations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/infra/Security/SecurityConfigutations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/infra/Security/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/infra/Security/SecurityFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/infra/Security/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/infra/Security/TokenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/AgendaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/AgendaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/CaracteristicasController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/CaracteristicasController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/DoacaoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/DoacaoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/EnderecoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/EnderecoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/HospitalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/HospitalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/UsuarioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/UsuarioController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Agenda.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Agenda.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Caracteristicas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Caracteristicas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Doacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Doacao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/EMFERMEIRA.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Endereco.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Endereco.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Hospital.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Hospital.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Paciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Paciente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Usuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Enums/Usuarios/UserRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Enums/Usuarios/UserRole.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Doacao/AtualizaDoacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Doacao/AtualizaDoacao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Doacao/RecordDoacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Doacao/RecordDoacao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Endereco/AtualizaEndereco.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Endereco/AtualizaEndereco.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Endereco/RecordEndereco.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Endereco/RecordEndereco.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Usuario/AtualizarUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Usuario/AtualizarUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Usuario/RecordUsuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Usuario/RecordUsuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/infra/Security/SecurityConfigutations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/infra/Security/SecurityConfigutations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/infra/Security/SecurityFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/infra/Security/SecurityFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/infra/Security/TokenService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/infra/Security/TokenService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,9 +32,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package-info" />
+        <option value="Record" />
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Record" />
         <option value="Class" />
       </list>
     </option>
@@ -174,5 +142,39 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="jwtTeste" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Service/EmailService.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
