@@ -68,7 +68,7 @@ public class UsuarioController {
     }
     @GetMapping
     @Transactional
-    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') ")
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
 
     public ResponseEntity<List<Usuario>> listar(){
         if(repository.findAll().isEmpty()) {
@@ -78,7 +78,7 @@ public class UsuarioController {
     }
    @PutMapping("{id}")
    @Transactional
-   @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') ")
+   @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
     public  ResponseEntity atualizarUser(@RequestBody AtualizarUser dados, @PathVariable long id){
 
        if(dados.role() == UserRole.PACIENTE){
@@ -100,7 +100,7 @@ public class UsuarioController {
     }
     @DeleteMapping("{id}")
     @Transactional
-    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') ")
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
     public  ResponseEntity DeletaUser(@PathVariable long id){
         repository.deleteById(id);
         return ResponseEntity.status(204).build();

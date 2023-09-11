@@ -27,8 +27,7 @@ public class Hospital {
     private List<Endereco> enderecos = new ArrayList<>();
     @OneToMany(mappedBy = "fkHospital")
     private List<Agenda> agendamentos = new ArrayList<>();
-    @OneToMany(mappedBy = "fkHospital")
-    private List<Doacao> doacao = new ArrayList<>();
+
 
 
     public Hospital(RecordHospital cadastroHospital) {

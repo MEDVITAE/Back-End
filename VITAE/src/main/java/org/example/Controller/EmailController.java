@@ -24,9 +24,10 @@ public class EmailController {
     EmailRepository emailRepository;
 
     @PostMapping
-    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') ")
+    @PreAuthorize(" hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
     public ResponseEntity<Email> enviarEmail(@RequestBody @Valid emailDto requestEmail){
         Email email = new Email();
+
         BeanUtils.copyProperties(requestEmail,email);
         emailService.sendEmail(email);
         emailRepository.save(email);

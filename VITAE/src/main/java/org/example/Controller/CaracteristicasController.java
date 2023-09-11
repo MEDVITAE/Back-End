@@ -22,7 +22,7 @@ public class CaracteristicasController {
     private CaractetisticasRepository repository;
 
     @GetMapping
-    @PreAuthorize(" hasRole('PACIENTE') || hasRole('RECEPCAO') ")
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
     public ResponseEntity<List<Caracteristicas>> listar() { return ResponseEntity.status(200).body(repository.findAll()); }
 
     @PostMapping

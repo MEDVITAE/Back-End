@@ -8,6 +8,9 @@ import lombok.Setter;
 import org.example.Enums.Usuarios.UserRole;
 import org.example.Records.Usuario.AtualizarUser;
 import org.example.Records.Usuario.RecordUsuario;
+import org.example.interfaces.UsuarioRepository;
+
+import java.util.List;
 
 @Table(name = "Recepcao")
 @Entity(name = "Recepcao")
@@ -33,11 +36,19 @@ public class Recepcao extends Usuario{
 
 
 
+
     @Override
     public void Atualiza(AtualizarUser dados) {
         super.Atualiza(dados);
         this.nome =  dados.nome();
 
+    }
+//   private UsuarioRepository repository;
+
+    @Override
+    public List<Usuario> buscarRelatorio(String nome) {
+//       var horas = repository.findByName(nome);
+        return null;
     }
 
 

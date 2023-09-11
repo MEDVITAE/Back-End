@@ -22,7 +22,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of= "id")
-public class Usuario implements UserDetails {
+public  abstract class Usuario implements UserDetails {
 
 
     @Id
@@ -53,6 +53,7 @@ public class Usuario implements UserDetails {
         this.email = atualizarDados.email();
         this.senha = atualizarDados.senha();
     }
+    public abstract List<Usuario> buscarRelatorio(String nome);
 
 
 

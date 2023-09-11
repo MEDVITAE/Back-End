@@ -21,14 +21,14 @@ public class DoacaoController {
     @Autowired
     private DoacaoRepository repository;
     @GetMapping
-    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') ")
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
     public ResponseEntity<List<Doacao>> listar(){
         return ResponseEntity.status(200).body(repository.findAll());
     }
 
     @PostMapping
     @Transactional
-    @PreAuthorize(" hasRole('ENFERMEIRA') ")
+    @PreAuthorize("hasRole('ENFERMEIRA') ")
     public ResponseEntity cadastrar(@RequestBody RecordDoacao dados){
         return ResponseEntity.status(201).body(repository.save(new Doacao(dados)));
     }
@@ -47,8 +47,8 @@ public class DoacaoController {
 
     @DeleteMapping("{id}")
     @Transactional
-    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') ")
-    public  ResponseEntity DeletaUser(@PathVariable long id){
+    @PreAuthorize(" hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
+    public  ResponseEntity DeletaDoacao(@PathVariable long id){
 
         repository.deleteById(id);
 

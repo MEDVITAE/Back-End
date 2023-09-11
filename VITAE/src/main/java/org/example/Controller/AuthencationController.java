@@ -36,15 +36,15 @@ public class AuthencationController {
         var token = tokenService.gerarToken((Usuario) auth.getPrincipal());
         return ResponseEntity.ok(new Login(token));
     }
-    @PostMapping("/register")
-    public ResponseEntity register(@RequestBody @Validated recordRegister dados){
-    if(this.repository.findByEmail(dados.email()) != null) {
-        return ResponseEntity.badRequest().build();
-    }
-
-    String encripitando = new BCryptPasswordEncoder().encode(dados.senha());
-    Usuario usuario = new Usuario(dados.email(),encripitando,dados.role());
-    this.repository.save(usuario);
-        return ResponseEntity.ok().build();
-    }
+//    @PostMapping("/register")
+//    public ResponseEntity register(@RequestBody @Validated recordRegister dados){
+//    if(this.repository.findByEmail(dados.email()) != null) {
+//        return ResponseEntity.badRequest().build();
+//    }
+//
+//    String encripitando = new BCryptPasswordEncoder().encode(dados.senha());
+//    Usuario usuario = new Usuario(dados.email(),encripitando,dados.role());
+//    this.repository.save(usuario);
+//        return ResponseEntity.ok().build();
+//    }
 }

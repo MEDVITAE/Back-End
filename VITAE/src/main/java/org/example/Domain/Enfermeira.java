@@ -8,6 +8,8 @@ import org.example.Enums.Usuarios.UserRole;
 import org.example.Records.Usuario.AtualizarUser;
 import org.example.Records.Usuario.RecordUsuario;
 
+import java.util.List;
+
 @Table(name = "ENFERMEIRA")
 @Entity(name = "ENFERMEIRA")
 @Getter
@@ -34,6 +36,11 @@ public class Enfermeira extends Usuario{
     public Enfermeira(String email, String encripitando, UserRole role, String nome) {
         super(email, encripitando, role);
         this.nome = nome;
+    }
+
+    @Override
+    public List<Usuario> buscarRelatorio(String nome) {
+        return null;
     }
 
     @Override

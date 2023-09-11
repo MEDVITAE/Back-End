@@ -1,5 +1,6 @@
 package org.example.Domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.example.Records.Doacao.AtualizaDoacao;
@@ -11,35 +12,32 @@ import org.example.Records.Doacao.RecordDoacao;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of= "id")
+@EqualsAndHashCode(of= "idDoacao")
 
 public class Doacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idDoacao;
     private Double quantidade;
     private String tipo;
-    private Long fkHospital;
-    @ManyToOne
-    @JoinColumn(name = "fkHospitals", referencedColumnName = "idHospital",insertable = false, updatable = false)
-    private Hospital hospital;
+    private Long fkAgenda;
+    @OneToOne
+    @JsonIgnore
+    @JoinColumn(name = "fkAgenda", referencedColumnName = "idAgenda",insertable = false, updatable = false)
+    private Agenda Agenda;
 
-
-    @ManyToOne
-    @JoinColumn(name = "fkUsuario", referencedColumnName = "idUsuario",insertable = false, updatable = false)
-    private Usuario usuario;
 
 
     public Doacao(RecordDoacao dados) {
         this.quantidade = dados.quantidade();
         this.tipo = dados.tipo();
-        this.fkHospital = dados.fkHospital();
+        this.fkAgenda = dados.fkAgenda();
 
     }
     public void atualizaDoacao(AtualizaDoacao dados){
         this.quantidade = dados.quantidade();
         this.tipo = dados.tipo();
-        this.fkHospital = dados.fkHospital();
+        this.fkAgenda = dados.fkAgenda();
 
     }
 }

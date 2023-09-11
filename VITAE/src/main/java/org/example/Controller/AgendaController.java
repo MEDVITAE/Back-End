@@ -51,7 +51,7 @@ public class AgendaController {
 
     @DeleteMapping("{id}")
     @Transactional
-    @PreAuthorize("hasRole('RECEPCAO') || hasRole('ENFERMEIRA')")
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
     public  ResponseEntity DeletaUser(@PathVariable long id){
         repository.deleteById(id);
 

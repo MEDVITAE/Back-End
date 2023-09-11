@@ -39,16 +39,19 @@ public class Paciente extends Usuario{
         super(dados.email(), dados.senha(), dados.role());
         this.nome = dados.nome();
 
-
     }
 
-
+    @Override
+    public List<Usuario> buscarRelatorio(String nome) {
+        return null;
+    }
 
     @Override
     public void Atualiza(AtualizarUser dados) {
         super.Atualiza(dados);
         this.nome =  dados.nome();
-
     }
+
+
 
 }

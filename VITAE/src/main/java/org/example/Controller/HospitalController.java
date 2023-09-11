@@ -28,7 +28,7 @@ public class HospitalController {
 
     @PostMapping
     @Transactional
-    @PreAuthorize("hasRole('ADMIN') || hasRole('ENFERMEIRA') || hasRole('RECEPCAO')")
+
     public ResponseEntity cadastrar(@RequestBody RecordHospital dados){
         System.out.println(dados);
         return ResponseEntity.status(201).body(repository.save(new Hospital(dados)));
