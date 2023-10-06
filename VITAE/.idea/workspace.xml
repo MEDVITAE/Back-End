@@ -5,44 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b105c72-4bb6-4aa5-aca3-0e9471db4dca" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/AgendaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/AgendaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/AuthencationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/AuthencationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/CaracteristicasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/CaracteristicasController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/DoacaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/DoacaoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/EmailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/EmailController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/EnderecoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/EnderecoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/HospitalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/HospitalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DTO/emailDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/emailDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Agenda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Agenda.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Doacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Doacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Enfermeira.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Enfermeira.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Hospital.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Hospital.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Email.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Paciente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Recepcao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Recepcao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Records/Doacao/AtualizaDoacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/Doacao/AtualizaDoacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Records/Doacao/RecordDoacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/Doacao/RecordDoacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Service/AuthorizationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Service/AuthorizationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/interfaces/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/interfaces/UsuarioRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/AgendaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/AgendaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/AuthencationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/AuthencationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/CaracteristicasController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/CaracteristicasController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/DoacaoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/DoacaoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/EmailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/EmailController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/EnderecoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/EnderecoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/HospitalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/HospitalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/UsuarioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/UsuarioController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/DTO/emailDto.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Agenda.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Agenda.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Doacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Doacao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Enfermeira.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Enfermeira.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Hospital.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Hospital.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Email.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Email.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Paciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Paciente.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Recepcao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Recepcao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Usuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Doacao/AtualizaDoacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Doacao/AtualizaDoacao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Doacao/RecordDoacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Doacao/RecordDoacao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/UsuarioRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/UsuarioRepository.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,31 +62,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;codigoCaracteristicas&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jvtenorio/Downloads/Alura/alura java/2944-java-screenmatch-consumindo-webservice&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;bba933bccc7d54b913bebaacdac2d65e&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "codigoCaracteristicas",
+    "last_opened_file_path": "C:/desenvolvimento/admin_basa",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.general",
+    "spring.configuration.checksum": "bba933bccc7d54b913bebaacdac2d65e",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.example.Controller" />

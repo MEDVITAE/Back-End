@@ -18,9 +18,7 @@ public class Paciente extends Usuario{
 
     private String nome;
 
-    @OneToMany
-    @JoinColumn(name = "fkUsuario",unique = true)
-    private List<Doacao> doacao = new ArrayList<>();
+
     @OneToMany
     @JoinColumn(name = "fkUsuario",unique = true)
     private List<Caracteristicas> fkCaracteristicas = new ArrayList<>(1);

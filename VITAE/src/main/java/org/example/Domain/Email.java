@@ -25,6 +25,9 @@ public class  Email  implements Serializable {
     private String text;
     private LocalDateTime sendDateEmail;
     private EnumEmail  statusEmail;
+    @ManyToOne
+    @JoinColumn(name = "fkUsuario", referencedColumnName = "idUsuario",insertable = false, updatable = false)
+    private Usuario usuario;
 
 
 }

@@ -34,10 +34,6 @@ public  abstract class Usuario implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
-    @OneToMany(mappedBy = "fkUsuario")
-    private List<Endereco> enderecos = new ArrayList<>();
-    @OneToMany(mappedBy = "fkUsuario")
-    private List<Agenda> agendamentos = new ArrayList<>();
 
 
 

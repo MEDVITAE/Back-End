@@ -1,5 +1,6 @@
 package org.example.Domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.example.Records.Agenda.AtualizaAgenda;
@@ -13,37 +14,33 @@ import java.util.List;
 
 @Table(name = "Agenda")
 @Entity(name = "Agenda")
-
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of= "idAgenda")
 public class Agenda {
-    @Getter
-    @Setter
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAgenda;
-    @Getter
-    @Setter
-    private LocalDateTime Horario;
-    @Getter
-    @Setter
 
+    private LocalDateTime Horario;
 
     private int fkUsuario;
-    @Getter
-    @Setter
+
     private int fkHospital;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "fkUsuarios", referencedColumnName = "idUsuario",insertable = false, updatable = false)
     private Usuario usuarios;
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "fkHospitals", referencedColumnName = "idHospital",insertable = false, updatable = false)
     private Hospital hospitals;
-    @OneToOne
-    @JoinColumn(name = "fkDoacao", referencedColumnName = "idDoacao",insertable = false, updatable = false)
-    private Doacao doacoes;
+
+
 
     public Agenda(RecordAgenda dados) {
         this.Horario = dados.Horario();

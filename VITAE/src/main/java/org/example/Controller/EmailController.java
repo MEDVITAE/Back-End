@@ -1,7 +1,7 @@
 package org.example.Controller;
 
 import jakarta.validation.Valid;
-import org.example.DTO.emailDto;
+import org.example.Records.emailDto;
 import org.example.Domain.Email;
 import org.example.Service.EmailService;
 import org.example.interfaces.EmailRepository;

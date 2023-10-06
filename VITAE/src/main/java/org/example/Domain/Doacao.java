@@ -21,8 +21,10 @@ public class Doacao {
     private Double quantidade;
     private String tipo;
     private Long fkAgenda;
+    private Long fkUsuario;
+
     @OneToOne
-    @JsonIgnore
+
     @JoinColumn(name = "fkAgenda", referencedColumnName = "idAgenda",insertable = false, updatable = false)
     private Agenda Agenda;
 

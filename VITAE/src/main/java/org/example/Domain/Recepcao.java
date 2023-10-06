@@ -21,6 +21,7 @@ public class Recepcao extends Usuario{
 
     private String nome;
 
+
     public Recepcao(RecordUsuario dados) {
         super(dados.email(), dados.senha(), dados.role());
         this.nome = nome;
