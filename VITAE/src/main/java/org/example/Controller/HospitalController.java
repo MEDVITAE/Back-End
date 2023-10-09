@@ -5,6 +5,7 @@ import jdk.swing.interop.SwingInterOpUtils;
 import org.example.Domain.Hospital;
 import org.example.Records.Hospital.AtualizarHospital;
 import org.example.Records.Hospital.RecordHospital;
+import org.example.Service.HospitalService;
 import org.example.interfaces.HospitalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,30 +18,36 @@ import java.util.List;
 @RequestMapping("/hospital")
 public class HospitalController {
 
-    @Autowired
-    private HospitalRepository repository;
+    private final HospitalService hospitalService;
+
+    public HospitalController (HospitalService service) {
+        this.hospitalService = service;
+    }
+
     @GetMapping
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN')")
     public ResponseEntity<List<Hospital>> listar(){
-
-        return ResponseEntity.status(200).body(repository.findAll());
+        return ResponseEntity.status(200).body(hospitalService.findAll());
     }
 
     @PostMapping
     @Transactional
+<<<<<<< Updated upstream
     @PreAuthorize("hasRole('ADMIN') || hasRole('ENFERMEIRA') || hasRole('RECEPCAO')")
+=======
+>>>>>>> Stashed changes
     public ResponseEntity cadastrar(@RequestBody RecordHospital dados){
         System.out.println(dados);
-        return ResponseEntity.status(201).body(repository.save(new Hospital(dados)));
+        return ResponseEntity.status(201).body(hospitalService.salvar(new Hospital(dados)));
     }
 
     @PutMapping("/{id}")
     @Transactional
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity atualizar(@PathVariable Long id , @RequestBody AtualizarHospital dados){
-        if (repository.existsById(id)){
+        if (hospitalService.existsById(id)){
 
-            var selectHospital = repository.getReferenceById(id);
+            var selectHospital = hospitalService.atualizar(id);
             selectHospital.AtualizaHospital(dados);
             return ResponseEntity.status(200).body(new AtualizarHospital(selectHospital));
         }
@@ -52,8 +59,8 @@ public class HospitalController {
     @PreAuthorize("hasRole('ADMIN')")
     public  ResponseEntity DeletaUser(@PathVariable long id){
 
-        repository.deleteById(id);
+        hospitalService.deletar(id);
 
-        return ResponseEntity.badRequest().build();
+        return ResponseEntity.noContent().build();
     }
 }
