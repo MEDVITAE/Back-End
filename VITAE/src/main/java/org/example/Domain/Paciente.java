@@ -49,7 +49,4 @@ public class Paciente extends Usuario{
         super.Atualiza(dados);
         this.nome =  dados.nome();
     }
-
-
-
 }

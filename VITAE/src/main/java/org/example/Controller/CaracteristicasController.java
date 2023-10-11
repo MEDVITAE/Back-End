@@ -18,7 +18,6 @@ import java.util.List;
 
 public class CaracteristicasController {
     @Autowired
-
     private CaractetisticasRepository repository;
 
     @GetMapping

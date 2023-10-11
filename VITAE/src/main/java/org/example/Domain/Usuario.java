@@ -20,7 +20,6 @@ import java.util.List;
 @Entity(name = "Usuario")
 @Getter
 @Setter
-@NoArgsConstructor
 @EqualsAndHashCode(of= "id")
 public  abstract class Usuario implements UserDetails {
 
@@ -42,6 +41,9 @@ public  abstract class Usuario implements UserDetails {
         this.email = email;
         this.senha = senha;
         this.role = role;
+    }
+
+    protected Usuario() {
     }
 
 

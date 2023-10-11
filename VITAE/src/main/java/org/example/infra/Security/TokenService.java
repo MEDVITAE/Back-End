@@ -21,7 +21,7 @@ public class TokenService {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
             String token = JWT.create().withIssuer("vitae-servicos").
-                    withSubject(usuario.getEmail()).
+                    withSubject(usuario.getUsername()).
                     withExpiresAt(gerarTempoExpiracao())
                     .sign(algorithm);
             System.out.println("token gerado :" + token);
