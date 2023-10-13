@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8b105c72-4bb6-4aa5-aca3-0e9471db4dca" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agendamentos Do Dia11.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agendamentos csv Do Dia11.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agendamentos txt Do Dia11.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Service/ArquivoCsvService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Service/ArquivoCsvService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/Service/ArquivoCsvService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Service/ArquivoCsvService.class" afterDir="false" />
     </list>
@@ -55,7 +56,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "arquivoCsvTXT",
-    "last_opened_file_path": "C:/Users/pamarcato/Downloads/dynamic-finders",
+    "last_opened_file_path": "C:/Users/pamarcato/Downloads/CODIGOS - ED/exemplo-arquivo-csv",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -117,6 +118,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
