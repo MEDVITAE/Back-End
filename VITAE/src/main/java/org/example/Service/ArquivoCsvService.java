@@ -28,6 +28,19 @@ public class ArquivoCsvService {
         List<AgendamentoDTO> testes = resultados.stream()
                 .map(result -> new AgendamentoDTO(result.getNome(), result.getHorario()))
                 .collect(Collectors.toList());
+
+        for (int i = 0; i < testes.size() - 1; i++) {
+            for (int j = i + 1; j < testes.size(); j++) {
+                int hora1 = testes.get(i).getHorario().getHour();
+                int hora2 = testes.get(j).getHorario().getHour();
+                if (hora1 > hora2) {
+                    AgendamentoDTO aux = testes.get(i);
+                    testes.set(i, testes.get(j));
+                    testes.set(j, aux);
+                }
+            }
+        }
+
         gravaArquivoCsv(testes,"Agendamentos Do Dia");
     }
 
