@@ -10,6 +10,7 @@ import org.example.interfaces.AgendaRepository;
 import org.example.interfaces.DoacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,19 +21,21 @@ public class DoacaoController {
     @Autowired
     private DoacaoRepository repository;
     @GetMapping
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
     public ResponseEntity<List<Doacao>> listar(){
-
         return ResponseEntity.status(200).body(repository.findAll());
     }
 
     @PostMapping
     @Transactional
+    @PreAuthorize("hasRole('ENFERMEIRA') ")
     public ResponseEntity cadastrar(@RequestBody RecordDoacao dados){
         return ResponseEntity.status(201).body(repository.save(new Doacao(dados)));
     }
 
     @PutMapping("/{id}")
     @Transactional
+    @PreAuthorize(" hasRole('ENFERMEIRA')  ")
     public ResponseEntity atualizar(@PathVariable Long id , @RequestBody AtualizaDoacao dados){
         if (repository.existsById(id)){
             var doacao = repository.getReferenceById(id);
@@ -44,7 +47,8 @@ public class DoacaoController {
 
     @DeleteMapping("{id}")
     @Transactional
-    public  ResponseEntity DeletaUser(@PathVariable long id){
+    @PreAuthorize(" hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
+    public  ResponseEntity DeletaDoacao(@PathVariable long id){
 
         repository.deleteById(id);
 

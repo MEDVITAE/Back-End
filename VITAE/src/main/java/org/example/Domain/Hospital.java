@@ -5,6 +5,9 @@ import lombok.*;
 import org.example.Records.Hospital.AtualizarHospital;
 import org.example.Records.Hospital.RecordHospital;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Table(name = "Hospital")
 @Entity(name = "Hospital")
 @Getter
@@ -15,11 +18,17 @@ import org.example.Records.Hospital.RecordHospital;
 public class Hospital {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idHospital;
     private String nome;
     private String email;
     private String senha;
     private String cnpj;
+    @OneToMany(mappedBy = "fkHospital")
+    private List<Endereco> enderecos = new ArrayList<>();
+    @OneToMany(mappedBy = "fkHospital")
+    private List<Agenda> agendamentos = new ArrayList<>();
+
+
 
     public Hospital(RecordHospital cadastroHospital) {
         this.nome = cadastroHospital.nome();
