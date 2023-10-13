@@ -55,4 +55,12 @@ public class Agenda {
         this.fkUsuario = dados.fkUsuario();
         this.fkHospital = dados.fkHospital();
     }
+
+    public LocalDateTime getHorario() {
+        return Horario;
+    }
+
+    public void setHorario(LocalDateTime horario) {
+        Horario = horario;
+    }
 }
