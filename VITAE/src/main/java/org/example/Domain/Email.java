@@ -1,6 +1,7 @@
 package org.example.Domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.example.Enums.Usuarios.EnumEmail;
 
@@ -16,14 +17,20 @@ public class  Email  implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEmail ;
+    @NotBlank
     private String ownerRef;
+    @NotBlank
     private String emailFrom;
+    @NotBlank
     private String emailTo;
-
+    @NotBlank
     private String subject;
+    @NotBlank
     @Column(columnDefinition = "TEXT")
     private String text;
+    @NotBlank
     private LocalDateTime sendDateEmail;
+    @NotBlank
     private EnumEmail  statusEmail;
     @ManyToOne
     @JoinColumn(name = "fkUsuario", referencedColumnName = "idUsuario",insertable = false, updatable = false)

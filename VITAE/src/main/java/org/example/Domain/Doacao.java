@@ -2,6 +2,7 @@ package org.example.Domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.example.Records.Doacao.AtualizaDoacao;
 import org.example.Records.Doacao.RecordDoacao;
@@ -18,7 +19,9 @@ public class Doacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDoacao;
+    @NotBlank
     private Double quantidade;
+    @NotBlank
     private String tipo;
     private Long fkAgenda;
     private Long fkUsuario;

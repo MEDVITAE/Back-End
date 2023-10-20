@@ -1,6 +1,7 @@
 package org.example.Domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.example.Records.Caracteristicas.AtualizaCaracteristicas;
 import org.example.Records.Caracteristicas.RecordCaracteristicas;
@@ -16,21 +17,28 @@ import java.util.Date;
 public class Caracteristicas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
+    @Setter
     private Long idCaracteristicas;
     @Getter
     @Setter
+    @NotBlank
     private String peso;
     @Getter
     @Setter
+    @NotBlank
     private String altura;
     @Getter
     @Setter
+    @NotBlank
     private boolean tatto;
     @Getter
     @Setter
+    @NotBlank
     private String sexo;
     @Getter
     @Setter
+    @NotBlank
     private Date dtNascimento;
     @Getter
     @Setter
@@ -38,7 +46,6 @@ public class Caracteristicas {
     @ManyToOne
     @JoinColumn(name = "fkUsuario", referencedColumnName = "idUsuario",insertable = false, updatable = false)
     private Usuario usuario;
-
 
 
 

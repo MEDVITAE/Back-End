@@ -1,6 +1,7 @@
 package org.example.Domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.example.Records.Endereco.AtualizaEndereco;
 import org.example.Records.Endereco.RecordEndereco;
@@ -19,11 +20,17 @@ public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     private String cidade;
+    @NotBlank
     private String bairro;
+    @NotBlank
     private String cep;
+    @NotBlank
     private String logradouro;
+    @NotBlank
     private String rua;
+    @NotBlank
     private int numero;
     private Long fkHospital;
     private Long fkUsuario;

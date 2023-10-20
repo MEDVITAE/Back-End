@@ -9,6 +9,7 @@ import org.example.Records.Doacao.RecordDoacao;
 import org.example.Records.Endereco.AtualizaEndereco;
 import org.example.Records.Hospital.AtualizarHospital;
 import org.example.Records.Hospital.RecordHospital;
+import org.example.Service.AgendaService;
 import org.example.interfaces.AgendaRepository;
 import org.example.interfaces.HospitalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,37 +25,37 @@ import java.util.List;
 public class AgendaController {
     @Autowired
     private AgendaRepository repository;
+    private AgendaService serviceRepository;
     @GetMapping
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') ")
     public ResponseEntity<List<Agenda>> listar(){
-        return ResponseEntity.status(200).body(repository.findAll());
+
+        return ResponseEntity.status(200).body(serviceRepository.listaAgendamentos());
     }
 
     @PostMapping
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE')")
     public ResponseEntity cadastrar(@RequestBody RecordAgenda dados){
-        System.out.println( dados);
-        return ResponseEntity.status(201).body(repository.save(new Agenda(dados)));
+        System.out.println(dados);
+        var agendaCadastro = new Agenda(dados);
+        return ResponseEntity.status(201).body(serviceRepository.salvar(agendaCadastro));
     }
 
     @PutMapping("/{id}")
     @Transactional
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE')")
     public ResponseEntity atualizar(@PathVariable Long id , @RequestBody AtualizaAgenda dados){
-        if (repository.existsById(id)){
             var agenda = repository.getReferenceById(id);
             agenda.atualizaAgenda(dados);
             return ResponseEntity.status(200).body((new AtualizaAgenda(agenda)));
-        }
-        return ResponseEntity.status(404).build();
     }
 
     @DeleteMapping("{id}")
     @Transactional
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
     public  ResponseEntity DeletaUser(@PathVariable long id){
-        repository.deleteById(id);
+        serviceRepository.deletar(id);
 
-        return ResponseEntity.badRequest().build();
+        return ResponseEntity.status(204).build();
     }
 }

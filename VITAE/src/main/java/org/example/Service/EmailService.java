@@ -10,18 +10,17 @@ import org.springframework.mail.SimpleMailMessage;
 
 import org.springframework.stereotype.Service;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.validation.annotation.Validated;
 
 import java.time.LocalDateTime;
 @Service
 public class EmailService {
 
-
-
     @Autowired
     private JavaMailSender emailSender;
 
     @Transactional
-    public void sendEmail(Email emailModel) {
+    public void sendEmail(@Validated Email emailModel) {
 
         emailModel.setSendDateEmail(LocalDateTime.now());
         try{
@@ -32,7 +31,6 @@ public class EmailService {
             message.setText(emailModel.getText());
             System.out.println(emailModel);
             emailSender.send(message);
-
             emailModel.setStatusEmail(EnumEmail.SENT);
         } catch (MailException e){
             System.out.println("erro é " + e);

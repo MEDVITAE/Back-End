@@ -7,7 +7,7 @@ import org.example.Domain.Paciente;
 import org.example.Domain.Recepcao;
 import org.example.Domain.Usuario;
 import org.example.Enums.Usuarios.UserRole;
-import org.example.Records.Autorizacao.recordAuth;
+import org.example.Records.Autorizacao.RecordAuth;
 import org.example.Records.Login;
 import org.example.Records.Usuario.AtualizarUser;
 import org.example.Records.Usuario.RecordUsuario;
@@ -35,7 +35,7 @@ public class UsuarioController {
     private TokenService tokenService;
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody @Validated recordAuth dados){
+    public ResponseEntity login(@RequestBody @Validated RecordAuth dados){
         var usuarioEmaileSenha = new UsernamePasswordAuthenticationToken(dados.email(),dados.senha());
         var auth = this.autencador.authenticate(usuarioEmaileSenha);
         var token = tokenService.gerarToken((Usuario) auth.getPrincipal());

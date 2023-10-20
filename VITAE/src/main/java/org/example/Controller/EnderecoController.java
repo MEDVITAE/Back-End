@@ -4,7 +4,6 @@ import jakarta.transaction.Transactional;
 import org.example.Domain.Endereco;
 import org.example.Records.Endereco.AtualizaEndereco;
 import org.example.Records.Endereco.RecordEndereco;
-import org.example.Records.Usuario.AtualizarUser;
 import org.example.interfaces.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

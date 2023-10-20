@@ -1,6 +1,6 @@
 package org.example.Records.Autorizacao;
 
-public record recordAuth(
+public record RecordAuth(
         String email,
         String senha
 ) {

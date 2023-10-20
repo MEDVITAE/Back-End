@@ -1,6 +1,7 @@
 package org.example.Domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.example.Records.Hospital.AtualizarHospital;
 import org.example.Records.Hospital.RecordHospital;
@@ -19,9 +20,13 @@ public class Hospital {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idHospital;
+    @NotBlank
     private String nome;
+    @NotBlank
     private String email;
+    @NotBlank
     private String senha;
+    @NotBlank
     private String cnpj;
     @OneToMany(mappedBy = "fkHospital")
     private List<Endereco> enderecos = new ArrayList<>();

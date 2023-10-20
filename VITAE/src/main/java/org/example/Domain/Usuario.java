@@ -1,6 +1,7 @@
 package org.example.Domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.example.Enums.Usuarios.UserRole;
 import org.example.Records.Autorizacao.recordRegister;
@@ -24,19 +25,17 @@ import java.util.List;
 @EqualsAndHashCode(of= "id")
 public  abstract class Usuario implements UserDetails {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuario;
+    @NotBlank
     @Column(name = "Email")
     private String email;
+    @NotBlank
     private String senha;
-
+    @NotBlank
     @Enumerated(EnumType.STRING)
     private UserRole role;
-
-
-
 
     public Usuario(String email, String senha, UserRole role){
         this.email = email;
