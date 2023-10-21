@@ -3,13 +3,10 @@ package org.example.Records.Usuario;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import org.example.Domain.Caracteristicas;
-import org.example.Domain.Usuario;
 import org.example.Enums.Usuarios.UserRole;
 
 public record RecordUsuario(
-
         @NotBlank
         String nome,
         @NotBlank

@@ -2,6 +2,7 @@ package org.example.Controller;
 
 import jakarta.transaction.Transactional;
 
+import jakarta.validation.Valid;
 import org.example.Domain.Enfermeira;
 import org.example.Domain.Paciente;
 import org.example.Domain.Recepcao;
@@ -11,6 +12,7 @@ import org.example.Records.Autorizacao.RecordAuth;
 import org.example.Records.Login;
 import org.example.Records.Usuario.AtualizarUser;
 import org.example.Records.Usuario.RecordUsuario;
+import org.example.Service.UsuarioService;
 import org.example.infra.Security.TokenService;
 import org.example.interfaces.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +20,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,38 +34,25 @@ public class UsuarioController {
     @Autowired
     private TokenService tokenService;
 
+    @Autowired
+    private UsuarioService usuarioService;
+
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody @Validated RecordAuth dados){
+    public ResponseEntity login(@RequestBody @Valid RecordAuth dados){
         var usuarioEmaileSenha = new UsernamePasswordAuthenticationToken(dados.email(),dados.senha());
         var auth = this.autencador.authenticate(usuarioEmaileSenha);
         var token = tokenService.gerarToken((Usuario) auth.getPrincipal());
         return ResponseEntity.ok(new Login(token));
     }
 
-
     @PostMapping("/register")
-    public ResponseEntity Cadastro(@RequestBody RecordUsuario dados){
-             if(this.repository.findByEmail(dados.email()) != null) {
-                 this.repository.findByEmail(dados.email());
-          return ResponseEntity.badRequest().build();
-        }
-        System.out.println(dados);
-        String encripitando = new BCryptPasswordEncoder().encode(dados.senha());
-        if(dados.role() == UserRole.PACIENTE){
-            var usuario = new Paciente(dados.email(), encripitando,dados.role(),dados.nome());
-        return ResponseEntity.status(201).body(repository.save(usuario));
-        }
-        if(dados.role() == UserRole.ENFERMEIRA){
-            var ENFERMEIRA = new Enfermeira(dados.email(), encripitando,dados.role(),dados.nome());
-            return ResponseEntity.status(201).body(repository.save(ENFERMEIRA));
-        }
-        if(dados.role() == UserRole.RECEPCAO){
-            var recepcao = new Recepcao(dados.email(), encripitando,dados.role(),dados.nome());
-            return ResponseEntity.status(201).body(repository.save(recepcao));
-        }
+    public ResponseEntity<?> Cadastro(@RequestBody RecordUsuario dados) {
 
-        return  ResponseEntity.status(400).build();
+        Usuario user = usuarioService.cadastrar(dados);
+
+        return ResponseEntity.ok().body("Usuario cadastrado! UserEmail: " + user.getEmail());
     }
+
     @GetMapping
     @Transactional
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")

@@ -24,18 +24,20 @@ public class Agenda {
 
     @NotBlank
     private LocalDateTime Horario;
+
     private int fkUsuario;
+
     private int fkHospital;
+
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "fkUsuarios", referencedColumnName = "idUsuario",insertable = false, updatable = false)
     private Usuario usuarios;
+
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "fkHospitals", referencedColumnName = "idHospital",insertable = false, updatable = false)
     private Hospital hospitals;
-
-
 
     public Agenda(RecordAgenda dados) {
         this.Horario = dados.Horario();
@@ -43,11 +45,17 @@ public class Agenda {
         this.fkHospital = dados.fkHospital();
     }
 
+    public  void atualizaAgenda(AtualizaAgenda update){
+        this.Horario = update.Horario();
+        this.fkUsuario = update.fkUsuario();
+        this.fkHospital = update.fkHospital();
+    }
 
+    public LocalDateTime getHorario() {
+        return LocalDateTime.now();
+    }
 
-    public  void atualizaAgenda(AtualizaAgenda dados){
-        this.Horario = dados.Horario();
-        this.fkUsuario = dados.fkUsuario();
-        this.fkHospital = dados.fkHospital();
+    public void setHorario(LocalDateTime horario) {
+        Horario = horario;
     }
 }

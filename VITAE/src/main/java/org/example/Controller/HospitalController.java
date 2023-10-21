@@ -1,11 +1,10 @@
 package org.example.Controller;
 
 import jakarta.transaction.Transactional;
-import jdk.swing.interop.SwingInterOpUtils;
 import org.example.Domain.Hospital;
 import org.example.Records.Hospital.AtualizarHospital;
 import org.example.Records.Hospital.RecordHospital;
-import org.example.interfaces.HospitalRepository;
+import org.example.Service.HospitalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,42 +17,50 @@ import java.util.List;
 public class HospitalController {
 
     @Autowired
-    private HospitalRepository repository;
-    @GetMapping
-    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN')")
-    public ResponseEntity<List<Hospital>> listar(){
-
-        return ResponseEntity.status(200).body(repository.findAll());
-    }
+    private HospitalService service;
 
     @PostMapping
     @Transactional
-
-    public ResponseEntity cadastrar(@RequestBody RecordHospital dados){
-        System.out.println(dados);
-        return ResponseEntity.status(201).body(repository.save(new Hospital(dados)));
+    public ResponseEntity<Hospital> cadastrar(@RequestBody RecordHospital dados){
+        return ResponseEntity.status(201).body(service.save(new Hospital(dados)));
     }
 
-    @PutMapping("/{id}")
+    @GetMapping
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN')")
+    public ResponseEntity<List<Hospital>> listar(){
+        List<Hospital> listHospital = service.findAll();
+
+        if (listHospital.isEmpty()){
+            return ResponseEntity.status(204).body(listHospital);
+        }
+        return ResponseEntity.status(200).body(listHospital);
+    }
+
+    @PutMapping
     @Transactional
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity atualizar(@PathVariable Long id , @RequestBody AtualizarHospital dados){
-        if (repository.existsById(id)){
+    public ResponseEntity<String> atualizar(@RequestBody AtualizarHospital dados){
 
-            var selectHospital = repository.getReferenceById(id);
-            selectHospital.AtualizaHospital(dados);
-            return ResponseEntity.status(200).body(new AtualizarHospital(selectHospital));
+        Hospital hospitalAtualizado = service.updateHospital(dados);
+
+        if (hospitalAtualizado == null) {
+            ResponseEntity.status(404).body("Não foi possivel atualizar");
         }
-        return ResponseEntity.status(404).build();
+
+        return ResponseEntity.status(200).body("hospital atualizado: " + dados.nome());
     }
 
     @DeleteMapping("{id}")
     @Transactional
     @PreAuthorize("hasRole('ADMIN')")
-    public  ResponseEntity DeletaUser(@PathVariable long id){
+    public ResponseEntity<String> DeletaUser(@PathVariable long id){
 
-        repository.deleteById(id);
+        String result = service.delete(id);
 
-        return ResponseEntity.badRequest().build();
+        if (result == null){
+            ResponseEntity.badRequest().body("Hospital not found!");
+        }
+
+        return ResponseEntity.ok().body("Hospital deletado, id:" + result);
     }
 }

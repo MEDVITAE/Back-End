@@ -1,7 +1,6 @@
 package org.example.Controller;
 
 import jakarta.transaction.Transactional;
-import org.example.Domain.Agenda;
 import org.example.Domain.Caracteristicas;
 import org.example.Records.Caracteristicas.AtualizaCaracteristicas;
 import org.example.Records.Caracteristicas.RecordCaracteristicas;
@@ -18,7 +17,6 @@ import java.util.List;
 
 public class CaracteristicasController {
     @Autowired
-
     private CaractetisticasRepository repository;
 
     @GetMapping

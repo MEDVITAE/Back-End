@@ -4,16 +4,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.example.Enums.Usuarios.UserRole;
-import org.example.Records.Autorizacao.recordRegister;
-import org.example.Records.Hospital.AtualizarHospital;
-import org.example.Records.Hospital.RecordHospital;
 import org.example.Records.Usuario.AtualizarUser;
-import org.example.Records.Usuario.RecordUsuario;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -21,7 +16,6 @@ import java.util.List;
 @Entity(name = "Usuario")
 @Getter
 @Setter
-@NoArgsConstructor
 @EqualsAndHashCode(of= "id")
 public  abstract class Usuario implements UserDetails {
 
@@ -41,6 +35,9 @@ public  abstract class Usuario implements UserDetails {
         this.email = email;
         this.senha = senha;
         this.role = role;
+    }
+
+    protected Usuario() {
     }
 
 

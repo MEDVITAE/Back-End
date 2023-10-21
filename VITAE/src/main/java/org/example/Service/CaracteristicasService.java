@@ -1,8 +1,8 @@
 package org.example.Service;
 
-import org.example.Domain.Agenda;
 import org.example.Domain.Caracteristicas;
 import org.example.interfaces.CaractetisticasRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -13,6 +13,7 @@ import java.util.Optional;
 @Service
 public class CaracteristicasService {
 
+        @Autowired
         private final CaractetisticasRepository repository;
 
         public CaracteristicasService(CaractetisticasRepository caractetisticasRepository) {

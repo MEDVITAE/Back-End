@@ -1,11 +1,11 @@
 package org.example.Service;
 
-import org.example.Domain.Agenda;
+import jakarta.transaction.Transactional;
 import org.example.Domain.Hospital;
+import org.example.Records.Hospital.AtualizarHospital;
 import org.example.interfaces.HospitalRepository;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,38 +13,62 @@ import java.util.Optional;
 @Service
 public class HospitalService {
 
+    @Autowired
     private final HospitalRepository repository;
 
-    public HospitalService(HospitalRepository hospitalRepository) {
-        this.repository = hospitalRepository;
+    public HospitalService(HospitalRepository repository) {
+        this.repository = repository;
     }
 
-    public ResponseEntity <List<Hospital>> findAll(){
-        List<Hospital> listaHospital = this.repository.findAll();
-        if (listaHospital.isEmpty()){
-            return ResponseEntity.noContent().build();
+    public Hospital save(Hospital hospital) {
+        return repository.save(hospital);
+    }
+
+    public List<Hospital> findAll(){
+        return repository.findAll();
+    }
+
+    public Hospital updateHospital(AtualizarHospital atualizarHospital) {
+        Long hospitalId = findHospitalById(atualizarHospital.id());
+
+        if (hospitalId == null){
+            return null;
         }
-        return ResponseEntity.ok(listaHospital);
+
+        Hospital updateHospital = new Hospital(
+                atualizarHospital.id(),
+                atualizarHospital.nome(),
+                atualizarHospital.email(),
+                atualizarHospital.senha(),
+                atualizarHospital.cnpj(),
+                atualizarHospital.listEndereco(),
+                atualizarHospital.listAgenda()
+        );
+
+        return repository.save(updateHospital);
     }
 
-    public Hospital salvar(@Validated Hospital hospital) {
-        Hospital hospitalSalvo = this.repository.save(hospital);
-        return hospitalSalvo;
+    public Long findHospitalById(Long id) {
+
+        Optional<Hospital> hospital = this.repository.findById(id);
+
+        if (hospital.isPresent()){
+            return hospital.get().getIdHospital();
+        }
+        return null;
     }
 
-    public Hospital atualizar(@Validated int id, Hospital hospitalAtualizado) {
-        Hospital hospital = this.buscarPorId(id);
-        hospitalAtualizado.setIdHospital(hospital.getIdHospital());
-        return repository.save(hospitalAtualizado);
-    }
+    @Transactional
+    public String delete(Long id) {
+        Long idHospital = this.findHospitalById(id);
 
-    public void deletar(int id) {
-        Hospital hospital = this.buscarPorId(id);
-        repository.deleteById((long) id);
-    }
-    public Hospital buscarPorId(int id) {
-        Optional<Hospital> hospitalOpt = this.repository.findById((long) id);
-        return ResponseEntity.of(hospitalOpt).getBody();
+        if (idHospital == null) {
+            return null;
+        }
+
+        repository.deleteById(idHospital);
+
+        return idHospital.toString();
     }
 
 }

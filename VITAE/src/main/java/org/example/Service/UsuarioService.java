@@ -1,11 +1,11 @@
 package org.example.Service;
 
+import jakarta.transaction.Transactional;
 import org.example.Domain.Enfermeira;
 import org.example.Domain.Paciente;
 import org.example.Domain.Recepcao;
 import org.example.Domain.Usuario;
 import org.example.Enums.Usuarios.UserRole;
-import org.example.Records.Autorizacao.RecordAuth;
 import org.example.Records.Usuario.AtualizarUser;
 import org.example.Records.Usuario.RecordUsuario;
 import org.example.infra.Security.TokenService;
@@ -13,12 +13,10 @@ import org.example.interfaces.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Collections;
 import java.util.List;
@@ -27,31 +25,54 @@ import java.util.List;
 public class UsuarioService {
     @Autowired
     private AuthenticationManager autencador;
+
     @Autowired
     private  UsuarioRepository repository;
+
     @Autowired
     private TokenService tokenService;
 
-
-
-
-    public ResponseEntity<?> cadastrar(@Validated RecordUsuario dados) {
-        if (repository.findByEmail(dados.email()) != null) {
-            return ResponseEntity.badRequest().build();
+    @Transactional
+    public Usuario cadastrar(@Validated RecordUsuario dados) {
+        //valida campo email
+        if (dados.email() == null){
+            return null;
         }
-        String encriptando = new BCryptPasswordEncoder().encode(dados.senha());
-        Usuario usuario;
-
-        if (dados.role() == UserRole.PACIENTE) {
-            usuario = new Paciente(dados.email(), encriptando, dados.role(), dados.nome());
-        } else if (dados.role() == UserRole.ENFERMEIRA) {
-            usuario = new Enfermeira(dados.email(), encriptando, dados.role(), dados.nome());
-        } else if (dados.role() == UserRole.RECEPCAO) {
-            usuario = new Recepcao(dados.email(), encriptando, dados.role(), dados.nome());
-        } else {
-            return ResponseEntity.status(400).build();
+        // valida campo senha
+        if (dados.senha().length() >= 3){
+            return null;
         }
-        return salvarUsuario(usuario);
+        // valida se email ja existe
+        if (userAlreadyRegistered(dados)){
+            return null;
+        }
+
+        // SUCESSO TODOS OS DADOS FUNCIONARAM :D
+        String encryptPassword = new BCryptPasswordEncoder().encode(dados.senha());
+
+        Usuario newUserAndRole = roleUsuario(dados, encryptPassword);
+
+        if (newUserAndRole == null) {
+            return null;
+        }
+
+        return repository.save(newUserAndRole);
+    }
+
+    private static Usuario roleUsuario(RecordUsuario dados, String encryptPassword) {
+
+        return switch (dados.role()) {
+            case PACIENTE -> new Paciente(dados.email(), encryptPassword, dados.role(), dados.nome());
+            case ENFERMEIRA -> new Enfermeira(dados.email(), encryptPassword, dados.role(), dados.nome());
+            case RECEPCAO -> new Recepcao(dados.email(), encryptPassword, dados.role(), dados.nome());
+            default -> null;
+        };
+    }
+
+    private Boolean userAlreadyRegistered(RecordUsuario dados) {
+        UserDetails userAlreadyExist = repository.findByEmail(dados.email());
+
+        return !userAlreadyExist.getUsername().isEmpty();
     }
 
     public List<Usuario> listarUsuarios() {
@@ -85,15 +106,6 @@ public class UsuarioService {
     public ResponseEntity<?> deletarUsuario(long id) {
         repository.deleteById(id);
         return ResponseEntity.noContent().build();
-    }
-
-    private ResponseEntity<?> salvarUsuario(@Validated Usuario usuario) {
-        try {
-            Usuario savedUser = repository.save(usuario);
-            return ResponseEntity.status(201).body(savedUser);
-        } catch (Exception e) {
-            return ResponseEntity.status(400).build();
-        }
     }
 }
 

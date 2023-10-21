@@ -47,12 +47,6 @@ public class Caracteristicas {
     @JoinColumn(name = "fkUsuario", referencedColumnName = "idUsuario",insertable = false, updatable = false)
     private Usuario usuario;
 
-
-
-
-
-
-
     public Caracteristicas(RecordCaracteristicas dados) {
         this.peso = dados.peso();
         this.altura = dados.altura();
