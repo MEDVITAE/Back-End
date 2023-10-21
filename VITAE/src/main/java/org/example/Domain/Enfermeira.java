@@ -23,7 +23,7 @@ public class Enfermeira extends Usuario{
 
 
     public Enfermeira(RecordUsuario dados) {
-        super(dados.email(), dados.senha(), dados.role());
+        super(dados.email(), dados.senha(), dados.role(), dados.cpf());
         this.nome = nome;
 
     }
@@ -33,8 +33,8 @@ public class Enfermeira extends Usuario{
 
     }
 
-    public Enfermeira(String email, String encripitando, UserRole role, String nome) {
-        super(email, encripitando, role);
+    public Enfermeira(String email, String encripitando, UserRole role, String nome,String cpf) {
+        super(email, encripitando, role,cpf);
         this.nome = nome;
     }
 

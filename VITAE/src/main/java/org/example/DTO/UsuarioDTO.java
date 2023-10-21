@@ -1,19 +1,15 @@
 package org.example.DTO;
 
-import org.example.Domain.Agenda;
-import org.example.Domain.Paciente;
-
 import java.time.LocalDateTime;
 
-public class AgendamentoDTO {
-
+public class UsuarioDTO {
     private String nome;
-    private LocalDateTime horario;
+    private String email;
     private  String cpf;
 
-    public AgendamentoDTO(String nome, LocalDateTime horario, String cpf) {
+    public UsuarioDTO(String nome, String email, String cpf) {
         this.nome = nome;
-        this.horario = horario;
+        this.email = email;
         this.cpf = cpf;
     }
 
@@ -25,12 +21,12 @@ public class AgendamentoDTO {
         this.nome = nome;
     }
 
-    public LocalDateTime getHorario() {
-        return horario;
+    public String getEmail() {
+        return email;
     }
 
-    public void setHorario(LocalDateTime horario) {
-        this.horario = horario;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getCpf() {
@@ -43,9 +39,9 @@ public class AgendamentoDTO {
 
     @Override
     public String toString() {
-        return "AgendamentoDTO{" +
+        return "UsuarioDTO{" +
                 "nome='" + nome + '\'' +
-                ", horario=" + horario +
+                ", email='" + email + '\'' +
                 ", cpf='" + cpf + '\'' +
                 '}';
     }

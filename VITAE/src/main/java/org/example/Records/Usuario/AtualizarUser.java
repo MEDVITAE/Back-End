@@ -10,23 +10,24 @@ public record AtualizarUser (
         String nome,
         String email,
         String senha,
-        UserRole role
+        UserRole role,
+        String cpf
 
 )
 {
     public AtualizarUser(Usuario usuario,Paciente paciente){
         this(
-                paciente.getNome(), usuario.getEmail(), usuario.getSenha(),usuario.getRole()
+                paciente.getNome(), usuario.getEmail(), usuario.getSenha(),usuario.getRole(),usuario.getCpf()
         );
     }
     public AtualizarUser(Usuario usuario, Enfermeira emfermeira){
         this(
-                emfermeira.getNome(),usuario.getEmail(),usuario.getSenha(),usuario.getRole()
+                emfermeira.getNome(),usuario.getEmail(),usuario.getSenha(),usuario.getRole(),usuario.getCpf()
         );
     }
     public AtualizarUser(Usuario usuario,Recepcao recepcao){
         this(
-                recepcao.getNome(), usuario.getEmail(), usuario.getSenha(),usuario.getRole()
+                recepcao.getNome(), usuario.getEmail(), usuario.getSenha(),usuario.getRole(),usuario.getCpf()
         );
     }
 

@@ -33,14 +33,16 @@ public  abstract class Usuario implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
+    private String cpf;
 
 
 
 
-    public Usuario(String email, String senha, UserRole role){
+    public Usuario(String email, String senha, UserRole role,String cpf){
         this.email = email;
         this.senha = senha;
         this.role = role;
+        this.cpf = cpf;
     }
 
     protected Usuario() {
@@ -52,9 +54,6 @@ public  abstract class Usuario implements UserDetails {
         this.senha = atualizarDados.senha();
     }
     public abstract List<Usuario> buscarRelatorio(String nome);
-
-
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

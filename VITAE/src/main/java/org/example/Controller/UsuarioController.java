@@ -28,7 +28,7 @@ import java.util.List;
 @RestController
 public class UsuarioController {
     @Autowired
-    private AuthenticationManager autencador;
+    private AuthenticationManager autenticador;
     @Autowired
     private UsuarioRepository repository;
     @Autowired
@@ -37,7 +37,7 @@ public class UsuarioController {
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody @Validated recordAuth dados){
         var usuarioEmaileSenha = new UsernamePasswordAuthenticationToken(dados.email(),dados.senha());
-        var auth = this.autencador.authenticate(usuarioEmaileSenha);
+        var auth = this.autenticador.authenticate(usuarioEmaileSenha);
         var token = tokenService.gerarToken((Usuario) auth.getPrincipal());
         return ResponseEntity.ok(new Login(token));
     }
@@ -52,15 +52,15 @@ public class UsuarioController {
         System.out.println(dados);
         String encripitando = new BCryptPasswordEncoder().encode(dados.senha());
         if(dados.role() == UserRole.PACIENTE){
-            var usuario = new Paciente(dados.email(), encripitando,dados.role(),dados.nome());
+            var usuario = new Paciente(dados.email(), encripitando,dados.role(),dados.nome(),dados.cpf());
         return ResponseEntity.status(201).body(repository.save(usuario));
         }
         if(dados.role() == UserRole.ENFERMEIRA){
-            var ENFERMEIRA = new Enfermeira(dados.email(), encripitando,dados.role(),dados.nome());
+            var ENFERMEIRA = new Enfermeira(dados.email(), encripitando,dados.role(),dados.nome(),dados.cpf());
             return ResponseEntity.status(201).body(repository.save(ENFERMEIRA));
         }
         if(dados.role() == UserRole.RECEPCAO){
-            var recepcao = new Recepcao(dados.email(), encripitando,dados.role(),dados.nome());
+            var recepcao = new Recepcao(dados.email(), encripitando,dados.role(),dados.nome(),dados.cpf());
             return ResponseEntity.status(201).body(repository.save(recepcao));
         }
 

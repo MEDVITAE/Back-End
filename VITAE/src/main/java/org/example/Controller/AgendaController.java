@@ -2,7 +2,9 @@ package org.example.Controller;
 
 import jakarta.transaction.Transactional;
 import org.example.DTO.AgendamentoDTO;
+import org.example.DTO.UsuarioDTO;
 import org.example.Domain.Agenda;
+import org.example.Domain.Usuario;
 import org.example.Records.Agenda.AtualizaAgenda;
 import org.example.Records.Agenda.RecordAgenda;
 import org.example.Service.ArquivoCsvService;
@@ -12,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalTime;
 import java.util.List;
 
 @RestController
@@ -60,8 +63,22 @@ public class AgendaController {
 
     @GetMapping("/gerarArquivoCsv")
     public ResponseEntity<Void> getUsuariosEAgendas() {
-        serviceRepository.recupararValores();
+        serviceRepository.recuperarValores();
 
         return ResponseEntity.status(200).build();
     }
+    @GetMapping("/buscarDoadorAgendado/{hora}")
+    public ResponseEntity<Object> pesquisaHorario(@PathVariable LocalTime hora) {
+
+        if(serviceRepository.doadorAgendamento(hora) != -1){
+          UsuarioDTO doador = serviceRepository.trazerInformacoesAgendamento(serviceRepository.doadorAgendamento(hora));
+            return ResponseEntity.status(200).body(doador);
+        } else {
+            return ResponseEntity.badRequest().body("Usuario nao esta agendado");
+        }
+
+
+    }
+
+
 }

@@ -27,14 +27,14 @@ public class Paciente extends Usuario{
         this.nome = nome;
     }
 
-    public Paciente(String email, String senha, UserRole role, String nome) {
-        super(email, senha, role);
+    public Paciente(String email, String senha, UserRole role, String nome,String cpf) {
+        super(email, senha, role,cpf);
         this.nome = nome;
 
     }
 
     public Paciente(RecordUsuario dados) {
-        super(dados.email(), dados.senha(), dados.role());
+        super(dados.email(), dados.senha(), dados.role(), dados.cpf());
         this.nome = dados.nome();
 
     }
