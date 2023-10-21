@@ -39,7 +39,7 @@ public class UsuarioController {
 
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody @Valid RecordAuth dados){
-        var usuarioEmaileSenha = new UsernamePasswordAuthenticationToken(dados.email(),dados.senha());
+        var usuarioEmaileSenha = new UsernamePasswordAuthenticationToken(dados.getEmail(),dados.getSenha());
         var auth = this.autencador.authenticate(usuarioEmaileSenha);
         var token = tokenService.gerarToken((Usuario) auth.getPrincipal());
         return ResponseEntity.ok(new Login(token));

@@ -29,14 +29,14 @@ public class HospitalService {
     }
 
     public Hospital updateHospital(AtualizarHospital atualizarHospital) {
-        Long hospitalId = findHospitalById(atualizarHospital.id());
+        Hospital hospital = findHospitalById(atualizarHospital.id());
 
-        if (hospitalId == null){
+        if (hospital == null || hospital.getIdHospital() == null){
             return null;
         }
 
         Hospital updateHospital = new Hospital(
-                atualizarHospital.id(),
+                hospital.getIdHospital(),
                 atualizarHospital.nome(),
                 atualizarHospital.email(),
                 atualizarHospital.senha(),
@@ -48,27 +48,34 @@ public class HospitalService {
         return repository.save(updateHospital);
     }
 
-    public Long findHospitalById(Long id) {
+    public Hospital findHospitalById(Long id) {
 
         Optional<Hospital> hospital = this.repository.findById(id);
 
         if (hospital.isPresent()){
-            return hospital.get().getIdHospital();
+            return new Hospital(
+                    hospital.get().getIdHospital(),
+                    hospital.get().getNome(),
+                    hospital.get().getEmail(),
+                    hospital.get().getSenha(),
+                    hospital.get().getCnpj(),
+                    hospital.get().getEnderecos(),
+                    hospital.get().getAgendamentos()
+            );
         }
         return null;
     }
 
-    @Transactional
-    public String delete(Long id) {
-        Long idHospital = this.findHospitalById(id);
+    public Hospital delete(Long id) {
+        Hospital hospitalToBeDeleted = findHospitalById(id);
 
-        if (idHospital == null) {
+        if (hospitalToBeDeleted == null) {
             return null;
         }
 
-        repository.deleteById(idHospital);
+        repository.deleteById(hospitalToBeDeleted.getIdHospital());
 
-        return idHospital.toString();
+        return hospitalToBeDeleted;
     }
 
 }

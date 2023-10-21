@@ -38,27 +38,30 @@ public class HospitalController {
 
     @PutMapping
     @Transactional
-    @PreAuthorize("hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> atualizar(@RequestBody AtualizarHospital dados){
 
         Hospital hospitalAtualizado = service.updateHospital(dados);
 
-        if (hospitalAtualizado == null) {
+        if (hospitalAtualizado == null || hospitalAtualizado.getIdHospital() == null) {
             ResponseEntity.status(404).body("Não foi possivel atualizar");
         }
 
-        return ResponseEntity.status(200).body("hospital atualizado: " + dados.nome());
+        return ResponseEntity.status(200).body(
+                "hospital atualizado: \n" +
+                "ID: " + hospitalAtualizado.getIdHospital() + "NOME: " + hospitalAtualizado.getNome() //sobre o ID, nao vai chegar null nunca aqui, ja garantimos isso anteriormente
+        );
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     @Transactional
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<String> DeletaUser(@PathVariable long id){
+//    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<String> deleteHospital(@PathVariable Long id){
 
-        String result = service.delete(id);
+        Hospital result = service.delete(id);
 
         if (result == null){
-            ResponseEntity.badRequest().body("Hospital not found!");
+            return ResponseEntity.badRequest().body("Hospital not found!");
         }
 
         return ResponseEntity.ok().body("Hospital deletado, id:" + result);
