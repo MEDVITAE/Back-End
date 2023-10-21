@@ -1,1 +1,4 @@
 workspace.xml
+misc.xml
+./misc.xml
+./workspace.xml
