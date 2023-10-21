@@ -4,211 +4,81 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b105c72-4bb6-4aa5-aca3-0e9471db4dca" name="Changes" comment="">
-<<<<<<< Updated upstream
+    <list default="true" id="4e125ae1-2b55-48fb-a303-53d51b3a9176" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/VITAE.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_11_2023_5_38_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_11_2023_5_38_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/AgendaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/AgendaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/CaracteristicasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/CaracteristicasController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/DoacaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/DoacaoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/EnderecoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/EnderecoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/HospitalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/HospitalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Agenda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Agenda.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Caracteristicas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Caracteristicas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Doacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Doacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Emfermeira.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Enfermeira.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Endereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Endereco.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Hospital.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Hospital.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Paciente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Enums/Usuarios/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Enums/Usuarios/UserRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Records/Doacao/AtualizaDoacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/Doacao/AtualizaDoacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Records/Doacao/RecordDoacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/Doacao/RecordDoacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Records/Endereco/AtualizaEndereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/Endereco/AtualizaEndereco.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Records/Endereco/RecordEndereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/Endereco/RecordEndereco.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Records/Usuario/AtualizarUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/Usuario/AtualizarUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Records/Usuario/RecordUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/Usuario/RecordUsuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/infra/Security/SecurityConfigutations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/infra/Security/SecurityConfigutations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/infra/Security/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/infra/Security/SecurityFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/infra/Security/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/infra/Security/TokenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/AgendaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/AgendaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/CaracteristicasController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/CaracteristicasController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/DoacaoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/DoacaoController.class" afterDir="false" />
-=======
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Service/AgendaService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Service/HospitalService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Service/UsuarioService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/HospitalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/HospitalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/AgendaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/AgendaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/AuthencationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/AuthencationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/CaracteristicasController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/CaracteristicasController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/DoacaoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/DoacaoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/EmailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/EmailController.class" afterDir="false" />
->>>>>>> Stashed changes
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/EnderecoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/EnderecoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/HospitalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/HospitalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/UsuarioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/UsuarioController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Agenda.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Agenda.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Caracteristicas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Caracteristicas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Doacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Doacao.class" afterDir="false" />
-<<<<<<< Updated upstream
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/EMFERMEIRA.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Endereco.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Endereco.class" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Email.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Email.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Emfermeira.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Endereco.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Endereco.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Enfermeira.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Enfermeira.class" afterDir="false" />
->>>>>>> Stashed changes
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Hospital.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Hospital.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Paciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Paciente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Usuario.class" afterDir="false" />
-<<<<<<< Updated upstream
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Enums/Usuarios/UserRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Enums/Usuarios/UserRole.class" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Enums/Usuarios/EnumEmail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Enums/Usuarios/EnumEmail.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Enums/Usuarios/UserRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Enums/Usuarios/UserRole.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Agenda/AtualizaAgenda.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Agenda/AtualizaAgenda.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Agenda/RecordAgenda.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Agenda/RecordAgenda.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Autorizacao/recordAuth.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Autorizacao/recordAuth.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Autorizacao/recordRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Autorizacao/recordRegister.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Caracteristicas/AtualizaCaracteristicas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Caracteristicas/AtualizaCaracteristicas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Caracteristicas/RecordCaracteristicas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Caracteristicas/RecordCaracteristicas.class" afterDir="false" />
->>>>>>> Stashed changes
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Doacao/AtualizaDoacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Doacao/AtualizaDoacao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Doacao/RecordDoacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Doacao/RecordDoacao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Endereco/AtualizaEndereco.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Endereco/AtualizaEndereco.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Endereco/RecordEndereco.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Endereco/RecordEndereco.class" afterDir="false" />
-<<<<<<< Updated upstream
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Usuario/AtualizarUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Usuario/AtualizarUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Usuario/RecordUsuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Usuario/RecordUsuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/infra/Security/SecurityConfigutations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/infra/Security/SecurityConfigutations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/infra/Security/SecurityFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/infra/Security/SecurityFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/infra/Security/TokenService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/infra/Security/TokenService.class" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Hospital/AtualizarHospital.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Hospital/AtualizarHospital.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Hospital/RecordHospital.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Hospital/RecordHospital.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Usuario/AtualizarUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Usuario/AtualizarUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Usuario/RecordUsuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Usuario/RecordUsuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/emailDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/emailDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Service/AuthorizationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Service/AuthorizationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Service/EmailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Service/EmailService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/infra/Security/SecurityConfigutations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/infra/Security/SecurityConfigutations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/infra/Security/SecurityFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/infra/Security/SecurityFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/infra/Security/TokenService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/infra/Security/TokenService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/AgendaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/AgendaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/CaractetisticasRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/CaractetisticasRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/DoacaoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/DoacaoRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/EmailRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/EmailRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/EnderecoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/EnderecoRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/HospitalRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/HospitalRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/UsuarioRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/UsuarioRepository.class" afterDir="false" />
->>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="package-info" />
-        <option value="Enum" />
-        <option value="Interface" />
-        <option value="Record" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="resolving-conflict" />
+                    <option name="lastUsedInstant" value="1697853882" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="service" />
+                    <option name="lastUsedInstant" value="1697853881" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$/.." />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 6
-}</component>
-  <component name="ProjectId" id="2UP3Qr0KrNGK8jlPF7bQaGcDvHc" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2X3NPZsTIWY10VmKIHWuG0YMIQj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< Updated upstream
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;codigoCaracteristicas&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jvtenorio/OneDrive - Stefanini/Desktop/sprint_api/Back-End/Back-End/VITAE&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;bba933bccc7d54b913bebaacdac2d65e&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-=======
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "emails",
-    "last_opened_file_path": "C:/desenvolvimento/admin_basa",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
+    "git-widget-placeholder": "Rebasing resolving-conflict",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.general",
-    "spring.configuration.checksum": "bba933bccc7d54b913bebaacdac2d65e",
     "vue.rearranger.settings.migration": "true"
->>>>>>> Stashed changes
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="org.example.Controller" />
-      <recent name="org.example.Records" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="org.example.Records" />
-    </key>
-  </component>
+}]]></component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
-      <module name="VITAE" />
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="api" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="api" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="api" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.Main" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.*" />
@@ -221,24 +91,19 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Spring Boot.Main" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8b105c72-4bb6-4aa5-aca3-0e9471db4dca" name="Changes" comment="" />
-      <created>1692827374446</created>
+      <changelist id="4e125ae1-2b55-48fb-a303-53d51b3a9176" name="Changes" comment="" />
+      <created>1697853782945</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1692827374446</updated>
-      <workItem from="1692980542845" duration="8000" />
-      <workItem from="1692980581025" duration="630000" />
-      <workItem from="1692982305562" duration="10743000" />
-      <workItem from="1693223919770" duration="101000" />
-      <workItem from="1693224545202" duration="8025000" />
-      <workItem from="1696801894306" duration="10410000" />
+      <updated>1697853782945</updated>
+      <workItem from="1697853784907" duration="307000" />
     </task>
     <servers />
   </component>

@@ -7,10 +7,7 @@ import lombok.*;
 import org.example.Records.Agenda.AtualizaAgenda;
 import org.example.Records.Agenda.RecordAgenda;
 
-import java.awt.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Table(name = "Agenda")
 @Entity(name = "Agenda")
@@ -24,6 +21,7 @@ public class Agenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAgenda;
+
     @NotBlank
     private LocalDateTime Horario;
     private int fkUsuario;
