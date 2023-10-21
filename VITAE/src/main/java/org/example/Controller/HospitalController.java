@@ -48,8 +48,8 @@ public class HospitalController {
         }
 
         return ResponseEntity.status(200).body(
-                "hospital atualizado: \n" +
-                "ID: " + hospitalAtualizado.getIdHospital() + "NOME: " + hospitalAtualizado.getNome() //sobre o ID, nao vai chegar null nunca aqui, ja garantimos isso anteriormente
+                "hospital atualizado! \n" +
+                "ID: " + hospitalAtualizado.getIdHospital() + " NOME: " + hospitalAtualizado.getNome() //sobre o ID, nao vai chegar null nunca aqui, ja garantimos isso anteriormente
         );
     }
 
@@ -64,6 +64,6 @@ public class HospitalController {
             return ResponseEntity.badRequest().body("Hospital not found!");
         }
 
-        return ResponseEntity.ok().body("Hospital deletado, id:" + result);
+        return ResponseEntity.ok().body("Hospital deletado, id:" + result.getIdHospital());
     }
 }

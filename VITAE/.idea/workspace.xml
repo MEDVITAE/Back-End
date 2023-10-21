@@ -4,39 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3815d0e0-84f8-4d37-814e-a326aa735abe" name="Changes" comment="solving-conflicts">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/response/HospitalResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/AuthencationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/AuthencationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/HospitalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/HospitalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Records/Autorizacao/RecordAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/Autorizacao/RecordAuth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Records/Autorizacao/recordRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/Autorizacao/RecordRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Service/HospitalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Service/HospitalService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/AuthencationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/AuthencationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/HospitalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/HospitalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/UsuarioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/UsuarioController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Enums/Usuarios/UserRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Enums/Usuarios/UserRole.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Agenda/AtualizaAgenda.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Agenda/AtualizaAgenda.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Agenda/RecordAgenda.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Agenda/RecordAgenda.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Autorizacao/recordAuth.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Autorizacao/recordAuth.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Autorizacao/recordRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Autorizacao/recordRegister.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Caracteristicas/AtualizaCaracteristicas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Caracteristicas/AtualizaCaracteristicas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Caracteristicas/RecordCaracteristicas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Caracteristicas/RecordCaracteristicas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Endereco/AtualizaEndereco.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Endereco/AtualizaEndereco.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Endereco/RecordEndereco.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Endereco/RecordEndereco.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Hospital/RecordHospital.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Hospital/RecordHospital.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Records/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Records/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Service/AuthorizationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Service/AuthorizationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Service/HospitalService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Service/HospitalService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/infra/Security/SecurityConfigutations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/infra/Security/SecurityConfigutations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/infra/Security/SecurityFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/infra/Security/SecurityFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/CaractetisticasRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/CaractetisticasRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/DoacaoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/DoacaoRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/EnderecoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/EnderecoRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/HospitalRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/HospitalRepository.class" afterDir="false" />
-    </list>
+    <list default="true" id="3815d0e0-84f8-4d37-814e-a326aa735abe" name="Changes" comment="hospital" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,9 +23,9 @@
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2X3opENDNO91foOV8h87W1dzd7t" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -72,7 +40,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging hospital-controller",
+    "git-widget-placeholder": "service",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -131,10 +99,22 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gitgnore" />
     <MESSAGE value="solving-conflicts" />
-    <option name="LAST_COMMIT_MESSAGE" value="solving-conflicts" />
+    <MESSAGE value="hospital" />
+    <option name="LAST_COMMIT_MESSAGE" value="hospital" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
