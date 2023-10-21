@@ -74,7 +74,7 @@ public class ArquivoCsvService {
         try {
             arq = new FileWriter(nomeArq);
             saida = new Formatter(arq);
-            saida.format("%s,%s,%s\n", "CPF:", "NOME:", "HORÁRIO:");
+            saida.format("%s;%s;%s\n", "CPF:", "NOME:", "HORÁRIO:");
         } catch (IOException erro) {
             System.out.println("Erro ao abrir o arquivo");
             System.exit(1);
@@ -114,7 +114,7 @@ public class ArquivoCsvService {
         try {
             arq = new FileWriter(nomeArq);
             saida = new Formatter(arq);
-            saida.format("%s,%s,%s\n", "CPF", "NOME", "HORÁRIO:");
+            saida.format("%s;%s;%s\n", "CPF:", "NOME:", "HORÁRIO:");
         } catch (IOException erro) {
             System.out.println("Erro ao abrir o arquivo");
             System.exit(1);

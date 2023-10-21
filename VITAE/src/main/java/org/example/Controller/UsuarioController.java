@@ -39,8 +39,10 @@ public class UsuarioController {
         var usuarioEmaileSenha = new UsernamePasswordAuthenticationToken(dados.email(),dados.senha());
         var auth = this.autenticador.authenticate(usuarioEmaileSenha);
         var token = tokenService.gerarToken((Usuario) auth.getPrincipal());
+
         return ResponseEntity.ok(new Login(token));
     }
+
 
 
     @PostMapping("/register")
