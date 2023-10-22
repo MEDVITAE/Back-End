@@ -35,18 +35,18 @@ public class EnderecoService {
         return enderecoSalvo;
     }
 
-    public Endereco atualizar(@Validated int id, Endereco enderecoAtualizado) {
+    public Endereco atualizar(@Validated Long id, Endereco enderecoAtualizado) {
         Endereco endereco = this.buscarPorId(id);
         enderecoAtualizado.setId(endereco.getId());
         return repository.save(enderecoAtualizado);
     }
 
-    public void deletar(int id) {
+    public void deletar(Long id) {
         Endereco endereco = this.buscarPorId(id);
-        repository.deleteById((long)id);
+        repository.deleteById(id);
     }
-    public Endereco buscarPorId(int id) {
-        Optional<Endereco> enderecoOpt = this.repository.findById((long) id);
+    public Endereco buscarPorId(Long id) {
+        Optional<Endereco> enderecoOpt = this.repository.findById(id);
         return ResponseEntity.of(enderecoOpt).getBody();
     }
 }

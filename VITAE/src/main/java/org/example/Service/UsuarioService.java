@@ -1,10 +1,7 @@
 package org.example.Service;
 
 import jakarta.transaction.Transactional;
-import org.example.Domain.Enfermeira;
-import org.example.Domain.Paciente;
-import org.example.Domain.Recepcao;
-import org.example.Domain.Usuario;
+import org.example.Domain.*;
 import org.example.Enums.Usuarios.UserRole;
 import org.example.Records.Usuario.AtualizarUser;
 import org.example.Records.Usuario.RecordUsuario;
@@ -20,6 +17,7 @@ import org.springframework.validation.annotation.Validated;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
@@ -83,7 +81,7 @@ public class UsuarioService {
         return usuarios;
     }
 
-    public ResponseEntity<?> atualizarUsuario(@Validated AtualizarUser dados, long id) {
+    public ResponseEntity<AtualizarUser> atualizarUsuario(@Validated AtualizarUser dados, Long id) {
         if(dados.role() == UserRole.PACIENTE){
             var usuario = repository.getReferenceById(id);
             var paciente = new Paciente(dados.nome());
@@ -103,9 +101,14 @@ public class UsuarioService {
 
     }
 
-    public ResponseEntity<?> deletarUsuario(long id) {
+    public ResponseEntity<String> deletarUsuario(Long id) {
         repository.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    public Usuario buscarPorId(Long id) {
+        Optional<Usuario> usuarioOpt = this.repository.findById(id);
+        return ResponseEntity.of(usuarioOpt).getBody();
     }
 }
 

@@ -17,18 +17,18 @@ import java.util.List;
 public class HospitalController {
 
     @Autowired
-    private HospitalService service;
+    private HospitalService hospitalService;
 
     @PostMapping
     @Transactional
     public ResponseEntity<Hospital> cadastrar(@RequestBody RecordHospital dados){
-        return ResponseEntity.status(201).body(service.save(new Hospital(dados)));
+        return ResponseEntity.status(201).body(hospitalService.save(new Hospital(dados)));
     }
 
     @GetMapping
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN')")
     public ResponseEntity<List<Hospital>> listar(){
-        List<Hospital> listHospital = service.findAll();
+        List<Hospital> listHospital = hospitalService.findAll();
 
         if (listHospital.isEmpty()){
             return ResponseEntity.status(204).body(listHospital);
@@ -41,7 +41,7 @@ public class HospitalController {
 //    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> atualizar(@RequestBody AtualizarHospital dados){
 
-        Hospital hospitalAtualizado = service.updateHospital(dados);
+        Hospital hospitalAtualizado = hospitalService.updateHospital(dados);
 
         if (hospitalAtualizado == null || hospitalAtualizado.getIdHospital() == null) {
             ResponseEntity.status(404).body("Não foi possivel atualizar");
@@ -58,7 +58,7 @@ public class HospitalController {
 //    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteHospital(@PathVariable Long id){
 
-        Hospital result = service.delete(id);
+        Hospital result = hospitalService.delete(id);
 
         if (result == null){
             return ResponseEntity.badRequest().body("Hospital not found!");

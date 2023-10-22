@@ -1,12 +1,9 @@
 package org.example.Controller;
 
 import jakarta.transaction.Transactional;
-import org.example.Domain.Agenda;
 import org.example.Domain.Doacao;
-import org.example.Records.Agenda.AtualizaAgenda;
 import org.example.Records.Doacao.AtualizaDoacao;
 import org.example.Records.Doacao.RecordDoacao;
-import org.example.interfaces.AgendaRepository;
 import org.example.interfaces.DoacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,26 +16,27 @@ import java.util.List;
 
 public class DoacaoController {
     @Autowired
-    private DoacaoRepository repository;
-    @GetMapping
-    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
-    public ResponseEntity<List<Doacao>> listar(){
-        return ResponseEntity.status(200).body(repository.findAll());
-    }
+    private DoacaoRepository doacaoService;
 
     @PostMapping
     @Transactional
     @PreAuthorize("hasRole('ENFERMEIRA') ")
     public ResponseEntity cadastrar(@RequestBody RecordDoacao dados){
-        return ResponseEntity.status(201).body(repository.save(new Doacao(dados)));
+        return ResponseEntity.status(201).body(doacaoService.save(new Doacao(dados)));
+    }
+
+    @GetMapping
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
+    public ResponseEntity<List<Doacao>> listar(){
+        return ResponseEntity.status(200).body(doacaoService.findAll());
     }
 
     @PutMapping("/{id}")
     @Transactional
     @PreAuthorize(" hasRole('ENFERMEIRA')  ")
     public ResponseEntity atualizar(@PathVariable Long id , @RequestBody AtualizaDoacao dados){
-        if (repository.existsById(id)){
-            var doacao = repository.getReferenceById(id);
+        if (doacaoService.existsById(id)){
+            var doacao = doacaoService.getReferenceById(id);
             doacao.atualizaDoacao(dados);
             return ResponseEntity.status(200).body((new AtualizaDoacao(doacao)));
         }
@@ -50,8 +48,8 @@ public class DoacaoController {
     @PreAuthorize(" hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
     public  ResponseEntity DeletaDoacao(@PathVariable long id){
 
-        repository.deleteById(id);
+        doacaoService.deleteById(id);
 
-        return ResponseEntity.badRequest().build();
+        return ResponseEntity.badRequest().body("Hospital not found!");
     }
 }

@@ -3,10 +3,7 @@ package org.example.Controller;
 import jakarta.transaction.Transactional;
 
 import jakarta.validation.Valid;
-import org.example.Domain.Enfermeira;
-import org.example.Domain.Paciente;
-import org.example.Domain.Recepcao;
-import org.example.Domain.Usuario;
+import org.example.Domain.*;
 import org.example.Enums.Usuarios.UserRole;
 import org.example.Records.Autorizacao.RecordAuth;
 import org.example.Records.Login;
@@ -29,8 +26,7 @@ import java.util.List;
 public class UsuarioController {
     @Autowired
     private AuthenticationManager autencador;
-    @Autowired
-    private UsuarioRepository repository;
+
     @Autowired
     private TokenService tokenService;
 
@@ -46,7 +42,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> Cadastro(@RequestBody RecordUsuario dados) {
+    public ResponseEntity<String> Cadastro(@RequestBody RecordUsuario dados) {
 
         Usuario user = usuarioService.cadastrar(dados);
 
@@ -58,38 +54,24 @@ public class UsuarioController {
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
 
     public ResponseEntity<List<Usuario>> listar(){
-        if(repository.findAll().isEmpty()) {
+        if(usuarioService.listarUsuarios().isEmpty()) {
             return ResponseEntity.status(204).build();
         }
-        return ResponseEntity.status(200).body(repository.findAll());
+        return ResponseEntity.status(200).body(usuarioService.listarUsuarios());
     }
    @PutMapping("{id}")
    @Transactional
    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
-    public  ResponseEntity atualizarUser(@RequestBody AtualizarUser dados, @PathVariable long id){
+    public  ResponseEntity atualizarUser(@RequestBody AtualizarUser dados, @PathVariable Long id){
 
-       if(dados.role() == UserRole.PACIENTE){
-           var usuario = repository.getReferenceById(id);
-           var paciente = new Paciente(dados.nome());
-           return ResponseEntity.ok(new AtualizarUser(usuario,paciente));
-       }
-       if(dados.role() == UserRole.ENFERMEIRA){
-           var usuario = repository.getReferenceById(id);
-           var ENFERMEIRA = new Enfermeira(dados.nome());
-           return ResponseEntity.ok(new AtualizarUser(usuario,ENFERMEIRA));
-       }
-       if(dados.role() == UserRole.RECEPCAO){
-           var usuario = repository.getReferenceById(id);
-           var recepcao = new Recepcao(dados.nome());
-           return ResponseEntity.ok(new AtualizarUser(usuario,recepcao));
-       }
-       return ResponseEntity.badRequest().build();
+       ResponseEntity<AtualizarUser> listUsuario = usuarioService.atualizarUsuario(dados, id);
+       return ResponseEntity.ok().build();
     }
     @DeleteMapping("{id}")
     @Transactional
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
-    public  ResponseEntity DeletaUser(@PathVariable long id){
-        repository.deleteById(id);
+    public  ResponseEntity DeletaUser(@PathVariable Long id){
+        usuarioService.deletarUsuario(id);
         return ResponseEntity.status(204).build();
     }
 

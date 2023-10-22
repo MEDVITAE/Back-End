@@ -17,23 +17,24 @@ import java.util.List;
 
 public class CaracteristicasController {
     @Autowired
-    private CaractetisticasRepository repository;
+    private CaractetisticasRepository caracteristicaService;
 
     @GetMapping
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
-    public ResponseEntity<List<Caracteristicas>> listar() { return ResponseEntity.status(200).body(repository.findAll()); }
+    public ResponseEntity<List<Caracteristicas>> listar() {
+        return ResponseEntity.status(200).body(caracteristicaService.findAll()); }
 
     @PostMapping
     @PreAuthorize(" hasRole('PACIENTE') || hasRole('RECEPCAO') ")
     public ResponseEntity cadastrar(@RequestBody RecordCaracteristicas dados) {
-        return ResponseEntity.status(201).body(repository.save(new Caracteristicas(dados)));
+        return ResponseEntity.status(201).body(caracteristicaService.save(new Caracteristicas(dados)));
     }
 
     @PutMapping("{id}")
     @Transactional
     @PreAuthorize(" hasRole('PACIENTE') || hasRole('RECEPCAO') ")
     public ResponseEntity atualizar(@RequestBody AtualizaCaracteristicas dados, @PathVariable Long id) {
-            var caracteristicas = repository.getReferenceById(id);
+            var caracteristicas = caracteristicaService.getReferenceById(id);
             caracteristicas.AtualizaCaracteristicas(dados);
             return ResponseEntity.ok(new AtualizaCaracteristicas(caracteristicas));
     }
@@ -42,7 +43,7 @@ public class CaracteristicasController {
     @Transactional
     @PreAuthorize("hasRole('PACIENTE') || hasRole('RECEPCAO')")
     public ResponseEntity deletar(@PathVariable Long id) {
-        repository.deleteById(id);
+        caracteristicaService.deleteById(id);
         return ResponseEntity.status(204).build();
     }
 }

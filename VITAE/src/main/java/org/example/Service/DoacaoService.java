@@ -18,6 +18,11 @@ public class DoacaoService {
         this.repository = doacaoRepository;
     }
 
+    public Doacao save(@Validated Doacao doacao) {
+        Doacao doacaoSalva = this.repository.save(doacao);
+        return doacaoSalva;
+    }
+
     public ResponseEntity <List<Doacao>> findAll(){
         List<Doacao> listaDoacao = this.repository.findAll();
         if (listaDoacao.isEmpty()){
@@ -26,24 +31,30 @@ public class DoacaoService {
         return ResponseEntity.ok(listaDoacao);
     }
 
-    public Doacao salvar(@Validated Doacao doacao) {
-        Doacao doacaoSalva = this.repository.save(doacao);
-        return doacaoSalva;
+    public Doacao buscarDoacaoPorId(Long id) {
+        Optional<Doacao> doacaoOpt = this.repository.findById(id);
+        return ResponseEntity.of(doacaoOpt).getBody();
     }
 
-    public Doacao atualizar(@Validated int id, Doacao doacaoAtualizada) {
-        Doacao doacao = this.buscarPorId(id);
+    public Doacao updateDoacao(@Validated Long id, Doacao doacaoAtualizada) {
+        Doacao doacao = this.buscarDoacaoPorId(id);
+
+        if (doacao == null || doacao.getIdDoacao() == null){
+            return null;
+        }
+
         doacaoAtualizada.setIdDoacao(doacao.getIdDoacao());
         return repository.save(doacaoAtualizada);
     }
 
-    public void deletar(int id) {
-        Doacao doacao = this.buscarPorId(id);
-        repository.deleteById((long) id);
-    }
+    public Doacao deletar(Long id) {
+        Doacao doacao = this.buscarDoacaoPorId(id);
 
-    public Doacao buscarPorId(int id) {
-        Optional<Doacao> doacaoOpt = this.repository.findById((long) id);
-        return ResponseEntity.of(doacaoOpt).getBody();
+        if (doacao == null){
+            return null;
+        }
+        repository.deleteById(id);
+
+        return doacao;
     }
 }
