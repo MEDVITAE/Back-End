@@ -52,7 +52,6 @@ public class AgendaController {
     @PostMapping
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE')")
     public ResponseEntity cadastrar(@RequestBody RecordAgenda dados) {
-        System.out.println(dados);
         return ResponseEntity.status(201).body(repository.save(new Agenda(dados)));
     }
 
@@ -73,17 +72,18 @@ public class AgendaController {
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
     public ResponseEntity DeletaUser(@PathVariable long id) {
         repository.deleteById(id);
-
         return ResponseEntity.badRequest().build();
     }
 
     @GetMapping("/gerarArquivoCsv")
+    @PreAuthorize("hasRole('RECEPCAO')")
     public ResponseEntity<Void> getUsuariosEAgendas() {
         serviceRepository.recuperarValores();
 
         return ResponseEntity.status(200).build();
     }
     @GetMapping("/buscarDoadorAgendado/{hora}")
+    @PreAuthorize("hasRole('RECEPCAO')")
     public ResponseEntity<Object> pesquisaHorario(@PathVariable LocalTime hora) {
 
         if(serviceRepository.doadorAgendamento(hora) != -1){
@@ -123,7 +123,7 @@ public class AgendaController {
         Formatter saida = null;
         Boolean deuRuim = false;
 
-        nomeArq +=  LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) + ".txt";
+        nomeArq +=  LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) + ".csv";
 
         try {
             arq = new FileWriter(nomeArq);

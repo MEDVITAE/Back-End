@@ -24,7 +24,6 @@ public class Doacao {
     private Long fkUsuario;
 
     @OneToOne
-
     @JoinColumn(name = "fkAgenda", referencedColumnName = "idAgenda",insertable = false, updatable = false)
     private Agenda Agenda;
 

@@ -43,10 +43,6 @@ public class ArquivoCsvService {
         List<AgendamentoDTO> testes = resultados.stream()
                 .map(result -> new AgendamentoDTO(result.getNome(), result.getHorario(), result.getCpf()))
                 .collect(Collectors.toList());
-        for(var i = 0; i < testes.size(); i++){
-            System.out.println(testes.get(i));
-
-        }
 
         for (int i = 0; i < testes.size() - 1; i++) {
             for (int j = i + 1; j < testes.size(); j++) {

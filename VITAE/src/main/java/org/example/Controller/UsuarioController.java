@@ -51,7 +51,7 @@ public class UsuarioController {
                  this.repository.findByEmail(dados.email());
           return ResponseEntity.badRequest().build();
         }
-        System.out.println(dados);
+
         String encripitando = new BCryptPasswordEncoder().encode(dados.senha());
         if(dados.role() == UserRole.PACIENTE){
             var usuario = new Paciente(dados.email(), encripitando,dados.role(),dados.nome(),dados.cpf());
