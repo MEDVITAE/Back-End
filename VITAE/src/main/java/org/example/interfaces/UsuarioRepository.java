@@ -1,8 +1,10 @@
 package org.example.interfaces;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.transaction.Transactional;
 import org.example.Domain.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -17,4 +19,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario,Long> {
 
     @Query(value = "select count(id_usuario) as quantidade_doacao from usuario join agenda on fk_usuario = id_usuario join doacao on id_agenda = fk_agenda where id_usuario = ?1",nativeQuery = true)
     int quantidadeDoacao( Integer id);
+    @Transactional
+    @Modifying
+    @Query(value = "update usuario set email = :email where id_usuario = :id",nativeQuery = true)
+    void AtualizaEmail(String email,Long id);
 }

@@ -3,6 +3,7 @@ package org.example.Controller;
 import jakarta.transaction.Transactional;
 
 import org.example.DTO.DadosUserDTO;
+import org.example.DTO.RecuperaValoresAtualizaUserDTO;
 import org.example.Domain.Enfermeira;
 import org.example.Domain.Paciente;
 import org.example.Domain.Recepcao;
@@ -25,7 +26,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -132,9 +132,20 @@ public class UsuarioController {
         DadosUserDTO user = new DadosUserDTO(usuario.getQuantidade(),usuario.getTipo(),usuario.getNome(),usuario.getCpf(),quantidadeDoacao,usuario.getSexo(),dataFormatada,usuario.getPeso(),usuario.getAltura(),usuario.getEmail(),usuario.getApto());
         return ResponseEntity.status(200).body(user);
     }
+    @PutMapping("/detalhesUser/{id}")
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
+    public ResponseEntity atualizarInfoUser(@PathVariable Long id , @RequestBody String dados){
+        if (repository.existsById(id)){
+            System.out.println(dados);
+
+            repository.AtualizaEmail(dados, id);
+            return ResponseEntity.status(200).build();
+        }
+        return ResponseEntity.status(404).build();
+    }
 
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
    @Transactional
    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
     public  ResponseEntity atualizarUser(@RequestBody AtualizarUser dados, @PathVariable long id){
@@ -156,7 +167,7 @@ public class UsuarioController {
        }
        return ResponseEntity.badRequest().build();
     }
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     @Transactional
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
     public  ResponseEntity DeletaUser(@PathVariable long id){
