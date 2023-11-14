@@ -1,20 +1,24 @@
 package org.example.Controller;
 
 import jakarta.transaction.Transactional;
+import org.example.DTO.CepsDTo;
 import org.example.Domain.Endereco;
 import org.example.Records.Endereco.AtualizaEndereco;
 import org.example.Records.Endereco.RecordEndereco;
 import org.example.Records.Usuario.AtualizarUser;
 import org.example.interfaces.EnderecoRepository;
+import org.example.interfaces.RecuperaCeps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/Endereco")
+@CrossOrigin(origins = "http://localhost:3000/",allowedHeaders = "*")
 public class EnderecoController {
     @Autowired
     private EnderecoRepository repository;
@@ -45,6 +49,20 @@ public class EnderecoController {
         return ResponseEntity.status(204).build();
     }
 
+    @Transactional
+    @GetMapping("/mapa")
+    public  ResponseEntity<List<CepsDTo>> Ceps(){
+         List<RecuperaCeps> ceps = repository.findAllCep();
+
+         List<CepsDTo> cepsDaVez = new ArrayList<>();
+         for(RecuperaCeps c: ceps) {
+
+             CepsDTo cep = new CepsDTo(c.getCep(),c.getFkHospital());
+             System.out.println(c.getFkHospital());
+             cepsDaVez.add(cep);
+         }
+        return ResponseEntity.status(200).body(cepsDaVez);
+    }
 
 
 }

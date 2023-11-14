@@ -20,7 +20,6 @@ public class  Email  implements Serializable {
     private String ownerRef;
     private String emailFrom;
     private String emailTo;
-
     private String subject;
     @Column(columnDefinition = "TEXT")
     private String text;

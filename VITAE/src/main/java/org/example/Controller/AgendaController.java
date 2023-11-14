@@ -83,7 +83,7 @@ public class AgendaController {
         return ResponseEntity.status(200).build();
     }
     @GetMapping("/buscarDoadorAgendado/{hora}")
-    @PreAuthorize("hasRole('RECEPCAO')")
+
     public ResponseEntity<Object> pesquisaHorario(@PathVariable LocalTime hora) {
 
         if(serviceRepository.doadorAgendamento(hora) != -1){

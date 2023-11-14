@@ -2,6 +2,7 @@ package org.example.Controller;
 
 import jakarta.transaction.Transactional;
 
+import org.example.DTO.DadosUserDTO;
 import org.example.Domain.Enfermeira;
 import org.example.Domain.Paciente;
 import org.example.Domain.Recepcao;
@@ -12,6 +13,7 @@ import org.example.Records.Login;
 import org.example.Records.Usuario.AtualizarUser;
 import org.example.Records.Usuario.RecordUsuario;
 import org.example.infra.Security.TokenService;
+import org.example.interfaces.RecuperaDetalhesUsuario;
 import org.example.interfaces.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("/usuario")
@@ -42,16 +45,53 @@ public class UsuarioController {
 
         return ResponseEntity.ok(new Login(token));
     }
+    @PostMapping("/register/lista")
+    public ResponseEntity CadastroLista(@RequestBody List<RecordUsuario> dados){
+        List<Object> lista= new ArrayList<>();
+        System.out.println("ssssssss");
+        for(int i = 0;i < dados.size();i++) {
+
+            String encripitando = new BCryptPasswordEncoder().encode((dados.get(i).senha()));
+            String email = dados.get(i).email();
+            UserRole role = dados.get(i).role();
+            String nome = (dados.get(i).nome());
+            String cpf = dados.get(i).cpf();
+
+            try {
+
+                if (role == UserRole.PACIENTE) {
+                    var usuario = new Paciente(email, encripitando, role, nome, cpf);
+                    lista.add(repository.save(usuario));
+
+                }
+                if (role == UserRole.ENFERMEIRA) {
+                    var ENFERMEIRA = new Enfermeira(email, encripitando, role, nome, cpf);
+                    lista.add(repository.save(ENFERMEIRA));
 
 
+
+                }
+                if (role == UserRole.RECEPCAO) {
+                    var recepcao = new Recepcao(email, encripitando, role, nome, cpf);
+                    lista.add(repository.save(recepcao));
+
+                }
+
+            }catch (Exception e){
+                return  ResponseEntity.status(400).build();
+            }
+        }
+
+        return  ResponseEntity.status(200).body(lista);
+    }
 
     @PostMapping("/register")
     public ResponseEntity Cadastro(@RequestBody RecordUsuario dados){
              if(this.repository.findByEmail(dados.email()) != null) {
                  this.repository.findByEmail(dados.email());
-          return ResponseEntity.badRequest().build();
+                 
+                return ResponseEntity.badRequest().build();
         }
-
         String encripitando = new BCryptPasswordEncoder().encode(dados.senha());
         if(dados.role() == UserRole.PACIENTE){
             var usuario = new Paciente(dados.email(), encripitando,dados.role(),dados.nome(),dados.cpf());
@@ -78,7 +118,16 @@ public class UsuarioController {
         }
         return ResponseEntity.status(200).body(repository.findAll());
     }
-   @PutMapping("{id}")
+    @GetMapping("/detalhes/{id}")
+    public ResponseEntity<DadosUserDTO> detalhesUser(@PathVariable Integer id){
+        Integer quantidadeDoacao = repository.quantidadeDoacao(id);
+        RecuperaDetalhesUsuario usuario = repository.findByDetalhesUser(id);
+        DadosUserDTO user = new DadosUserDTO(usuario.getQuantidade(),usuario.getTipo(),usuario.getNome(),usuario.getCpf(),quantidadeDoacao,usuario.getSexo(),usuario.getDataNascimento(),usuario.getPeso(),usuario.getAltura(),usuario.getEmail());
+        return ResponseEntity.status(200).body(user);
+    }
+
+
+    @PutMapping("{id}")
    @Transactional
    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
     public  ResponseEntity atualizarUser(@RequestBody AtualizarUser dados, @PathVariable long id){

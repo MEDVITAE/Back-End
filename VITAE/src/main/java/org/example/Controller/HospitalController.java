@@ -2,6 +2,7 @@ package org.example.Controller;
 
 import jakarta.transaction.Transactional;
 import jdk.swing.interop.SwingInterOpUtils;
+import org.example.DTO.DestalhesHospDTO;
 import org.example.Domain.Hospital;
 import org.example.Records.Hospital.AtualizarHospital;
 import org.example.Records.Hospital.RecordHospital;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/hospital")
+@CrossOrigin(origins = "http://localhost:3000/",allowedHeaders = "*")
 public class HospitalController {
 
     @Autowired
@@ -24,6 +26,18 @@ public class HospitalController {
     public ResponseEntity<List<Hospital>> listar(){
 
         return ResponseEntity.status(200).body(repository.findAll());
+    }
+    @GetMapping("/detalhes/{id}")
+    public ResponseEntity<DestalhesHospDTO> detahesHosp(@PathVariable int id){
+        var detalhes = repository.findByHospitalEndereco(id);
+        DestalhesHospDTO hospDTO = new DestalhesHospDTO(detalhes.getNome(), detalhes.getCep(), detalhes.getRua(), detalhes.getNumero(), detalhes.getBairro());
+        System.out.println(detalhes.getNome());
+        System.out.println(detalhes.getCep());
+        System.out.println(detalhes.getRua());
+        System.out.println(detalhes.getNumero());
+        System.out.println(detalhes.getBairro());
+
+        return ResponseEntity.status(200).body(hospDTO);
     }
 
     @PostMapping

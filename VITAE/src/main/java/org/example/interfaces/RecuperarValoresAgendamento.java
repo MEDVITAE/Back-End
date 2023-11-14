@@ -7,6 +7,7 @@ public interface RecuperarValoresAgendamento {
 
     String getNome();
     LocalDateTime getHorario();
+
     String getCpf();
 
 }

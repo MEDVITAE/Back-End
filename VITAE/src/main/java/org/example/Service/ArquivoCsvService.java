@@ -40,24 +40,24 @@ public class ArquivoCsvService {
 
         List<RecuperarValoresAgendamento> resultados = serviceRepository.buscaDoadorAgendado();
 
-        List<AgendamentoDTO> testes = resultados.stream()
+        List<AgendamentoDTO> agendamentos = resultados.stream()
                 .map(result -> new AgendamentoDTO(result.getNome(), result.getHorario(), result.getCpf()))
                 .collect(Collectors.toList());
 
-        for (int i = 0; i < testes.size() - 1; i++) {
-            for (int j = i + 1; j < testes.size(); j++) {
-                int hora1 = testes.get(i).getHorario().getHour();
-                int hora2 = testes.get(j).getHorario().getHour();
+        for (int i = 0; i < agendamentos.size() - 1; i++) {
+            for (int j = i + 1; j < agendamentos.size(); j++) {
+                int hora1 = agendamentos.get(i).getHorario().getHour();
+                int hora2 = agendamentos.get(j).getHorario().getHour();
                 if (hora1 > hora2) {
-                    AgendamentoDTO aux = testes.get(i);
-                    testes.set(i, testes.get(j));
-                    testes.set(j, aux);
+                    AgendamentoDTO aux = agendamentos.get(i);
+                    agendamentos.set(i, agendamentos.get(j));
+                    agendamentos.set(j, aux);
                 }
             }
         }
 
-        gravaArquivoCsv(testes,"Agendamentos csv Do Dia");
-        gravaArquivoTxt(testes,"Agendamentos txt Do Dia");
+        gravaArquivoCsv(agendamentos,"Agendamentos csv Do Dia ");
+        gravaArquivoTxt(agendamentos,"Agendamentos txt Do Dia ");
     }
 
     public static void gravaArquivoCsv(List<AgendamentoDTO> lista, String nomeArq) {
@@ -181,36 +181,12 @@ public int doadorAgendamento(LocalTime horarioBuscado) {
         System.out.println(id);
 
         RecuperaValoresUsuario usuario = serviceRepository.recupera(id);
-        UsuarioDTO paciente = new UsuarioDTO( usuario.getEmail(), usuario.getCpf(),usuario.getNome());
+
+        UsuarioDTO paciente = new UsuarioDTO( usuario.getNome(), usuario.getEmail(),usuario.getCpf());
         System.out.println(paciente);
         return paciente;
     }
 
 }
-//    public int doadorAgendamento(int horario){
-//        List<RecuperarValoresAgendamento> resultados = serviceRepository.buscaDoadorAgendado();
-//        List<Integer> horarios = new ArrayList<>();
-//        for(int i = 0; i < resultados.size();i++){
-//            int hora = resultados.get(i).getHorario().getHour();
-//            horarios.add(hora);
-//            System.out.println(hora);
-//        }
-//        int indInf,indSup, meio;
-//
-//
-//          indInf = 0;
-//          indSup = horarios.size() - 1; /* índice superior */
-//        while (indInf <= indSup){
-//            meio = (indInf+ indSup)/2;
-//            if(horarios.get(meio) == horario) {
-//                return meio;
-//            } else if (horario < horarios.get(meio)) {
-//                indSup = meio - 1;
-//            }else {
-//                indInf = meio+1;
-//            }
-//        }
-//        return -1;
-//
-//    }
+
 

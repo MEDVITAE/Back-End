@@ -19,6 +19,7 @@ import java.util.Optional;
 import java.util.UUID;
 @RestController
 @RequestMapping("/arquivos")
+@CrossOrigin(origins = "http://localhost:3000/",allowedHeaders = "*")
 
 public class ArquivoController {
 
