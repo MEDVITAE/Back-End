@@ -1,10 +1,12 @@
 package org.example.Domain;
 
 import jakarta.persistence.*;
+import jdk.jfr.Name;
 import lombok.*;
 import org.example.Records.Caracteristicas.AtualizaCaracteristicas;
 import org.example.Records.Caracteristicas.RecordCaracteristicas;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Table(name = "Caracteristicas")
@@ -31,7 +33,11 @@ public class Caracteristicas {
     private String sexo;
     @Getter
     @Setter
-    private Date dtNascimento;
+
+    private LocalDate nascimento;
+    @Getter
+    @Setter
+    private boolean apto;
     @Getter
     @Setter
     private  Long fkUsuario;
@@ -51,7 +57,8 @@ public class Caracteristicas {
         this.altura = dados.altura();
         this.tatto = dados.tatto();
         this.sexo = dados.sexo();
-        this.dtNascimento = dados.dtNascimento();
+        this.nascimento = dados.nascimento();
+        this.apto = dados.apto();
         this.fkUsuario = dados.fkUsuario();
     }
 
@@ -60,7 +67,8 @@ public class Caracteristicas {
         this.altura = dados.altura();
         this.tatto = dados.tatto();
         this.sexo = dados.sexo();
-        this.dtNascimento = dados.dtNascimento();
+        this.nascimento = dados.nascimento();
+        this.apto = dados.apto();
         this.fkUsuario = dados.fkUsuario();
     }
 }

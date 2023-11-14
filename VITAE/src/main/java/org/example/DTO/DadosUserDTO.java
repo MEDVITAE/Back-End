@@ -1,5 +1,7 @@
 package org.example.DTO;
 
+import java.util.Date;
+
 public class DadosUserDTO {
     private Double quantidade;
     private String tipo;
@@ -7,24 +9,24 @@ public class DadosUserDTO {
     private String cpf;
     private int numero;
     private String sexo;
-    private String dataNascimento;
+    private String nascimento;
     private String peso;
     private String altura;
-
     private String email;
+    private boolean apto;
 
-    public DadosUserDTO(Double qntDoacao, String tipo, String nome, String cpf, int numero, String sexo, String dataNascimento, String peso, String altura,  String email) {
-        this.quantidade = qntDoacao;
+    public DadosUserDTO(Double quantidade, String tipo, String nome, String cpf, int numero, String sexo, String nascimento, String peso, String altura, String email, boolean apto) {
+        this.quantidade = quantidade;
         this.tipo = tipo;
         this.nome = nome;
         this.cpf = cpf;
         this.numero = numero;
         this.sexo = sexo;
-        this.dataNascimento = dataNascimento;
+        this.nascimento = nascimento;
         this.peso = peso;
         this.altura = altura;
-
         this.email = email;
+        this.apto = apto;
     }
 
     public Double getQuantidade() {
@@ -75,12 +77,12 @@ public class DadosUserDTO {
         this.sexo = sexo;
     }
 
-    public String getDataNascimento() {
-        return dataNascimento;
+    public String getNascimento() {
+        return nascimento;
     }
 
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setNascimento(String nascimento) {
+        this.nascimento = nascimento;
     }
 
     public String getPeso() {
@@ -99,8 +101,6 @@ public class DadosUserDTO {
         this.altura = altura;
     }
 
-
-
     public String getEmail() {
         return email;
     }
@@ -109,20 +109,28 @@ public class DadosUserDTO {
         this.email = email;
     }
 
+    public boolean isApto() {
+        return apto;
+    }
+
+    public void setApto(boolean apto) {
+        this.apto = apto;
+    }
+
     @Override
     public String toString() {
         return "DadosUserDTO{" +
-                "qntDoacao=" + quantidade +
+                "quantidade=" + quantidade +
                 ", tipo='" + tipo + '\'' +
                 ", nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", numero=" + numero +
                 ", sexo='" + sexo + '\'' +
-                ", dataNascimento='" + dataNascimento + '\'' +
+                ", nascimento='" + nascimento + '\'' +
                 ", peso='" + peso + '\'' +
                 ", altura='" + altura + '\'' +
-
                 ", email='" + email + '\'' +
+                ", apto=" + apto +
                 '}';
     }
 }

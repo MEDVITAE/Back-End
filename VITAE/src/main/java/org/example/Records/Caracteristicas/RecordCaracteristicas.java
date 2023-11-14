@@ -1,5 +1,6 @@
 package org.example.Records.Caracteristicas;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public record RecordCaracteristicas (
@@ -7,7 +8,8 @@ public record RecordCaracteristicas (
     String altura,
     boolean tatto,
     String sexo,
-    Date dtNascimento,
+    LocalDate nascimento,
+     boolean apto,
     Long fkUsuario
 
 ) {

@@ -24,6 +24,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -122,7 +125,11 @@ public class UsuarioController {
     public ResponseEntity<DadosUserDTO> detalhesUser(@PathVariable Integer id){
         Integer quantidadeDoacao = repository.quantidadeDoacao(id);
         RecuperaDetalhesUsuario usuario = repository.findByDetalhesUser(id);
-        DadosUserDTO user = new DadosUserDTO(usuario.getQuantidade(),usuario.getTipo(),usuario.getNome(),usuario.getCpf(),quantidadeDoacao,usuario.getSexo(),usuario.getDataNascimento(),usuario.getPeso(),usuario.getAltura(),usuario.getEmail());
+
+        LocalDate apenasData = usuario.getNascimento().toLocalDate();
+        String dataFormatada = apenasData.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        System.out.println(repository.findByDetalhesUser(id));
+        DadosUserDTO user = new DadosUserDTO(usuario.getQuantidade(),usuario.getTipo(),usuario.getNome(),usuario.getCpf(),quantidadeDoacao,usuario.getSexo(),dataFormatada,usuario.getPeso(),usuario.getAltura(),usuario.getEmail(),usuario.getApto());
         return ResponseEntity.status(200).body(user);
     }
 
