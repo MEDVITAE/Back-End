@@ -6,11 +6,14 @@ import org.example.Domain.Endereco;
 public record AtualizaCaracteresPesoAltura(
         String altura,
 
-        String peso
+        String peso,
+        boolean apto
 ) {
     public AtualizaCaracteresPesoAltura(Caracteristicas caracteristicas){
         this(
                 caracteristicas.getAltura(),
-                caracteristicas.getPeso());
+                caracteristicas.getPeso(),
+                caracteristicas.isApto()
+        );
     }
 }
