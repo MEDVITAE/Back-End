@@ -118,8 +118,7 @@ public class UsuarioController {
     public ResponseEntity<DadosUserDTO> detalhesUser(@PathVariable Integer id){
         Integer quantidadeDoacao = repository.quantidadeDoacao(id);
         RecuperaDetalhesUsuario usuario = repository.findByDetalhesUser(id);
-
-        LocalDate apenasData = usuario.getNascimento().toLocalDate();
+        LocalDate apenasData = usuario.getNascimento();
         String dataFormatada = apenasData.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         System.out.println(repository.findByDetalhesUser(id));
         DadosUserDTO user = new DadosUserDTO(usuario.getQuantidade(),usuario.getTipo(),usuario.getNome(),usuario.getCpf(),quantidadeDoacao,usuario.getSexo(),dataFormatada,usuario.getPeso(),usuario.getAltura(),usuario.getEmail(),usuario.getApto());

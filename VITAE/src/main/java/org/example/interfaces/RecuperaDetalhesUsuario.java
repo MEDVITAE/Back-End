@@ -1,11 +1,12 @@
 package org.example.interfaces;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
 public interface RecuperaDetalhesUsuario {
      String getAltura();
-     LocalDateTime getNascimento();
+     LocalDate getNascimento();
      String getPeso();
      String getSexo();
 
