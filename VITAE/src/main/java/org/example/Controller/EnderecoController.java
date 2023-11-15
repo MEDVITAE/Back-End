@@ -66,7 +66,7 @@ public class EnderecoController {
 
 
     @PutMapping("/detalhes/{id}")
-    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
+
     @Transactional
     public ResponseEntity<Endereco> AtualizaEnderecoDetalhes(@PathVariable Long id,@RequestBody AtualizaEnderecoNumeroCep dados) {
         Endereco usuario = repository.findByFkUsuario(id);

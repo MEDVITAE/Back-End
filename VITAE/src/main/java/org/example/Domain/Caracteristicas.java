@@ -3,8 +3,10 @@ package org.example.Domain;
 import jakarta.persistence.*;
 import jdk.jfr.Name;
 import lombok.*;
+import org.example.Records.Caracteristicas.AtualizaCaracteresPesoAltura;
 import org.example.Records.Caracteristicas.AtualizaCaracteristicas;
 import org.example.Records.Caracteristicas.RecordCaracteristicas;
+import org.example.Records.Endereco.AtualizaEnderecoNumeroCep;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -18,6 +20,7 @@ import java.util.Date;
 public class Caracteristicas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
     private Long idCaracteristicas;
     @Getter
     @Setter
@@ -71,4 +74,10 @@ public class Caracteristicas {
         this.apto = dados.apto();
         this.fkUsuario = dados.fkUsuario();
     }
+    public void AtualizaCaracteresPesoAltura(AtualizaCaracteresPesoAltura atualizar){
+        this.peso = atualizar.peso();
+        this.altura = atualizar.altura();
+
+    }
+
 }

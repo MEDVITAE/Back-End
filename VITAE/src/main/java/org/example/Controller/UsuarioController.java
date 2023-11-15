@@ -133,11 +133,9 @@ public class UsuarioController {
         return ResponseEntity.status(200).body(user);
     }
     @PutMapping("/detalhesUser/{id}")
-    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
     public ResponseEntity atualizarInfoUser(@PathVariable Long id , @RequestBody String dados){
         if (repository.existsById(id)){
             System.out.println(dados);
-
             repository.AtualizaEmail(dados, id);
             return ResponseEntity.status(200).build();
         }
