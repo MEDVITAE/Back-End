@@ -40,14 +40,7 @@ public class UsuarioController {
     @Autowired
     private TokenService tokenService;
 
-    @PostMapping("/login")
-    public ResponseEntity login(@RequestBody @Validated recordAuth dados){
-        var usuarioEmaileSenha = new UsernamePasswordAuthenticationToken(dados.email(),dados.senha());
-        var auth = this.autenticador.authenticate(usuarioEmaileSenha);
-        var token = tokenService.gerarToken((Usuario) auth.getPrincipal());
 
-        return ResponseEntity.ok(new Login(token));
-    }
     @PostMapping("/register/lista")
     public ResponseEntity CadastroLista(@RequestBody List<RecordUsuario> dados){
         List<Object> lista= new ArrayList<>();

@@ -5,14 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b105c72-4bb6-4aa5-aca3-0e9471db4dca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/Caracteristicas/AtualizaCaracteresPesoAltura.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/CaracteristicasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/CaracteristicasController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/AuthencationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/AuthencationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Caracteristicas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Caracteristicas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/infra/Security/SecurityConfigutations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/infra/Security/SecurityConfigutations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/interfaces/CaractetisticasRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/interfaces/CaractetisticasRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/EnderecoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/EnderecoRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Records/Autorizacao/recordAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/Autorizacao/recordAuth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Records/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/interfaces/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/interfaces/UsuarioRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,17 +41,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/jvtenorio/OneDrive - Stefanini/Desktop/sprint_api/2/VITAE",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jvtenorio/OneDrive - Stefanini/Desktop/sprint_api/2/VITAE&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.example.DTO" />
@@ -135,17 +134,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/src/main" />
     </ignored-roots>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Controller/UsuarioController.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/VITAE$Main.ic" NAME="Main Coverage Results" MODIFIED="1697406185977" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

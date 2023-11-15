@@ -26,6 +26,7 @@ public  abstract class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long idUsuario;
     @Column(name = "Email")
     private String email;
@@ -74,6 +75,10 @@ public  abstract class Usuario implements UserDetails {
 
 
     }
+
+
+
+
     @Override
     public String getPassword() {
         return senha; // Retorne a senha do usuário
