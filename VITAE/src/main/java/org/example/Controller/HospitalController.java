@@ -3,7 +3,9 @@ package org.example.Controller;
 import jakarta.transaction.Transactional;
 import jdk.swing.interop.SwingInterOpUtils;
 import org.example.DTO.DestalhesHospDTO;
+import org.example.Domain.Endereco;
 import org.example.Domain.Hospital;
+import org.example.Records.Endereco.RecordEndereco;
 import org.example.Records.Hospital.AtualizarHospital;
 import org.example.Records.Hospital.RecordHospital;
 import org.example.interfaces.HospitalRepository;
@@ -12,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -46,6 +49,16 @@ public class HospitalController {
     public ResponseEntity cadastrar(@RequestBody RecordHospital dados){
         System.out.println(dados);
         return ResponseEntity.status(201).body(repository.save(new Hospital(dados)));
+    }
+    @PostMapping("/register/lista")
+    public ResponseEntity CadastroLista(@RequestBody List<RecordHospital> dados){
+        List<Object> lista= new ArrayList<>();
+        for(int i = 0;i < dados.size();i++) {
+            Hospital hospital = new Hospital(dados.get(i));
+            lista.add(hospital);
+            repository.save(hospital);
+        }
+        return  ResponseEntity.status(200).body(lista);
     }
 
     @PutMapping("/{id}")

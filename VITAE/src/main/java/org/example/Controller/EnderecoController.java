@@ -3,14 +3,22 @@ package org.example.Controller;
 import jakarta.transaction.Transactional;
 import org.example.DTO.CepsDTo;
 import org.example.Domain.Endereco;
+import org.example.Domain.Enfermeira;
+import org.example.Domain.Paciente;
+import org.example.Domain.Recepcao;
+import org.example.Enums.Usuarios.UserRole;
 import org.example.Records.Endereco.AtualizaEndereco;
+import org.example.Records.Endereco.AtualizaEnderecoNumeroCep;
 import org.example.Records.Endereco.RecordEndereco;
 import org.example.Records.Usuario.AtualizarUser;
+import org.example.Records.Usuario.RecordUsuario;
 import org.example.interfaces.EnderecoRepository;
 import org.example.interfaces.RecuperaCeps;
+import org.example.interfaces.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -22,6 +30,8 @@ import java.util.List;
 public class EnderecoController {
     @Autowired
     private EnderecoRepository repository;
+    @Autowired
+    private UsuarioRepository repositoryUsuario;
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
     @GetMapping
     public ResponseEntity<List<Endereco>> listar() {
@@ -32,6 +42,17 @@ public class EnderecoController {
     public ResponseEntity cadastar(@RequestBody RecordEndereco dados) {
         return ResponseEntity.status(200).body(repository.save(new Endereco(dados)));
     }
+    @PostMapping("/register/lista")
+
+    public ResponseEntity CadastroLista(@RequestBody List<RecordEndereco> dados){
+        List<Object> lista= new ArrayList<>();
+        for(int i = 0;i < dados.size();i++) {
+            Endereco endereco = new Endereco(dados.get(i));
+            lista.add(endereco);
+             repository.save(endereco);
+        }
+        return  ResponseEntity.status(200).body(lista);
+    }
 
     @PutMapping("{id}")
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
@@ -40,6 +61,20 @@ public class EnderecoController {
         var endereco = repository.getReferenceById(id);
         endereco.AtualizaEndereco(dados);
         return ResponseEntity.status(200).body((new AtualizaEndereco(endereco)));
+    }
+
+
+
+    @PutMapping("/detalhes/{id}")
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
+    @Transactional
+    public ResponseEntity<Endereco> AtualizaEnderecoDetalhes(@PathVariable Long id,@RequestBody AtualizaEnderecoNumeroCep dados) {
+        Endereco usuario = repository.findByFkUsuario(id);
+        var endereco = repository.getReferenceById(usuario.getId());
+        endereco.AtualizaEnderecoNumeroCep(dados);
+        new AtualizaEnderecoNumeroCep(endereco);
+        repository.save(endereco);
+        return ResponseEntity.status(200).body(endereco);
     }
     @Transactional
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
@@ -63,6 +98,7 @@ public class EnderecoController {
          }
         return ResponseEntity.status(200).body(cepsDaVez);
     }
+
 
 
 }
