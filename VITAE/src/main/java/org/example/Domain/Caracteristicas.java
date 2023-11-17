@@ -77,6 +77,7 @@ public class Caracteristicas {
     public void AtualizaCaracteresPesoAltura(AtualizaCaracteresPesoAltura atualizar){
         this.peso = atualizar.peso();
         this.altura = atualizar.altura();
+        this.apto = atualizar.apto();
 
     }
 

@@ -29,6 +29,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping("/usuario")
 @RestController
@@ -163,6 +164,15 @@ public class UsuarioController {
     public  ResponseEntity DeletaUser(@PathVariable long id){
         repository.deleteById(id);
         return ResponseEntity.status(204).build();
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<Usuario>> usuarioId(@PathVariable Long id){
+        Optional<Usuario> usuario = repository.findById(id);
+        if(usuario.isPresent()){
+            return ResponseEntity.ok(usuario);
+        }
+       return ResponseEntity.badRequest().build();
+
     }
 
 }

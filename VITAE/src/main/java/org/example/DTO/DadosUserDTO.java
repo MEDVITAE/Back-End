@@ -15,6 +15,7 @@ public class DadosUserDTO {
     private String email;
     private boolean apto;
 
+
     public DadosUserDTO(Double quantidade, String tipo, String nome, String cpf, int numero, String sexo, String nascimento, String peso, String altura, String email, boolean apto) {
         this.quantidade = quantidade;
         this.tipo = tipo;

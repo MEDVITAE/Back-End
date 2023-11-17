@@ -2,13 +2,17 @@ package org.example.Controller;
 
 import jakarta.transaction.Transactional;
 import org.example.DTO.AgendamentoDTO;
+import org.example.DTO.InfoAgendamentosHospitaisDTO;
 import org.example.DTO.UsuarioDTO;
 import org.example.Domain.Agenda;
+import org.example.Domain.Hospital;
 import org.example.Domain.Usuario;
 import org.example.Records.Agenda.AtualizaAgenda;
 import org.example.Records.Agenda.RecordAgenda;
 import org.example.Service.ArquivoCsvService;
 import org.example.interfaces.AgendaRepository;
+import org.example.interfaces.RecuperaNomeHospital;
+import org.example.interfaces.RecuperaValoresAgendamentosDoacoes;
 import org.example.interfaces.RecuperarValoresAgendamento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -21,12 +25,10 @@ import org.springframework.web.server.ResponseStatusException;
 import java.io.*;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Formatter;
-import java.util.FormatterClosedException;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -48,10 +50,32 @@ public class AgendaController {
     public ResponseEntity<List<Agenda>> listar() {
         return ResponseEntity.status(200).body(repository.findAll());
     }
+    @GetMapping("/Agendamentos/{id}")
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') ")
+    public ResponseEntity<InfoAgendamentosHospitaisDTO> listarAgendamentosHosp(@PathVariable Long id) {
+
+        RecuperaValoresAgendamentosDoacoes quantidade = repository.quantidadeDoacao(id);
+        System.out.println(quantidade.getDoacao());
+        List<RecuperaNomeHospital> hospital = repository.hospital(id);
+        for(var i = 0; i < hospital.size(); i++){
+            System.out.println(hospital.get(i).getNome());
+        }
+        List<Agenda> agenda = repository.agenda(id);
+        InfoAgendamentosHospitaisDTO infoAgendamentosHospitaisDTO = new InfoAgendamentosHospitaisDTO(quantidade.getQuantidade(), quantidade.getDoacao(), agenda,hospital);
+
+        return ResponseEntity.status(200).body(infoAgendamentosHospitaisDTO);
+    }
+
 
     @PostMapping
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE')")
     public ResponseEntity cadastrar(@RequestBody RecordAgenda dados) {
+        int hospital = dados.fkHospital();
+        LocalDateTime hora = dados.Horario();
+        Optional<Agenda> horarioExiste = repository.findByHorarioExiste(hospital,hora);
+        if(horarioExiste.isPresent()){
+            return ResponseEntity.status(200).body("Agendamento ja existe");
+        }
         return ResponseEntity.status(201).body(repository.save(new Agenda(dados)));
     }
 
