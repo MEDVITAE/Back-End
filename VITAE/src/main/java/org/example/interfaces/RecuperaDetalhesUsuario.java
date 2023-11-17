@@ -17,6 +17,8 @@ public interface RecuperaDetalhesUsuario {
      Double getQuantidade();
      String getTipo();
      boolean getApto();
+     String getCep();
+     int getNumeroCasa();
 
 
 

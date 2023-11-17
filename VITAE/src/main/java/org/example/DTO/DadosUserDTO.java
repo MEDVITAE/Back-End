@@ -14,9 +14,11 @@ public class DadosUserDTO {
     private String altura;
     private String email;
     private boolean apto;
+    private String cep;
+    private int numeroCasa;
 
 
-    public DadosUserDTO(Double quantidade, String tipo, String nome, String cpf, int numero, String sexo, String nascimento, String peso, String altura, String email, boolean apto) {
+    public DadosUserDTO(Double quantidade, String tipo, String nome, String cpf, int numero, String sexo, String nascimento, String peso, String altura, String email, boolean apto, String cep, int numeroCasa) {
         this.quantidade = quantidade;
         this.tipo = tipo;
         this.nome = nome;
@@ -28,6 +30,8 @@ public class DadosUserDTO {
         this.altura = altura;
         this.email = email;
         this.apto = apto;
+        this.cep = cep;
+        this.numeroCasa = numeroCasa;
     }
 
     public Double getQuantidade() {
@@ -118,6 +122,22 @@ public class DadosUserDTO {
         this.apto = apto;
     }
 
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public int getNumeroCasa() {
+        return numeroCasa;
+    }
+
+    public void setNumeroCasa(int numeroCasa) {
+        this.numeroCasa = numeroCasa;
+    }
+
     @Override
     public String toString() {
         return "DadosUserDTO{" +
@@ -132,6 +152,8 @@ public class DadosUserDTO {
                 ", altura='" + altura + '\'' +
                 ", email='" + email + '\'' +
                 ", apto=" + apto +
+                ", cep='" + cep + '\'' +
+                ", numeroCasa='" + numeroCasa + '\'' +
                 '}';
     }
 }

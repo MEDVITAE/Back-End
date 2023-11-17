@@ -122,7 +122,7 @@ public class UsuarioController {
         LocalDate apenasData = usuario.getNascimento();
         String dataFormatada = apenasData.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         System.out.println(repository.findByDetalhesUser(id));
-        DadosUserDTO user = new DadosUserDTO(usuario.getQuantidade(),usuario.getTipo(),usuario.getNome(),usuario.getCpf(),quantidadeDoacao,usuario.getSexo(),dataFormatada,usuario.getPeso(),usuario.getAltura(),usuario.getEmail(),usuario.getApto());
+        DadosUserDTO user = new DadosUserDTO(usuario.getQuantidade(),usuario.getTipo(),usuario.getNome(),usuario.getCpf(),quantidadeDoacao,usuario.getSexo(),dataFormatada,usuario.getPeso(),usuario.getAltura(),usuario.getEmail(),usuario.getApto(),usuario.getCep(),usuario.getNumeroCasa());
         return ResponseEntity.status(200).body(user);
     }
     @PutMapping("/detalhesUser/{id}")
