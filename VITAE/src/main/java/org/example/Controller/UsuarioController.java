@@ -3,26 +3,22 @@ package org.example.Controller;
 import jakarta.transaction.Transactional;
 
 import org.example.DTO.DadosUserDTO;
-import org.example.DTO.RecuperaValoresAtualizaUserDTO;
 import org.example.Domain.Enfermeira;
 import org.example.Domain.Paciente;
 import org.example.Domain.Recepcao;
 import org.example.Domain.Usuario;
 import org.example.Enums.Usuarios.UserRole;
-import org.example.Records.Autorizacao.recordAuth;
-import org.example.Records.Login;
 import org.example.Records.Usuario.AtualizarUser;
 import org.example.Records.Usuario.RecordUsuario;
 import org.example.infra.Security.TokenService;
 import org.example.interfaces.RecuperaDetalhesUsuario;
+import org.example.interfaces.RecuperaDetalhesUsuarioSemDoacao;
 import org.example.interfaces.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -53,23 +49,24 @@ public class UsuarioController {
             UserRole role = dados.get(i).role();
             String nome = (dados.get(i).nome());
             String cpf = dados.get(i).cpf();
+            int fkHospital = dados.get(i).fkHospital();
 
             try {
 
                 if (role == UserRole.PACIENTE) {
-                    var usuario = new Paciente(email, encripitando, role, nome, cpf);
+                    var usuario = new Paciente(email, encripitando, role, nome,fkHospital, cpf);
                     lista.add(repository.save(usuario));
 
                 }
                 if (role == UserRole.ENFERMEIRA) {
-                    var ENFERMEIRA = new Enfermeira(email, encripitando, role, nome, cpf);
+                    var ENFERMEIRA = new Enfermeira(email, encripitando, role, nome,fkHospital, cpf);
                     lista.add(repository.save(ENFERMEIRA));
 
 
 
                 }
                 if (role == UserRole.RECEPCAO) {
-                    var recepcao = new Recepcao(email, encripitando, role, nome, cpf);
+                    var recepcao = new Recepcao(email, encripitando, role, nome, fkHospital,cpf);
                     lista.add(repository.save(recepcao));
 
                 }
@@ -91,15 +88,15 @@ public class UsuarioController {
         }
         String encripitando = new BCryptPasswordEncoder().encode(dados.senha());
         if(dados.role() == UserRole.PACIENTE){
-            var usuario = new Paciente(dados.email(), encripitando,dados.role(),dados.nome(),dados.cpf());
+            var usuario = new Paciente(dados.email(), encripitando,dados.role(),dados.nome(), dados.fkHospital(), dados.cpf());
         return ResponseEntity.status(201).body(repository.save(usuario));
         }
         if(dados.role() == UserRole.ENFERMEIRA){
-            var ENFERMEIRA = new Enfermeira(dados.email(), encripitando,dados.role(),dados.nome(),dados.cpf());
+            var ENFERMEIRA = new Enfermeira(dados.email(), encripitando,dados.role(),dados.nome(), dados.fkHospital(), dados.cpf());
             return ResponseEntity.status(201).body(repository.save(ENFERMEIRA));
         }
         if(dados.role() == UserRole.RECEPCAO){
-            var recepcao = new Recepcao(dados.email(), encripitando,dados.role(),dados.nome(),dados.cpf());
+            var recepcao = new Recepcao(dados.email(), encripitando,dados.role(),dados.nome(), dados.fkHospital(), dados.cpf());
             return ResponseEntity.status(201).body(repository.save(recepcao));
         }
 
@@ -116,14 +113,24 @@ public class UsuarioController {
         return ResponseEntity.status(200).body(repository.findAll());
     }
     @GetMapping("/detalhes/{id}")
-    public ResponseEntity<DadosUserDTO> detalhesUser(@PathVariable Integer id){
+    public ResponseEntity<Object> detalhesUser(@PathVariable Integer id){
         Integer quantidadeDoacao = repository.quantidadeDoacao(id);
-        RecuperaDetalhesUsuario usuario = repository.findByDetalhesUser(id);
-        LocalDate apenasData = usuario.getNascimento();
-        String dataFormatada = apenasData.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        System.out.println(repository.findByDetalhesUser(id));
-        DadosUserDTO user = new DadosUserDTO(usuario.getQuantidade(),usuario.getTipo(),usuario.getNome(),usuario.getCpf(),quantidadeDoacao,usuario.getSexo(),dataFormatada,usuario.getPeso(),usuario.getAltura(),usuario.getEmail(),usuario.getApto(),usuario.getCep(),usuario.getNumeroCasa());
-        return ResponseEntity.status(200).body(user);
+        if (quantidadeDoacao != 0) {
+            RecuperaDetalhesUsuario usuario = repository.findByDetalhesUser(id);
+            LocalDate apenasData = usuario.getNascimento();
+            String dataFormatada = apenasData.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+            DadosUserDTO user = new DadosUserDTO(usuario.getQuantidade(),usuario.getTipo(),usuario.getNome(),usuario.getCpf(),quantidadeDoacao,usuario.getSexo(),dataFormatada,usuario.getPeso(),usuario.getAltura(),usuario.getEmail(),usuario.getApto(),usuario.getCep(),usuario.getNumeroCasa());
+            return ResponseEntity.status(200).body(user);
+        }
+        else{
+            RecuperaDetalhesUsuarioSemDoacao usuario = repository.findByDetalhesUserSemDoacao(id);
+            LocalDate apenasData = usuario.getNascimento();
+            String dataFormatada = apenasData.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+            DadosUserDTO user = new DadosUserDTO(0.0,"B+",usuario.getNome(),usuario.getCpf(),0,usuario.getSexo(),dataFormatada,usuario.getPeso(),usuario.getAltura(),usuario.getEmail(),false,usuario.getCep(),usuario.getNumeroCasa());
+            return ResponseEntity.status(200).body(user);
+        }
+
+
     }
     @PutMapping("/detalhesUser/{id}")
     public ResponseEntity atualizarInfoUser(@PathVariable Long id , @RequestBody String dados){

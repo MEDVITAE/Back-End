@@ -28,4 +28,7 @@ public interface AgendaRepository extends JpaRepository<Agenda,Long> {
     List<RecuperaNomeHospital> hospital(Long id);
     @Query(value ="select  agenda.*  from hospital join agenda on id_hospital = fk_hospital where fk_usuario = :id" ,nativeQuery = true)
     List<Agenda> agenda(Long id);
+
+    @Query(value = "select agenda.* from agenda join hospital on id_hospital = fk_  Hospital where fk_Hospital = :id ",nativeQuery = true)
+    List<Agenda> listaAgendamentos(int id);
 }

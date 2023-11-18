@@ -15,6 +15,7 @@ public record RecordUsuario(
         String senha,
         UserRole role,
         String cpf,
+        int fkHospital,
         @OneToMany
         @JoinColumn
         Caracteristicas fkCaracteristicas

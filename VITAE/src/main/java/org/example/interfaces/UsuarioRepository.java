@@ -16,7 +16,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario,Long> {
    List<Usuario> findByName(String nome);
     @Query(value = "select c.*,usuario.*,doacao.*,endereco.cep,endereco.numero as numeroCasa from endereco join usuario on endereco.fk_usuario = id_usuario  join caracteristicas as c on c.fk_usuario = id_usuario join agenda on agenda.fk_usuario = id_usuario join doacao on id_agenda = fk_agenda where id_usuario =?1 limit 1",nativeQuery = true)
     RecuperaDetalhesUsuario findByDetalhesUser(Integer id);
-
+    @Query(value = "select c.*,usuario.*,endereco.cep,endereco.numero as numeroCasa from endereco join usuario on endereco.fk_usuario = id_usuario  join caracteristicas as c on c.fk_usuario = id_usuario where id_usuario =?1 limit 1;",nativeQuery = true)
+    RecuperaDetalhesUsuarioSemDoacao findByDetalhesUserSemDoacao(Integer id);
     @Query(value = "select count(id_usuario) as quantidade_doacao from usuario join agenda on fk_usuario = id_usuario join doacao on id_agenda = fk_agenda where id_usuario = ?1",nativeQuery = true)
     int quantidadeDoacao( Integer id);
     @Transactional

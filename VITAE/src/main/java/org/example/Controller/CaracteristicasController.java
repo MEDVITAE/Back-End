@@ -30,7 +30,10 @@ public class CaracteristicasController {
     @PostMapping
     @PreAuthorize(" hasRole('PACIENTE') || hasRole('RECEPCAO') ")
     public ResponseEntity cadastrar(@RequestBody RecordCaracteristicas dados) {
-        return ResponseEntity.status(201).body(repository.save(new Caracteristicas(dados)));
+
+        return ResponseEntity.status(201).body(
+                repository.save(new Caracteristicas(dados))
+        );
     }
 
     @PutMapping("{id}")

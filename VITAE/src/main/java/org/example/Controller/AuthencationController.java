@@ -34,7 +34,7 @@ public class AuthencationController {
         var auth = this.autencador.authenticate(usuarioEmaileSenha);
         var token = tokenService.gerarToken((Usuario) auth.getPrincipal());
         Usuario usuario =  repository.findByEmail(dados.email());
-        var tokenRetorno = new Login(token, usuario.getIdUsuario());
+        var tokenRetorno = new Login(token, usuario.getIdUsuario(),usuario.getRole(),usuario.getFkHospital());
 
         return ResponseEntity.ok(tokenRetorno);
     }

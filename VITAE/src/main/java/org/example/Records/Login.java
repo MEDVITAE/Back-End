@@ -1,4 +1,6 @@
 package org.example.Records;
 
-public record Login(String token,Long Id) {
+import org.example.Enums.Usuarios.UserRole;
+
+public record Login(String token, Long Id, UserRole userRole,int fkHospital) {
 }

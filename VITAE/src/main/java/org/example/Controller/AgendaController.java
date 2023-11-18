@@ -66,6 +66,16 @@ public class AgendaController {
         return ResponseEntity.status(200).body(infoAgendamentosHospitaisDTO);
     }
 
+    @GetMapping("/listaAgendamentos/{id}")
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') ")
+    public ResponseEntity<List<Agenda>> listarAgendamentosHosp(@PathVariable int id) {
+
+
+        List<Agenda> agendamentos = repository.listaAgendamentos(id);
+
+
+        return ResponseEntity.status(200).body(agendamentos);
+    }
 
     @PostMapping
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE')")

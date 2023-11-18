@@ -1,5 +1,6 @@
 package org.example.Domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -23,20 +24,22 @@ public class Recepcao extends Usuario{
 
 
     public Recepcao(RecordUsuario dados) {
-        super(dados.email(), dados.senha(), dados.role(),dados.cpf());
+        super(dados.email(), dados.senha(), dados.role(),dados.cpf(),dados.fkHospital());
         this.nome = nome;
+
+    }
+    public Recepcao(String nome,int fkHospital) {
+        this.nome =  nome;
+
     }
     public Recepcao(String nome) {
         this.nome =  nome;
     }
 
-    public Recepcao(String email, String senha, UserRole role, String nome,String cpf) {
-        super(email, senha, role,cpf);
+    public Recepcao(String email, String senha, UserRole role, String cpf, int fkHospital, String nome) {
+        super(email, senha, role, cpf, fkHospital);
         this.nome = nome;
     }
-
-
-
 
     @Override
     public void Atualiza(AtualizarUser dados) {
