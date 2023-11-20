@@ -36,7 +36,7 @@ public class Recepcao extends Usuario{
         this.nome =  nome;
     }
 
-    public Recepcao(String email, String senha, UserRole role, String cpf, int fkHospital, String nome) {
+    public Recepcao(String email, String senha, UserRole role,  String nome,int fkHospital, String cpf) {
         super(email, senha, role, cpf, fkHospital);
         this.nome = nome;
     }
