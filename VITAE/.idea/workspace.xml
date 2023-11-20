@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8b105c72-4bb6-4aa5-aca3-0e9471db4dca" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Paciente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Recepcao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Recepcao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/EnderecoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/EnderecoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/HospitalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/HospitalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/infra/Security/SecurityConfigutations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/infra/Security/SecurityConfigutations.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
