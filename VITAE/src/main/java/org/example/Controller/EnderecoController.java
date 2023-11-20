@@ -35,7 +35,7 @@ public class EnderecoController {
     public ResponseEntity<List<Endereco>> listar() {
         return ResponseEntity.status(200).body(repository.findAll());
     }
-    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
+
     @PostMapping
     public ResponseEntity cadastar(@RequestBody RecordEndereco dados) {
         return ResponseEntity.status(200).body(repository.save(new Endereco(dados)));

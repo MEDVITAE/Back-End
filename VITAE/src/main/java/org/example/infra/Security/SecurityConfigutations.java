@@ -37,6 +37,8 @@ public class SecurityConfigutations {
                                 .requestMatchers(HttpMethod.GET, "/Doacao/Rank").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/Doacao/Posicao/**").permitAll()
                                 .requestMatchers(HttpMethod.POST,"/auth/login").permitAll()
+                                .requestMatchers(HttpMethod.POST,"/hospital").permitAll()
+                                .requestMatchers(HttpMethod.POST,"/Endereco").permitAll()
                                 .requestMatchers(HttpMethod.GET,"/usuario/detalhes/**").permitAll()
                                 .requestMatchers(HttpMethod.PUT,"/usuario/detalhesUser/**").permitAll()
                                 .requestMatchers(HttpMethod.PUT,"/Caracteristicas/detalhes/**").permitAll()
