@@ -47,7 +47,7 @@ public class HospitalController {
     @Transactional
 
     public ResponseEntity cadastrar(@RequestBody RecordHospital dados){
-
+        System.out.println(dados);
         return ResponseEntity.status(201).body(repository.save(new Hospital(dados)));
     }
     @PostMapping("/register/lista")
