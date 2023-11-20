@@ -113,7 +113,6 @@ public class AgendaController {
     @PreAuthorize("hasRole('RECEPCAO')")
     public ResponseEntity<Void> getUsuariosEAgendas() {
         serviceRepository.recuperarValores();
-
         return ResponseEntity.status(200).build();
     }
     @GetMapping("/buscarDoadorAgendado/{hora}")

@@ -24,4 +24,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario,Long> {
     @Modifying
     @Query(value = "update usuario set email = :email where id_usuario = :id",nativeQuery = true)
     void AtualizaEmail(String email,Long id);
+    @Query(value = "select c.*,usuario.*,endereco.cep,endereco.numero as numeroCasa, a.id_agenda as idAgenda from endereco join usuario on endereco.fk_usuario = id_usuario  join caracteristicas as c on c.fk_usuario = id_usuario join agenda as a on a.id_agenda = a.fk_usuario  where cpf = ?1 limit 1;",nativeQuery = true)
+    RecuperaDetalhesUsuarioDoaco findByCpf(String cpf);
 }

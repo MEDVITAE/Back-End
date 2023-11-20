@@ -56,8 +56,8 @@ public class Enfermeira extends Usuario{
     }
 
     @Override
-    public void Atualiza(AtualizarUser dados) {
-        super.Atualiza(dados);
+    public void Atualiza(AtualizarUser dados,String senha) {
+        super.Atualiza(dados,senha);
         this.nome =  dados.nome();
 
     }

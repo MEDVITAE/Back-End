@@ -27,6 +27,10 @@ public class Paciente extends Usuario{
         this.nome = nome;
     }
 
+    public Paciente(Long id, String nome,String email, String senha, UserRole role, String cpf, int fkHospital) {
+        super(id,email, senha, role, cpf, fkHospital);
+        this.nome = nome;
+    }
     public Paciente(String email, String senha, UserRole role, String cpf, int fkHospital, String nome) {
         super(email, senha, role, cpf, fkHospital);
         this.nome = nome;
@@ -38,14 +42,16 @@ public class Paciente extends Usuario{
 
     }
 
+
+
     @Override
     public List<Usuario> buscarRelatorio(String nome) {
         return null;
     }
 
     @Override
-    public void Atualiza(AtualizarUser dados) {
-        super.Atualiza(dados);
+    public void Atualiza(AtualizarUser dados,String senha) {
+        super.Atualiza(dados,senha);
         this.nome =  dados.nome();
     }
 }

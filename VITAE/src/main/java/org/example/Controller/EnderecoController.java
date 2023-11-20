@@ -2,11 +2,9 @@ package org.example.Controller;
 
 import jakarta.transaction.Transactional;
 import org.example.DTO.CepsDTo;
-import org.example.Domain.Endereco;
-import org.example.Domain.Enfermeira;
-import org.example.Domain.Paciente;
-import org.example.Domain.Recepcao;
+import org.example.Domain.*;
 import org.example.Enums.Usuarios.UserRole;
+import org.example.Records.Caracteristicas.AtualizaCaracteresPesoAltura;
 import org.example.Records.Endereco.AtualizaEndereco;
 import org.example.Records.Endereco.AtualizaEnderecoNumeroCep;
 import org.example.Records.Endereco.RecordEndereco;
@@ -54,10 +52,11 @@ public class EnderecoController {
         return  ResponseEntity.status(200).body(lista);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
     @Transactional
     public ResponseEntity AtualizaEndereco(@PathVariable Long id,@RequestBody AtualizaEndereco dados) {
+
         var endereco = repository.getReferenceById(id);
         endereco.AtualizaEndereco(dados);
         return ResponseEntity.status(200).body((new AtualizaEndereco(endereco)));

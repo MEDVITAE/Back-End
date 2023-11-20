@@ -49,6 +49,7 @@ public class CaracteristicasController {
     public ResponseEntity<Caracteristicas> AtualizaEnderecoDetalhes(@PathVariable Long id, @RequestBody AtualizaCaracteresPesoAltura dados) {
         Caracteristicas caracteristicas1 = repository.findByFkUsuario(id);
 
+
         var caracteristicas = repository.getReferenceById(caracteristicas1.getIdCaracteristicas());
         caracteristicas.AtualizaCaracteresPesoAltura(dados);
         new AtualizaCaracteresPesoAltura(caracteristicas);

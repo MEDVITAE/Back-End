@@ -50,15 +50,24 @@ public  abstract class Usuario implements UserDetails {
         this.FkHospital = fkHospital;
 
     }
+    public Usuario( long id,String email, String senha, UserRole role, String cpf, int fkHospital) {
+        this.idUsuario = id;
+        this.email = email;
+        this.senha = senha;
+        this.role = role;
+        this.cpf = cpf;
+        this.FkHospital = fkHospital;
+    }
 
     protected Usuario() {
     }
 
 
 
-    public void Atualiza(AtualizarUser atualizarDados) {
+    public void Atualiza(AtualizarUser atualizarDados,String senhaCrip) {
         this.email = atualizarDados.email();
-        this.senha = atualizarDados.senha();
+        this.senha = senhaCrip;
+
     }
     public abstract List<Usuario> buscarRelatorio(String nome);
 

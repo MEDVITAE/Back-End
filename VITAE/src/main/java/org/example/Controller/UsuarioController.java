@@ -3,6 +3,7 @@ package org.example.Controller;
 import jakarta.transaction.Transactional;
 
 import org.example.DTO.DadosUserDTO;
+import org.example.DTO.RecuperaValoresConfirmaDoacaoDTO;
 import org.example.Domain.Enfermeira;
 import org.example.Domain.Paciente;
 import org.example.Domain.Recepcao;
@@ -12,6 +13,7 @@ import org.example.Records.Usuario.AtualizarUser;
 import org.example.Records.Usuario.RecordUsuario;
 import org.example.infra.Security.TokenService;
 import org.example.interfaces.RecuperaDetalhesUsuario;
+import org.example.interfaces.RecuperaDetalhesUsuarioDoaco;
 import org.example.interfaces.RecuperaDetalhesUsuarioSemDoacao;
 import org.example.interfaces.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +43,7 @@ public class UsuarioController {
     @PostMapping("/register/lista")
     public ResponseEntity CadastroLista(@RequestBody List<RecordUsuario> dados){
         List<Object> lista= new ArrayList<>();
-        System.out.println("ssssssss");
+
         for(int i = 0;i < dados.size();i++) {
 
             String encripitando = new BCryptPasswordEncoder().encode((dados.get(i).senha()));
@@ -61,8 +63,6 @@ public class UsuarioController {
                 if (role == UserRole.ENFERMEIRA) {
                     var ENFERMEIRA = new Enfermeira(email, encripitando, role, nome,fkHospital, cpf);
                     lista.add(repository.save(ENFERMEIRA));
-
-
 
                 }
                 if (role == UserRole.RECEPCAO) {
@@ -132,6 +132,18 @@ public class UsuarioController {
 
 
     }
+    @GetMapping("/detalhesDoacao/{cpf}")
+    public ResponseEntity<Object> detalhesDoacao(@PathVariable String cpf){
+
+            RecuperaDetalhesUsuarioDoaco usuario = repository.findByCpf(cpf);
+            LocalDate apenasData = usuario.getNascimento();
+            String dataFormatada = apenasData.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+            RecuperaValoresConfirmaDoacaoDTO user = new RecuperaValoresConfirmaDoacaoDTO(usuario.getIdAgenda(), usuario.getTipo(),usuario.getNome(),usuario.getCpf(),usuario.getSexo(),dataFormatada,usuario.getEmail(),usuario.getCep(),usuario.getNumeroCasa());
+            return ResponseEntity.status(200).body(user);
+
+
+
+    }
     @PutMapping("/detalhesUser/{id}")
     public ResponseEntity atualizarInfoUser(@PathVariable Long id , @RequestBody String dados){
         if (repository.existsById(id)){
@@ -144,26 +156,17 @@ public class UsuarioController {
 
 
     @PutMapping("/{id}")
-   @Transactional
    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
     public  ResponseEntity atualizarUser(@RequestBody AtualizarUser dados, @PathVariable long id){
 
-       if(dados.role() == UserRole.PACIENTE){
+      try{
            var usuario = repository.getReferenceById(id);
-           var paciente = new Paciente(dados.nome());
-           return ResponseEntity.ok(new AtualizarUser(usuario,paciente));
-       }
-       if(dados.role() == UserRole.ENFERMEIRA){
-           var usuario = repository.getReferenceById(id);
-           var ENFERMEIRA = new Enfermeira(dados.nome());
-           return ResponseEntity.ok(new AtualizarUser(usuario,ENFERMEIRA));
-       }
-       if(dados.role() == UserRole.RECEPCAO){
-           var usuario = repository.getReferenceById(id);
-           var recepcao = new Recepcao(dados.nome());
-           return ResponseEntity.ok(new AtualizarUser(usuario,recepcao));
-       }
-       return ResponseEntity.badRequest().build();
+           usuario.Atualiza(dados, usuario.getSenha());
+           return ResponseEntity.ok(repository.save(usuario));
+      }catch (Exception e) {
+
+          return ResponseEntity.badRequest().build();
+      }
     }
     @DeleteMapping("/{id}")
     @Transactional
