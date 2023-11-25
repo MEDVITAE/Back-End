@@ -68,11 +68,8 @@ public class Caracteristicas {
     public void AtualizaCaracteristicas(AtualizaCaracteristicas dados) {
         this.peso = dados.peso();
         this.altura = dados.altura();
-        this.tatto = dados.tatto();
         this.sexo = dados.sexo();
         this.nascimento = dados.nascimento();
-        this.apto = dados.apto();
-        this.fkUsuario = dados.fkUsuario();
     }
     public void AtualizaCaracteresPesoAltura(AtualizaCaracteresPesoAltura atualizar){
         this.peso = atualizar.peso();

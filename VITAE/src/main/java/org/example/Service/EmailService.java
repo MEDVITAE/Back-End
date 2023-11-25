@@ -35,7 +35,6 @@ public class EmailService {
 
             emailModel.setStatusEmail(EnumEmail.SENT);
         } catch (MailException e){
-            System.out.println("erro é " + e);
             emailModel.setStatusEmail(EnumEmail.ERROR);
         }
     }

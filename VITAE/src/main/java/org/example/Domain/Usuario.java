@@ -35,7 +35,7 @@ public  abstract class Usuario implements UserDetails {
     @Enumerated(EnumType.STRING)
     private UserRole role;
     private String cpf;
-    private int FkHospital;
+    private Integer FkHospital;
     @ManyToOne
     @JoinColumn(name = "fkHospitals")
     private Hospital hospital;
@@ -49,6 +49,13 @@ public  abstract class Usuario implements UserDetails {
         this.cpf = cpf;
         this.FkHospital = fkHospital;
 
+    }
+    public Usuario( String email, String senha, UserRole role, String cpf) {
+
+        this.email = email;
+        this.senha = senha;
+        this.role = role;
+        this.cpf = cpf;
     }
     public Usuario( long id,String email, String senha, UserRole role, String cpf, int fkHospital) {
         this.idUsuario = id;

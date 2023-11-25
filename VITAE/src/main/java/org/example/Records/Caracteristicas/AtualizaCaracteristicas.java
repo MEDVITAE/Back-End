@@ -15,5 +15,6 @@ public record AtualizaCaracteristicas (
         boolean apto,
         Long fkUsuario
 ) {
-    public AtualizaCaracteristicas(Caracteristicas caracteristicas) {this(caracteristicas.getPeso(), caracteristicas.getAltura(), caracteristicas.isTatto(), caracteristicas.getSexo(), caracteristicas.getNascimento(), caracteristicas.isApto(), caracteristicas.getFkUsuario());}
+    public AtualizaCaracteristicas(Caracteristicas caracteristicas)
+    {this(caracteristicas.getPeso(), caracteristicas.getAltura(), caracteristicas.isTatto(), caracteristicas.getSexo(), caracteristicas.getNascimento(), caracteristicas.isApto(), caracteristicas.getFkUsuario());}
 }

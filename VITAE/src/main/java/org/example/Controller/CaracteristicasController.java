@@ -36,20 +36,20 @@ public class CaracteristicasController {
         );
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     @Transactional
     @PreAuthorize(" hasRole('PACIENTE') || hasRole('RECEPCAO') ")
     public ResponseEntity atualizar(@RequestBody AtualizaCaracteristicas dados, @PathVariable Long id) {
-            var caracteristicas = repository.getReferenceById(id);
-            caracteristicas.AtualizaCaracteristicas(dados);
-            return ResponseEntity.ok(new AtualizaCaracteristicas(caracteristicas));
+        Caracteristicas caracteristicas1 = repository.findByFkUsuario(id);
+        var caracteristicas = repository.getReferenceById(caracteristicas1.getIdCaracteristicas());
+        caracteristicas.AtualizaCaracteristicas(dados);
+        return ResponseEntity.ok( repository.save(caracteristicas));
+
     }
     @PutMapping("/detalhes/{id}")
     @Transactional
     public ResponseEntity<Caracteristicas> AtualizaEnderecoDetalhes(@PathVariable Long id, @RequestBody AtualizaCaracteresPesoAltura dados) {
         Caracteristicas caracteristicas1 = repository.findByFkUsuario(id);
-
-
         var caracteristicas = repository.getReferenceById(caracteristicas1.getIdCaracteristicas());
         caracteristicas.AtualizaCaracteresPesoAltura(dados);
         new AtualizaCaracteresPesoAltura(caracteristicas);
