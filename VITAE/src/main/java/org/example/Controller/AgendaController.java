@@ -3,6 +3,7 @@ package org.example.Controller;
 import jakarta.transaction.Transactional;
 import org.example.DTO.AgendamentoDTO;
 import org.example.DTO.InfoAgendamentosHospitaisDTO;
+import org.example.DTO.ListaAgendamentoDTO;
 import org.example.DTO.UsuarioDTO;
 import org.example.Domain.Agenda;
 import org.example.Domain.Hospital;
@@ -10,10 +11,7 @@ import org.example.Domain.Usuario;
 import org.example.Records.Agenda.AtualizaAgenda;
 import org.example.Records.Agenda.RecordAgenda;
 import org.example.Service.ArquivoCsvService;
-import org.example.interfaces.AgendaRepository;
-import org.example.interfaces.RecuperaNomeHospital;
-import org.example.interfaces.RecuperaValoresAgendamentosDoacoes;
-import org.example.interfaces.RecuperarValoresAgendamento;
+import org.example.interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
@@ -68,13 +66,17 @@ public class AgendaController {
 
     @GetMapping("/listaAgendamentos/{id}")
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') ")
-    public ResponseEntity<List<Agenda>> listarAgendamentosHosp(@PathVariable int id) {
+    public ResponseEntity<List<ListaAgendamentoDTO>> listarAgendamentosHosp(@PathVariable int id) {
 
-
-        List<Agenda> agendamentos = repository.listaAgendamentos(id);
-
-
-        return ResponseEntity.status(200).body(agendamentos);
+        List<RecuperaListaAgendamentos> agendamentos = repository.listaAgendamentos(id);
+        List<ListaAgendamentoDTO>lista = new ArrayList<>();
+        for(RecuperaListaAgendamentos a : agendamentos){
+            LocalDateTime dateTime = LocalDateTime.parse(a.getHorario(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S"));
+            String dataFormatada = dateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+            String horaFormatada = dateTime.format(DateTimeFormatter.ofPattern("HH:mm"));
+            lista.add(new ListaAgendamentoDTO(a.getId_Agenda(),a.getFk_Usuario(),a.getFk_Hospital(), a.getCpf(), a.getNome(),dataFormatada,horaFormatada));
+        }
+        return ResponseEntity.status(200).body(lista);
     }
 
     @PostMapping

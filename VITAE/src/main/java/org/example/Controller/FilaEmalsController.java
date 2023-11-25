@@ -49,31 +49,19 @@ public class FilaEmalsController {
         while (!usuarios.isEmpty()) {
             List<CompletableFuture<Void>> tasks = new ArrayList<>();
 
-            if(usuarios.size() < 10){
+
                 for (int i = 0; i < usuarios.size(); i++) {
                     Usuario usuario = usuarios.get(i);
                     String usuarioEmail = usuario.getEmail();
                     enviados.enfileirar(usuarioEmail);
                     System.out.println(usuarioEmail);
-                    CompletableFuture<Void> task = CompletableFuture.runAsync(() -> envioEmail(requestEmail, enviados, quantidadeEmail), scheduler);
-                    tasks.add(task);
-                    usuarios.remove(usuarios.get(i));
 
+                    usuarios.remove(usuarios.get(i));
+                    System.out.println(enviados + "menor que 10");
                 }
-            }else {
-                for (int i = 0; i < 10;  i++) {
-                    Usuario usuario = usuarios.get(i);
-                    String usuarioEmail = usuario.getEmail();
-                    enviados.enfileirar(usuarioEmail);
-                    System.out.println(usuarioEmail);
-                    int indice = i;
-                    CompletableFuture<Void> task = CompletableFuture.runAsync(() -> envioEmail(requestEmail, enviados, quantidadeEmail), scheduler);
-                    tasks.add(task);
-                    usuarios.remove(usuarios.get(i));
-                    usuarios.remove(usuarios.get(i));
+                envioEmail(requestEmail,enviados,quantidadeEmail);
 
-                }
-            }
+
 
             CompletableFuture<Void> allOf = CompletableFuture.allOf(tasks.toArray(new CompletableFuture[0]));
 
@@ -92,6 +80,7 @@ public class FilaEmalsController {
     }
 
     private void envioEmail(emailDto requestEmail, FilaObj<String> usuarios, AtomicInteger quantidadeEmail) {
+
         for (int i = 0; i < usuarios.tamanho(); i++) {
             try {
                 Email email = new Email();
@@ -99,7 +88,6 @@ public class FilaEmalsController {
                 usuarios.desenfileirar();
                 BeanUtils.copyProperties(requestEmail, email);
                 emailService.sendEmail(email);
-                System.out.println(email.getStatusEmail());
                 emailRepository.save(email);
                 quantidadeEmail.incrementAndGet();
             } catch (Exception e) {

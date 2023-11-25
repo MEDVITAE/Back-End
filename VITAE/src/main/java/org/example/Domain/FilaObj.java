@@ -46,4 +46,12 @@ public class FilaObj<T> {
     public boolean estaVazia() {
         return fila.isEmpty();
     }
+
+    @Override
+    public String toString() {
+        return "FilaObj{" +
+                "fila=" + fila +
+                ", tamanho=" + tamanho +
+                '}';
+    }
 }

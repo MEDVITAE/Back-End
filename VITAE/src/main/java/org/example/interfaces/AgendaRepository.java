@@ -1,9 +1,6 @@
 package org.example.interfaces;
 
-import org.example.DTO.AgendamentoDTO;
 import org.example.Domain.Agenda;
-import org.example.Domain.Hospital;
-import org.example.Domain.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -29,6 +26,6 @@ public interface AgendaRepository extends JpaRepository<Agenda,Long> {
     @Query(value ="select  agenda.*  from hospital join agenda on id_hospital = fk_hospital where fk_usuario = :id" ,nativeQuery = true)
     List<Agenda> agenda(Long id);
 
-    @Query(value = "select agenda.* from agenda join hospital on id_hospital = fk_  Hospital where fk_Hospital = :id ",nativeQuery = true)
-    List<Agenda> listaAgendamentos(int id);
+    @Query(value = "select agenda.*,u.cpf,u.nome from usuario as u join agenda on fk_usuario = u.id_usuario join hospital on id_hospital = agenda.fk_Hospital where agenda.fk_Hospital = :id order by horario ",nativeQuery = true)
+    List<RecuperaListaAgendamentos> listaAgendamentos(int id);
 }
