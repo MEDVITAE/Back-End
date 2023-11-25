@@ -14,4 +14,6 @@ public interface RecuperaDetalhesUsuarioSemDoacao {
 
     String getCep();
     int getNumeroCasa();
+    boolean getApto();
+
 }

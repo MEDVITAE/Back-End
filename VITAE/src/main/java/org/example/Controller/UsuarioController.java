@@ -135,7 +135,7 @@ public class UsuarioController {
             RecuperaDetalhesUsuarioSemDoacao usuario = repository.findByDetalhesUserSemDoacao(id);
             LocalDate apenasData = usuario.getNascimento();
             String dataFormatada = apenasData.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-            DadosUserDTO user = new DadosUserDTO(0.0, "B+", usuario.getNome(), usuario.getCpf(), 0, usuario.getSexo(), dataFormatada, usuario.getPeso(), usuario.getAltura(), usuario.getEmail(), false, usuario.getCep(), usuario.getNumeroCasa());
+            DadosUserDTO user = new DadosUserDTO(0.0, "", usuario.getNome(), usuario.getCpf(), 0, usuario.getSexo(), dataFormatada, usuario.getPeso(), usuario.getAltura(), usuario.getEmail(), usuario.getApto(), usuario.getCep(), usuario.getNumeroCasa());
             return ResponseEntity.status(200).body(user);
         }
 
