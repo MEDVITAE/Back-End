@@ -1,5 +1,6 @@
 package org.example.Controller;
 
+import org.example.Domain.Enfermeira;
 import org.example.Domain.Usuario;
 import org.example.Enums.Usuarios.UserRole;
 import org.example.Records.Autorizacao.recordAuth;
@@ -34,7 +35,8 @@ public class AuthencationController {
         var auth = this.autencador.authenticate(usuarioEmaileSenha);
         var token = tokenService.gerarToken((Usuario) auth.getPrincipal());
         Usuario usuario =  repository.findByEmail(dados.email());
-        var tokenRetorno = new Login(token, usuario.getIdUsuario(),usuario.getRole(),usuario.getFkHospital());
+        String nome  = repository.findByNome(usuario.getIdUsuario());
+        var tokenRetorno = new Login(token, usuario.getIdUsuario(),usuario.getRole(),nome,usuario.getFkHospital());
 
         return ResponseEntity.ok(tokenRetorno);
     }

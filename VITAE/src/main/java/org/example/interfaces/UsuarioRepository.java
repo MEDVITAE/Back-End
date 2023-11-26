@@ -2,6 +2,7 @@ package org.example.interfaces;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.transaction.Transactional;
+import org.example.Domain.Enfermeira;
 import org.example.Domain.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -26,4 +27,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario,Long> {
     void AtualizaEmail(String email,Long id);
     @Query(value = "select c.*,usuario.*,endereco.cep,endereco.numero as numeroCasa, a.id_agenda as idAgenda from endereco join usuario on endereco.fk_usuario = id_usuario  join caracteristicas as c on c.fk_usuario = id_usuario join agenda as a on usuario.id_usuario = a.fk_usuario  where cpf = ?1 limit 1;",nativeQuery = true)
     RecuperaDetalhesUsuarioDoaco findByCpf(String cpf);
+    @Query(value = "select  usuario.nome  from usuario where id_usuario = ?1",nativeQuery = true)
+    String findByNome(Long id);
 }

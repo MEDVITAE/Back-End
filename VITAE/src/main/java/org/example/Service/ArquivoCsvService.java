@@ -2,15 +2,14 @@ package org.example.Service;
 
 import org.example.DTO.AgendamentoDTO;
 import org.example.DTO.UsuarioDTO;
+import org.example.Domain.ArquivoBanco;
 import org.example.Domain.Paciente;
 import org.example.Domain.Usuario;
 import org.example.Records.Usuario.RecordUsuario;
-import org.example.interfaces.AgendaRepository;
-import org.example.interfaces.RecuperaValoresUsuario;
-import org.example.interfaces.RecuperarValoresAgendamento;
-import org.example.interfaces.UsuarioRepository;
+import org.example.interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,11 +17,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Formatter;
-import java.util.FormatterClosedException;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.zip.DataFormatException;
 
 @Service
 public class ArquivoCsvService {
@@ -31,6 +28,10 @@ public class ArquivoCsvService {
     @Autowired
     private AgendaRepository serviceRepository;
     private AgendaRepository repository;
+    @Autowired
+    private ImagensRepository imagensRepository;
+    @Autowired
+    private  UsuarioRepository usuarioRepository;
 
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
@@ -185,6 +186,26 @@ public int doadorAgendamento(LocalTime horarioBuscado) {
         UsuarioDTO paciente = new UsuarioDTO( usuario.getNome(), usuario.getEmail(),usuario.getCpf());
         System.out.println(paciente);
         return paciente;
+    }
+    public String uploadImagem(MultipartFile file,Long id) throws IOException {
+        Optional<Usuario> usuario = usuarioRepository.findById(id);
+
+
+        ArquivoBanco imagem =    imagensRepository.save(ArquivoBanco
+                .builder()
+                .nome(file.getOriginalFilename())
+                .foto(Utils.compressaoImagem(file.getBytes())).fkUsuario(id).build());
+
+        if(imagem!=null){
+            return "upload com sucesso : "+ file.getOriginalFilename();
+        }
+        return  null;
+    }
+    public byte[] dowloadImagem(Long id) throws DataFormatException {
+
+        Optional<ArquivoBanco>  foto = imagensRepository.findByFkUsuario(id);
+       byte[] imagem =  Utils.descomprimirImagem(foto.get().getFoto());
+       return imagem;
     }
 
 }

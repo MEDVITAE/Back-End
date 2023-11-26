@@ -39,6 +39,8 @@ public  abstract class Usuario implements UserDetails {
     @ManyToOne
     @JoinColumn(name = "fkHospitals")
     private Hospital hospital;
+    @OneToMany(mappedBy = "fkUsuario", cascade = CascadeType.ALL)
+    private List<ArquivoBanco> imagens = new ArrayList<>();
 
 
     public Usuario( String email, String senha, UserRole role, String cpf, int fkHospital) {
