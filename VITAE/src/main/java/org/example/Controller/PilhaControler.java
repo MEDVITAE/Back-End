@@ -27,11 +27,8 @@ public class PilhaControler {
         }
         var ultima = pilhaNegativos.trazerUltimo();
         pilhaNegativos.desempilhar();
-
             System.out.println(pilhaNegativos.getPilha());
-
         return ResponseEntity.status(200).body(ultima);
-
 
     }
 

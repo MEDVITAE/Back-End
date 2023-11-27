@@ -1,18 +1,19 @@
 package org.example.Service;
 
 import org.example.DTO.AgendamentoDTO;
+import org.example.DTO.FuncionarioHospitalDTO;
 import org.example.DTO.UsuarioDTO;
 import org.example.Domain.ArquivoBanco;
-import org.example.Domain.Paciente;
+import org.example.Domain.Recepcao;
 import org.example.Domain.Usuario;
-import org.example.Records.Usuario.RecordUsuario;
+import org.example.Enums.Usuarios.UserRole;
 import org.example.interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -42,7 +43,7 @@ public class ArquivoCsvService {
         List<RecuperarValoresAgendamento> resultados = serviceRepository.buscaDoadorAgendado();
 
         List<AgendamentoDTO> agendamentos = resultados.stream()
-                .map(result -> new AgendamentoDTO(result.getNome(), result.getHorario(), result.getCpf()))
+                .map(funcionario -> new AgendamentoDTO(funcionario.getNome(), funcionario.getHorario(), funcionario.getCpf()))
                 .collect(Collectors.toList());
 
         for (int i = 0; i < agendamentos.size() - 1; i++) {
@@ -58,7 +59,7 @@ public class ArquivoCsvService {
         }
 
         gravaArquivoCsv(agendamentos,"Agendamentos csv Do Dia ");
-        gravaArquivoTxt(agendamentos,"Agendamentos txt Do Dia ");
+
     }
 
     public static void gravaArquivoCsv(List<AgendamentoDTO> lista, String nomeArq) {
@@ -79,9 +80,9 @@ public class ArquivoCsvService {
 
         try {
             for (int i = 0; i < lista.size(); i++) {
-                AgendamentoDTO agendamento = lista.get(i);
-                String horarioFormatado = agendamento.getHorario().format(formatter); // Formatar a data e hora
-                saida.format("%s;%s;%s\n",agendamento.getCpf(), agendamento.getNome(), horarioFormatado);
+                AgendamentoDTO funcionario = lista.get(i);
+                String horarioFormatado = funcionario.getHorario().format(formatter); // Formatar a data e hora
+                saida.format("%s;%s;%s\n",funcionario.getCpf(), funcionario.getNome(), horarioFormatado);
             }
         } catch (FormatterClosedException erro) {
             System.out.println("Erro ao gravar o arquivo");
@@ -100,29 +101,69 @@ public class ArquivoCsvService {
             }
         }
     }
+    public static void gravaRegistro(String registro, String nomeArq) {
+        BufferedWriter saida = null;
 
-    public static void gravaArquivoTxt(List<AgendamentoDTO> lista, String nomeArq) {
-        FileWriter arq = null;
-        Formatter saida = null;
-        Boolean deuRuim = false;
-
-        nomeArq += LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) + ".txt";
-
+        // Abre o arquivo
         try {
-            arq = new FileWriter(nomeArq);
-            saida = new Formatter(arq);
-            saida.format("%s;%s;%s\n", "CPF:", "NOME:", "HORÁRIO:");
-        } catch (IOException erro) {
-            System.out.println("Erro ao abrir o arquivo");
-            System.exit(1);
+            saida = new BufferedWriter(new FileWriter(nomeArq,true));
+        }
+        catch (IOException erro) {
+            System.out.println("Erro na abertura do arquivo");
         }
 
+        // Grava o registro e fecha o arquivo
         try {
-            for (int i = 0; i < lista.size(); i++) {
-                AgendamentoDTO agendamento = lista.get(i);
-                String horarioFormatado = agendamento.getHorario().format(formatter); // Formatar a data e hora
-                saida.format("%s;%s;%s\n",agendamento.getCpf(), agendamento.getNome(), horarioFormatado);
-            }
+            saida.append(registro + "\n");
+            saida.close();
+        }
+        catch (IOException erro) {
+            System.out.println("Erro ao gravar o arquivo");
+            erro.printStackTrace();
+        }
+    }
+
+    public  void gravaArquivoTxt(List<FuncionarioHospitalDTO> lista, String nomeArq) {
+
+        int contaRegDados = 0;
+
+        nomeArq += ".txt";
+        String header = "00";
+        header += "cadastrarFuncionario";
+        header += LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+        header += "01";
+        gravaRegistro(header, nomeArq);
+        for(FuncionarioHospitalDTO f : lista){
+            String corpo = "01";
+            corpo += String.format("%-39s", f.getEmail());
+            corpo += String.format("%-15s", f.getSenha());
+            corpo += String.format("%-10s", f.getRole());
+            corpo += String.format("%-31s", f.getNome());
+            corpo += String.format("%-25s", f.getCpf());
+            corpo += String.format("%-24s", f.getFkHospital());
+            corpo += String.format("%-35s", f.getEmailHospital());
+            corpo += String.format("%-30s", f.getNomeHospital());
+            corpo += String.format("%-31s", f.getSenhaHospital());
+            corpo += String.format("%-25s", f.getCnpj());
+            gravaRegistro(corpo, nomeArq);
+            contaRegDados++;
+
+        }
+        String trailer = "02";
+        trailer += String.format("%010d", contaRegDados);
+        gravaRegistro(trailer, nomeArq);
+
+
+
+   /*     try {
+          *//*  for (int i = 0; i < lista.size(); i++) {
+                FuncionarioHospitalDTO funcionario = lista.get(i);
+
+                saida.format("%-39s;%-15s;%-10s;%-31s;%-25s;%-24s;%-35s;%-30s;%-31s;%-25s\n",
+                        funcionario.getEmail(), funcionario.getSenha(), funcionario.getRole(),funcionario.getNome(),
+                        funcionario.getCpf(),funcionario.getFkHospital(), funcionario.getEmailHospital(),
+                        funcionario.getNomeHospital(), funcionario.getSenhaHospital(), funcionario.getCnpj());
+            }*//*
         } catch (FormatterClosedException erro) {
             System.out.println("Erro ao gravar o arquivo");
             erro.printStackTrace();
@@ -138,7 +179,120 @@ public class ArquivoCsvService {
             if (deuRuim) {
                 System.exit(1);
             }
+        }*/
+
+    }
+ public List<Usuario> importarTxt(String nomeArq){
+        {
+
+            BufferedReader entrada = null;
+            String tipoRegistro;
+            String registro, tipoArquivo,dataHora,versaoLayout;
+            String  nome,email,senha,cpf;
+            UserRole role;
+            String nomeHospital,emailHospital,senhaHospital,cnpj;
+
+            Integer fk;
+
+            int contaRegDadosLidos = 0;
+            int qtdRegDadosGravados;
+
+
+            List<Usuario> listaLida = new ArrayList();
+
+
+            try {
+                entrada = new BufferedReader(new FileReader(nomeArq));
+            }
+            catch (IOException erro) {
+                System.out.println("Erro na abertura do arquivo");
+            }
+
+            // Leitura do arquivo
+            try {
+                registro = entrada.readLine();
+
+                while (registro != null) {
+                    // obtem os 2 primeiros caracteres do registro lido
+                    // 1o argumento do substring eh o indice do que se quer obter, iniciando de zero
+                    // 2o argumento do substring eh o indice final do que se deseja, MAIS UM
+                    // 012345
+                    // 00NOTA
+                    tipoRegistro = registro.substring(0,2);
+
+                    if (tipoRegistro.equals("00")) {
+                        System.out.println("É um registro de header");
+                        System.out.println("Tipo de arquivo: " + registro.substring(2,25));
+                        System.out.println("Data e hora de geração do arquivo: " + registro.substring(30,49));
+                        System.out.println("Versão do documento de layout: " + registro.substring(49,51));
+
+                    }
+                    else if (tipoRegistro.equals("02")) {
+                        System.out.println("É um registro de trailer");
+                        qtdRegDadosGravados= Integer.parseInt(registro.substring(0,2));
+                        if (contaRegDadosLidos == qtdRegDadosGravados) {
+                            System.out.println("Quantidade de reg de dados gravados é compatível com " +
+                                    "a quantidade de reg de dados lidos");
+                        }
+                        else {
+                            System.out.println("Quantidade de reg de dados gravados é incompatível com " +
+                                    "a quantidade de reg de dados lidos");
+                        }
+                    }
+                    else if (tipoRegistro.equals("01")) {
+                        System.out.println("É um registro de corpo");
+                        nome= registro.substring(2,24).trim();
+                        email= registro.substring(24,64).trim();
+                        senha=registro.substring(64,79).trim();
+                        role= UserRole.valueOf(registro.substring(79,89).trim());
+                        cpf = registro.substring(89,100).trim();
+                        fk = Integer.parseInt(registro.substring(100,102));
+                        nomeHospital = registro.substring(102,124).trim();
+                        emailHospital = registro.substring(124,164).trim();
+                        cnpj = registro.substring(164,178).trim();
+
+
+                        // Incrementa o contador de reg de dados lidos
+                        contaRegDadosLidos++;
+                        String encripitando = new BCryptPasswordEncoder().encode(senha);
+
+                        // Cria um objeto Aluno com os dados lidos do registro
+                        Recepcao usuario = new Recepcao(email, encripitando, role, nome, fk, cpf);
+
+                        // Se estivesse conectado a um banco de dados
+                        // repository.save(a);
+
+                        // Como não estamos conectados a um BD, vamos adicionar
+                        // na listaLida
+                        listaLida.add(usuario);
+                    }
+                    else {
+                        System.out.println("Registro inválido");
+                    }
+
+                    // Le o proximo registro
+                    registro = entrada.readLine();
+
+                }  // fim do while
+                // Fecha o arquivo
+                entrada.close();
+            } // fim do try
+            catch (IOException erro) {
+                System.out.println("Erro ao ler o arquivo");
+                erro.printStackTrace();
+            }
+
+            // Exibe a lista lida
+            System.out.println("\nLista lida do arquivo:");
+            for (Usuario a : listaLida) {
+                System.out.println(a);
+            }
+
+            // Aqui tb seria possível salvar a lista no BD
+            // repository.saveAll(listaLida);
+            return listaLida;
         }
+
     }
 
 public int doadorAgendamento(LocalTime horarioBuscado) {

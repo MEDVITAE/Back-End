@@ -2,33 +2,34 @@ package org.example.Controller;
 
 import jakarta.transaction.Transactional;
 
-import jakarta.validation.Valid;
 import org.example.DTO.DadosUserDTO;
+import org.example.DTO.FuncionarioHospitalDTO;
 import org.example.DTO.RecuperaValoresConfirmaDoacaoDTO;
 import org.example.Domain.*;
 import org.example.Enums.Usuarios.UserRole;
 import org.example.Records.Usuario.AtualizarUser;
 import org.example.Records.Usuario.RecordUsuario;
-import org.example.Records.emailDto;
+import org.example.Service.ArquivoCsvService;
 import org.example.Service.EmailService;
 import org.example.infra.Security.TokenService;
 import org.example.interfaces.*;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 @RequestMapping("/usuario")
 @RestController
@@ -46,6 +47,8 @@ public class UsuarioController {
     EmailService emailService;
     @Autowired
     EmailRepository emailRepository;
+    @Autowired
+    ArquivoCsvService service;
 
 
     @PostMapping("/register/lista")
@@ -197,8 +200,59 @@ public class UsuarioController {
 
     }
 
+    @GetMapping("/arquivoTxT")
+    public ResponseEntity<List<FuncionarioHospitalDTO>> recuperaFuncionarioHospital() {
+        List<RecuperaValoresFuncionarioHospital> funcionarios = repository.findByFuncionario();
+
+        if (!funcionarios.isEmpty()) {
+            List<FuncionarioHospitalDTO> funcionariosHospitais = funcionarios.stream()
+                    .map(result -> new FuncionarioHospitalDTO(
+                            result.getEmail(), result.getSenha(), result.getRole(), result.getNome(),
+                            result.getFk_Hospital(), result.getCpf(), result.getEmailHospital(),
+                            result.getNomeHospital(), result.getSenhaHospital(), result.getCnpj()))
+                    .collect(Collectors.toList());
+            service.gravaArquivoTxt(funcionariosHospitais, "arquivo teste");
+
+            return ResponseEntity.ok().body(funcionariosHospitais);
+        }
+
+        return ResponseEntity.badRequest().build();
+
+    }
+
+    @PostMapping("/ler")
+    public ResponseEntity<List<Usuario>> handleFileUpload(@RequestParam MultipartFile file, @RequestParam String nome) throws IOException {
+
+
+        // Crie o diretório se não existir
+        File uploadDir = new File(UPLOAD_DIR);
+        if (!uploadDir.exists()) {
+            uploadDir.mkdirs();
+        }
+        // Obtenha o nome do arquivo original
+        String originalFileName = nome;
+
+        // Construa o caminho completo para o arquivo
+        Path filePath = Paths.get(UPLOAD_DIR, originalFileName);
+
+        // Salve o arquivo no diretório
+        file.transferTo(filePath.toFile());
+
+        List<Usuario> teste = service.importarTxt(nome);
+        for (Usuario a : teste) {
+            repository.save(a);
+        }
+        return ResponseEntity.status(200).body(teste);
+
+
+    }
+
+    private static final String UPLOAD_DIR = "C:\\Users\\jvtenorio\\OneDrive - Stefanini\\Desktop\\sprint_api\\Back-End\\VITAE"; // Caminho do diretório onde os arquivos serão salvos
+
 
 }
+
+
 
 
 

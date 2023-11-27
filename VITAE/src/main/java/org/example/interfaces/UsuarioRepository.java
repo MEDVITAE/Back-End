@@ -29,4 +29,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario,Long> {
     RecuperaDetalhesUsuarioDoaco findByCpf(String cpf);
     @Query(value = "select  usuario.nome  from usuario where id_usuario = ?1",nativeQuery = true)
     String findByNome(Long id);
+
+ @Query(value = "select usuario.*,h.nome as nomeHospital,h.senha as senhaHospital,h.email as emailHospital,h.cnpj   from usuario join hospital h on h.id_hospital = fk_hospital where role = 'ENFERMEIRA' or 'RECEPCAO';",nativeQuery = true)
+ List<RecuperaValoresFuncionarioHospital> findByFuncionario();
 }
