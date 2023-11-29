@@ -71,12 +71,12 @@ public class AgendaController {
         List<RecuperaListaAgendamentos> agendamentos = repository.listaAgendamentos(id);
         List<ListaAgendamentoDTO>lista = new ArrayList<>();
         for(RecuperaListaAgendamentos a : agendamentos){
-            LocalDateTime dateTime = LocalDateTime.parse(a.getHorario(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS"));
+            LocalDateTime dateTime = LocalDateTime.parse(a.getHorario(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S"));
 
             // Formatar a data e hora
             String dataFormatada = dateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
             String horaFormatada = dateTime.format(DateTimeFormatter.ofPattern("HH:mm"));
-            lista.add(new ListaAgendamentoDTO(a.getId_Agenda(),a.getFk_Usuario(),a.getFk_Hospital(), a.getCpf(), a.getNome()));
+            lista.add(new ListaAgendamentoDTO(a.getId_Agenda(),a.getFk_Usuario(),a.getFk_Hospital(), a.getCpf(), a.getNome(),dataFormatada,horaFormatada));
         }
         return ResponseEntity.status(200).body(lista);
     }
