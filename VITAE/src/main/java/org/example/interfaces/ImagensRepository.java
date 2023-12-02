@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface ImagensRepository extends JpaRepository<ArquivoBanco,Integer> {
     Optional<ArquivoBanco>findByNome(String nome);
 
-    Optional<ArquivoBanco> findByFkUsuario(Long id);
+    Optional<ArquivoBanco> findTopByFkUsuarioOrderByIdDesc(Long id);
 }

@@ -12,8 +12,7 @@ import java.util.zip.DataFormatException;
 
 @RestController
 @RequestMapping("/arquivos")
-@CrossOrigin(origins = "http:localhost:3000/",allowedHeaders = "*")
-
+@CrossOrigin(origins = "http://localhost:3000/",allowedHeaders = "*")
 public class ArquivoController {
     @Autowired
     private ArquivoCsvService service;
@@ -27,6 +26,11 @@ public class ArquivoController {
     public ResponseEntity<byte[]> dowload(@PathVariable Long id) throws DataFormatException {
 
         byte[] imagem = service.dowloadImagem(id);
+
+        if(imagem == null){
+            return ResponseEntity.noContent().build();
+        }
+
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imagem);
     }
 
