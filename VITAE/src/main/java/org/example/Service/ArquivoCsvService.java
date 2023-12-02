@@ -357,7 +357,7 @@ public int doadorAgendamento(LocalTime horarioBuscado) {
     }
     public byte[] dowloadImagem(Long id) throws DataFormatException {
 
-        Optional<ArquivoBanco>  foto = imagensRepository.findByFkUsuario(id);
+        Optional<ArquivoBanco>  foto = imagensRepository.findTopByFkUsuarioOrderByIdDesc(id);
        byte[] imagem =  Utils.descomprimirImagem(foto.get().getFoto());
        return imagem;
     }
