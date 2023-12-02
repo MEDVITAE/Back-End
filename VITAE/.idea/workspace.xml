@@ -12,6 +12,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/interfaces/RecuperaNomeHospital.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/interfaces/RecuperaNomeHospital.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/AgendaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/AgendaRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/RecuperaNomeHospital.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/RecuperaNomeHospital.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/interfaces/RecuperaNomeHospital.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/interfaces/RecuperaNomeHospital.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
