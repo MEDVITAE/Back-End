@@ -21,7 +21,7 @@ public interface AgendaRepository extends JpaRepository<Agenda,Long> {
 
     @Query(value = "select count(*) as doacao,sum(quantidade) as quantidade from agenda join doacao on fk_agenda = id_agenda where agenda.fk_usuario = :id",nativeQuery = true)
     RecuperaValoresAgendamentosDoacoes quantidadeDoacao(Long id);
-    @Query(value ="select  hospital.nome,hospital.id_hospital as id,endereco.logradouro as rua from hospital join agenda on id_hospital = agenda.fk_hospital join endereco on endereco.fk_hospital = id_hospital where agenda.fk_usuario = :id" ,nativeQuery = true)
+    @Query(value ="select  hospital.nome,hospital.id_hospital as id,endereco.logradouro,endereco.rua from hospital join agenda on id_hospital = agenda.fk_hospital join endereco on endereco.fk_hospital = id_hospital where agenda.fk_usuario = :id" ,nativeQuery = true)
     List<RecuperaNomeHospital> hospital(Long id);
     @Query(value ="select  agenda.*  from hospital join agenda on id_hospital = fk_hospital where fk_usuario = :id" ,nativeQuery = true)
     List<Agenda> agenda(Long id);
