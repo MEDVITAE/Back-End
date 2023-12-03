@@ -7,6 +7,7 @@ import org.example.DTO.ListaAgendamentoDTO;
 import org.example.DTO.UsuarioDTO;
 import org.example.Domain.Agenda;
 import org.example.Domain.Hospital;
+import org.example.Domain.PilhaObg;
 import org.example.Domain.Usuario;
 import org.example.Records.Agenda.AtualizaAgenda;
 import org.example.Records.Agenda.RecordAgenda;
@@ -36,6 +37,7 @@ public class AgendaController {
     @Autowired
     private AgendaRepository repository;
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    PilhaObg<ListaAgendamentoDTO> pilhaNegativos = new PilhaObg<>();
 
 
     @Autowired
@@ -76,15 +78,32 @@ public class AgendaController {
             // Formatar a data e hora
             String dataFormatada = dateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
             String horaFormatada = dateTime.format(DateTimeFormatter.ofPattern("HH:mm"));
-            lista.add(new ListaAgendamentoDTO(a.getId_Agenda(),a.getFk_Usuario(),a.getFk_Hospital(), a.getCpf(), a.getNome(),dataFormatada,horaFormatada));
+            ListaAgendamentoDTO listaAgendamentoDTO = new ListaAgendamentoDTO(a.getId_Agenda(),a.getFk_Usuario(),a.getFk_Hospital(), a.getCpf(), a.getNome(),dataFormatada,horaFormatada);
+            pilhaNegativos.empilhar(listaAgendamentoDTO);
+
+        }
+        for(int i = 0; i < pilhaNegativos.getPilha().size(); i++){
+            lista.add(retirar());
         }
         return ResponseEntity.status(200).body(lista);
+    }
+
+    public ListaAgendamentoDTO retirar(){
+        if(pilhaNegativos.estaVazia()){
+            System.out.println("lista esta vazia");
+        }
+        var ultima = pilhaNegativos.trazerUltimo();
+        pilhaNegativos.desempilhar();
+        System.out.println(pilhaNegativos.getPilha());
+        return ultima;
+
     }
 
     @PostMapping
     @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE')")
     public ResponseEntity cadastrar(@RequestBody RecordAgenda dados) {
         int hospital = dados.fkHospital();
+        System.out.println(dados.Horario());
         LocalDateTime hora = dados.Horario();
         Optional<Agenda> horarioExiste = repository.findByHorarioExiste(hospital,hora);
         if(horarioExiste.isPresent()){

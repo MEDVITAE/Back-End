@@ -30,7 +30,6 @@ public class ArquivoController {
         if(imagem == null){
             return ResponseEntity.noContent().build();
         }
-
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imagem);
     }
 

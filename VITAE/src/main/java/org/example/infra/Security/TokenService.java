@@ -50,6 +50,6 @@ public class TokenService {
         if(situacao != 1){
             return LocalDateTime.now().plusSeconds(1).toInstant(ZoneOffset.of("-03:00"));
         }
-        return LocalDateTime.now().plusMinutes(30).toInstant(ZoneOffset.of("-03:00"));
+        return LocalDateTime.now().plusMinutes(50).toInstant(ZoneOffset.of("-03:00"));
     }
 }
