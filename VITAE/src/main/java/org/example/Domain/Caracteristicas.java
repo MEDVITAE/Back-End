@@ -49,12 +49,6 @@ public class Caracteristicas {
     private Usuario usuario;
 
 
-
-
-
-
-
-
     public Caracteristicas(RecordCaracteristicas dados) {
         this.peso = dados.peso();
         this.altura = dados.altura();
@@ -78,4 +72,75 @@ public class Caracteristicas {
 
     }
 
+    public Long getIdCaracteristicas() {
+        return idCaracteristicas;
+    }
+
+    public void setIdCaracteristicas(Long idCaracteristicas) {
+        this.idCaracteristicas = idCaracteristicas;
+    }
+
+    public String getPeso() {
+        return peso;
+    }
+
+    public void setPeso(String peso) {
+        this.peso = peso;
+    }
+
+    public String getAltura() {
+        return altura;
+    }
+
+    public void setAltura(String altura) {
+        this.altura = altura;
+    }
+
+    public boolean isTatto() {
+        return tatto;
+    }
+
+    public void setTatto(boolean tatto) {
+        this.tatto = tatto;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public LocalDate getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(LocalDate nascimento) {
+        this.nascimento = nascimento;
+    }
+
+    public boolean isApto() {
+        return apto;
+    }
+
+    public void setApto(boolean apto) {
+        this.apto = apto;
+    }
+
+    public Long getFkUsuario() {
+        return fkUsuario;
+    }
+
+    public void setFkUsuario(Long fkUsuario) {
+        this.fkUsuario = fkUsuario;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }

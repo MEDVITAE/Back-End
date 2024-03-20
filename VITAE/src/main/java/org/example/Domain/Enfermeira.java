@@ -22,8 +22,6 @@ public class Enfermeira extends Usuario{
     private String nome;
 
 
-
-
     public Enfermeira(RecordUsuario dados) {
         super(dados.email(), dados.senha(), dados.role(), dados.cpf(), dados.fkHospital());
         this.nome = nome;

@@ -5,14 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b105c72-4bb6-4aa5-aca3-0e9471db4dca" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/VITAE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VITAE.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/ArquivoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/ArquivoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Service/ArquivoCsvService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Service/ArquivoCsvService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/interfaces/AgendaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/interfaces/AgendaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/interfaces/RecuperaNomeHospital.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/interfaces/RecuperaNomeHospital.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/AgendaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/AgendaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/RecuperaNomeHospital.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/RecuperaNomeHospital.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/interfaces/RecuperaNomeHospital.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/interfaces/RecuperaNomeHospital.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Agenda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Agenda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Caracteristicas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Caracteristicas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Doacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Doacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Enfermeira.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Enfermeira.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Hospital.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Hospital.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Domain/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Domain/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Records/emailDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Records/emailDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +39,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2WqMRKyZpqGJg9FDdjHxToAfI8W" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -42,17 +50,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jvtenorio/Downloads/Alura/loja2/2122-jpa-modelos-complexos-buscas-projeto_inicial&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "arquivoUsuario",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/jvtenorio/Desktop/central/central-de-recebiveis-api",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.example.DTO" />
@@ -73,22 +84,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -100,6 +107,17 @@
       <updated>1697455652388</updated>
     </task>
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.security:spring-security-core" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.validation:jakarta.validation-api" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="java:org.hibernate.validator:hibernate-validator" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
+    <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="RECENT_FILTERS">
