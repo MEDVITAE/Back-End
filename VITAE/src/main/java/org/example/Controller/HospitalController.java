@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/hospital")
-@CrossOrigin(origins = "http://",allowedHeaders = "*")
+@CrossOrigin(origins = "*",allowedHeaders = "*")
 public class HospitalController {
 
     @Autowired
