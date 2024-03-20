@@ -23,7 +23,6 @@ import java.util.List;
 @EqualsAndHashCode(of= "id")
 public  abstract class Usuario implements UserDetails {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 

@@ -32,7 +32,8 @@ public class ArquivoBanco {
     @JsonIgnore
     private Usuario Usuario;
 
-
+    public ArquivoBanco() {
+    }
 
     public Integer getId() {
         return id;

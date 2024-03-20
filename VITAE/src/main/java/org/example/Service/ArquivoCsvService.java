@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -343,7 +342,6 @@ public int doadorAgendamento(LocalTime horarioBuscado) {
     }
     public String uploadImagem(MultipartFile file,Long id) throws IOException {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
-
 
         ArquivoBanco imagem =    imagensRepository.save(ArquivoBanco
                 .builder()
