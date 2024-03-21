@@ -343,7 +343,8 @@ public int doadorAgendamento(LocalTime horarioBuscado) {
     public String uploadImagem(MultipartFile file,Long id) throws IOException {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
 
-        ArquivoBanco imagem =    imagensRepository.save(ArquivoBanco
+        ArquivoBanco imagem =
+                imagensRepository.save(ArquivoBanco
                 .builder()
                 .nome(file.getOriginalFilename())
                 .foto(Utils.compressaoImagem(file.getBytes())).fkUsuario(id).build());
