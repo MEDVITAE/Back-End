@@ -18,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Caracteristicas")
+@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
 public class CaracteristicasController {
     @Autowired
     private CaractetisticasRepository repository;
@@ -47,6 +48,7 @@ public class CaracteristicasController {
     }
     @PutMapping("/detalhes/{id}")
     @Transactional
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
     public ResponseEntity<Caracteristicas> AtualizaEnderecoDetalhes(@PathVariable Long id, @RequestBody AtualizaCaracteresPesoAltura dados) {
         Caracteristicas caracteristicas1 = repository.findByFkUsuario(id);
         var caracteristicas = repository.getReferenceById(caracteristicas1.getIdCaracteristicas());
@@ -58,7 +60,7 @@ public class CaracteristicasController {
 
     @DeleteMapping("{id}")
     @Transactional
-    @PreAuthorize("hasRole('PACIENTE') || hasRole('RECEPCAO')")
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
     public ResponseEntity deletar(@PathVariable Long id) {
         repository.deleteById(id);
         return ResponseEntity.status(204).build();
