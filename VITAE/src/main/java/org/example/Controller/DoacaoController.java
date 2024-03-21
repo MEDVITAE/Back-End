@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 @RestController
-@CrossOrigin(origins = "http://54.167.33.183:3000/", allowedHeaders = "*")
 @RequestMapping("/Doacao")
 
 public class DoacaoController {

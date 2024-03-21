@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = "http://54.167.33.183:3000/", allowedHeaders = "*")
+
 public class AuthencationController {
 
     @Autowired
@@ -37,7 +37,6 @@ public class AuthencationController {
         Usuario usuario =  repository.findByEmail(dados.email());
         String nome  = repository.findByNome(usuario.getIdUsuario());
         var tokenRetorno = new Login(token, usuario.getIdUsuario(),usuario.getRole(),nome,usuario.getFkHospital());
-
         return ResponseEntity.ok(tokenRetorno);
     }
 }

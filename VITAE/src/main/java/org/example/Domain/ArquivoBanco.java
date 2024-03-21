@@ -11,8 +11,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "imagens")
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-@Builder
 public class ArquivoBanco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,12 +30,14 @@ public class ArquivoBanco {
     private Usuario usuario;
 
     // Construtor vazio para o Builder interno
-    private ArquivoBanco() {}
+    public ArquivoBanco() {}
+
 
     // Método para criar uma instância do Builder
     public static Builder builder() {
         return new Builder();
     }
+
 
     // Classe Builder interna
     public static class Builder {
