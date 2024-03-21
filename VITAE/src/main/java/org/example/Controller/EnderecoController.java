@@ -24,7 +24,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Endereco")
-@CrossOrigin(origins = "http://localhost:3000/",allowedHeaders = "*")
+@CrossOrigin(origins = "${allowed.origins}", allowedHeaders = "*")
 public class EnderecoController {
     @Autowired
     private EnderecoRepository repository;
