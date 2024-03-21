@@ -4,8 +4,10 @@ package org.example.Configuration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
+@EnableWebMvc
 public class Cors implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
@@ -16,7 +18,7 @@ public class Cors implements WebMvcConfigurer {
                 HttpMethod.DELETE.name(),
                 HttpMethod.OPTIONS.name(),
                 HttpMethod.HEAD.name(),
-                HttpMethod.TRACE.name());// Isso permite CORS para todos os caminhos
+                HttpMethod.TRACE.name()).allowedHeaders("*").allowedOrigins("*").allowCredentials(false);// Isso permite CORS para todos os caminhos
 
     }
 }
