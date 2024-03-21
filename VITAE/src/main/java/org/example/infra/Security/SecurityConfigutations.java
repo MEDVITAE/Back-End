@@ -30,8 +30,21 @@ public class SecurityConfigutations {
                 .authorizeHttpRequests(
                         authorize  -> authorize
                                 .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
-                                .requestMatchers("/Agenda/dowload/**").permitAll()
-                                .requestMatchers(HttpMethod.GET,"/Agenda/buscarDoadorAgendado/**").permitAll()
+                                .requestMatchers("/usuario/**").permitAll()
+                                .requestMatchers("/Caracteristicas/**").permitAll()
+                                .requestMatchers("/Agenda/**").permitAll()
+                                .requestMatchers("/hospital/**").permitAll()
+                                .requestMatchers("/auth/**").permitAll()
+                                .requestMatchers("/Doacao/**").permitAll()
+                                .requestMatchers("/email/**").permitAll()
+                                .requestMatchers("/Endereco/**").permitAll()
+                                .requestMatchers("/fila/**").permitAll()
+                                .requestMatchers("/fila/**").permitAll()
+                                .requestMatchers("/fila/**").permitAll()
+                                .requestMatchers("/fila/**").permitAll()
+                                .requestMatchers("/pilha/**").permitAll().
+                            /*    .requestMatchers("/Agenda/dowload/**").permitAll().*/
+                    /*            .requestMatchers(HttpMethod.GET,"/Agenda/buscarDoadorAgendado/**").permitAll()
                                 .requestMatchers(HttpMethod.GET,"/hospital/detalhes/**").permitAll()
                                 .requestMatchers(HttpMethod.GET,"/Endereco/mapa").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/Doacao/Rank").permitAll()
@@ -43,7 +56,7 @@ public class SecurityConfigutations {
                                 .requestMatchers(HttpMethod.PUT,"/Caracteristicas/detalhes/**").permitAll()
                                 .requestMatchers(HttpMethod.PUT,"/Endereco/detalhes/**").permitAll()
                                 .requestMatchers(HttpMethod.POST,"/usuario/register/lista").permitAll()
-                                .requestMatchers(HttpMethod.POST,"/usuario/register").permitAll().
+                                .requestMatchers(HttpMethod.POST,"/usuario/register").permitAll().*/
                         anyRequest().authenticated()
 
                 )
