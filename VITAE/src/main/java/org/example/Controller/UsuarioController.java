@@ -31,7 +31,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@RequestMapping("/usuario")
+@RequestMapping("/Api/usuario")
+@CrossOrigin(origins = "http://52.204.157.192:3000/",allowedHeaders = "*")
 @RestController
 public class UsuarioController {
     @Autowired

@@ -31,7 +31,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/Agenda")
+@RequestMapping("/Api/Agenda")
+@CrossOrigin(origins = "http://52.204.157.192:3000/",allowedHeaders = "*")
 
 public class AgendaController {
     @Autowired

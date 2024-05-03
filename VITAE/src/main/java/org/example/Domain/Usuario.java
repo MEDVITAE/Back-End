@@ -18,8 +18,6 @@ import java.util.List;
 
 @Table(name = "Usuario")
 @Entity(name = "Usuario")
-@Getter
-@Setter
 @EqualsAndHashCode(of= "id")
 public  abstract class Usuario implements UserDetails {
 
@@ -52,7 +50,72 @@ public  abstract class Usuario implements UserDetails {
         this.FkHospital = fkHospital;
 
     }
-    public Usuario( String email, String senha, UserRole role, String cpf) {
+
+    public Long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Integer getFkHospital() {
+        return FkHospital;
+    }
+
+    public void setFkHospital(Integer fkHospital) {
+        FkHospital = fkHospital;
+    }
+
+    public Hospital getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(Hospital hospital) {
+        this.hospital = hospital;
+    }
+
+    public List<ArquivoBanco> getImagens() {
+        return imagens;
+    }
+
+    public void setImagens(List<ArquivoBanco> imagens) {
+        this.imagens = imagens;
+    }
+
+    public Usuario(String email, String senha, UserRole role, String cpf) {
 
         this.email = email;
         this.senha = senha;

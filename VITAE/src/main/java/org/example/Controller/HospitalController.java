@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/hospital")
-@CrossOrigin(origins = "http://localhost:3000/",allowedHeaders = "*")
+@RequestMapping("/Api/hospital")
+@CrossOrigin(origins = "http://52.204.157.192:3000/",allowedHeaders = "*")
 public class HospitalController {
 
     @Autowired

@@ -13,17 +13,11 @@ import java.util.List;
 
 @Table(name = "ENFERMEIRA")
 @Entity(name = "ENFERMEIRA")
-@Getter
-@Setter
 @NoArgsConstructor
 
 public class Enfermeira extends Usuario{
 
     private String nome;
-
-
-
-
     public Enfermeira(RecordUsuario dados) {
         super(dados.email(), dados.senha(), dados.role(), dados.cpf(), dados.fkHospital());
         this.nome = nome;
@@ -60,5 +54,13 @@ public class Enfermeira extends Usuario{
         super.Atualiza(dados,senha);
         this.nome =  dados.nome();
 
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

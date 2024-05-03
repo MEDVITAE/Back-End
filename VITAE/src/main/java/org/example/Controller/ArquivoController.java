@@ -11,8 +11,8 @@ import java.io.*;
 import java.util.zip.DataFormatException;
 
 @RestController
-@RequestMapping("/arquivos")
-@CrossOrigin(origins = "http://localhost:3000/",allowedHeaders = "*")
+@RequestMapping("/Api/arquivos")
+@CrossOrigin(origins = "http://52.204.157.192:3000/",allowedHeaders = "*")
 public class ArquivoController {
     @Autowired
     private ArquivoCsvService service;

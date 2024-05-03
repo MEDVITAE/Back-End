@@ -15,8 +15,6 @@ import java.util.List;
 
 @Table(name = "Recepcao")
 @Entity(name = "Recepcao")
-@Getter
-@Setter
 @NoArgsConstructor
 public class Recepcao extends Usuario{
 
@@ -54,5 +52,11 @@ public class Recepcao extends Usuario{
         return null;
     }
 
+    public String getNome() {
+        return nome;
+    }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }

@@ -13,8 +13,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/email")
-@CrossOrigin(origins = "http://localhost:3000/",allowedHeaders = "*")
+@RequestMapping("/Api/email")
+@CrossOrigin(origins = "http://52.204.157.192:3000/",allowedHeaders = "*")
 public class EmailController {
     @Autowired
     EmailService emailService;

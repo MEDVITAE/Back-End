@@ -30,9 +30,7 @@ public class ArquivoBanco {
 
     @ManyToOne
     @JsonIgnore
-    private Usuario Usuario;
-
-
+    private Usuario usuario;
 
     public Integer getId() {
         return id;
@@ -58,5 +56,67 @@ public class ArquivoBanco {
         this.foto = foto;
     }
 
+    public Long getFkUsuario() {
+        return fkUsuario;
+    }
+
+    public void setFkUsuario(Long fkUsuario) {
+        this.fkUsuario = fkUsuario;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    public static class ArquivoBancoBuilder {
+        private Integer id;
+        private String nome;
+        private byte[] foto;
+        private Long fkUsuario;
+        private Usuario usuario;
+        public ArquivoBancoBuilder() {
+            // Preencha com valores padrão se necessário
+        }
+
+        public ArquivoBancoBuilder id(Integer id) {
+            this.id = id;
+            return this;
+        }
+
+        public ArquivoBancoBuilder nome(String nome) {
+            this.nome = nome;
+            return this;
+        }
+
+        public ArquivoBancoBuilder foto(byte[] foto) {
+            this.foto = foto;
+            return this;
+        }
+
+        public ArquivoBancoBuilder fkUsuario(Long fkUsuario) {
+            this.fkUsuario = fkUsuario;
+            return this;
+        }
+
+        public ArquivoBancoBuilder usuario(Usuario usuario) {
+            this.usuario = usuario;
+            return this;
+        }
+
+        public ArquivoBanco build() {
+            ArquivoBanco arquivoBanco = new ArquivoBanco();
+            arquivoBanco.setId(this.id);
+            arquivoBanco.setNome(this.nome);
+            arquivoBanco.setFoto(this.foto);
+            arquivoBanco.setFkUsuario(this.fkUsuario);
+            arquivoBanco.setUsuario(this.usuario);
+            return arquivoBanco;
+        }
+
+
+    }
 
 }

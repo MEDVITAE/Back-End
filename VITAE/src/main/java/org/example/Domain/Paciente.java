@@ -11,8 +11,6 @@ import java.util.List;
 
 @Table(name = "Paciente")
 @Entity(name = "Paciente")
-@Getter
-@Setter
 @NoArgsConstructor
 public class Paciente extends Usuario{
 
@@ -53,5 +51,21 @@ public class Paciente extends Usuario{
     public void Atualiza(AtualizarUser dados,String senha) {
         super.Atualiza(dados,senha);
         this.nome =  dados.nome();
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public List<Caracteristicas> getFkCaracteristicas() {
+        return fkCaracteristicas;
+    }
+
+    public void setFkCaracteristicas(List<Caracteristicas> fkCaracteristicas) {
+        this.fkCaracteristicas = fkCaracteristicas;
     }
 }
