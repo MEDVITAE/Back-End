@@ -13,7 +13,8 @@ public record AtualizarUser (
 
         UserRole role,
         String cpf,
-        int fkHospital
+        int fkHospital,
+        String senha
 
 
 )
