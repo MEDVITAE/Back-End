@@ -31,6 +31,7 @@ public class HospitalController {
         return ResponseEntity.status(200).body(repository.findAll());
     }
     @GetMapping("/detalhes/{id}")
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN')")
     public ResponseEntity<DestalhesHospDTO> detahesHosp(@PathVariable int id){
         var detalhes = repository.findByHospitalEndereco(id);
         DestalhesHospDTO hospDTO = new DestalhesHospDTO(detalhes.getNome(), detalhes.getCep(), detalhes.getRua(), detalhes.getNumero(), detalhes.getBairro());
@@ -45,12 +46,13 @@ public class HospitalController {
 
     @PostMapping
     @Transactional
-
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN')")
     public ResponseEntity cadastrar(@RequestBody RecordHospital dados){
         System.out.println(dados);
         return ResponseEntity.status(201).body(repository.save(new Hospital(dados)));
     }
     @PostMapping("/register/lista")
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN')")
     public ResponseEntity CadastroLista(@RequestBody List<RecordHospital> dados){
         List<Object> lista= new ArrayList<>();
         for(int i = 0;i < dados.size();i++) {
