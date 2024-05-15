@@ -343,15 +343,31 @@ public int doadorAgendamento(LocalTime horarioBuscado) {
     }
     public String uploadImagem(MultipartFile file,Long id) throws IOException {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
+        byte[] imagemCompressada = Utils.compressaoImagem(
+                file.getBytes());
+        String caminho = "C:\\Users\\jvtenorio\\teste.jpeg";
+        Boolean fotoValida = false;
 
-        ArquivoBanco.ArquivoBancoBuilder builder = new ArquivoBanco.ArquivoBancoBuilder();
-        ArquivoBanco imagem =    imagensRepository.save(builder
-                .nome(file.getOriginalFilename())
-                .foto(Utils.compressaoImagem(file.getBytes())).fkUsuario(id).build());
+        if (Utils.salvarArquivo(file, caminho) > 0) {
+            fotoValida = Utils.lerArquivo(caminho);
 
-        if(imagem!=null){
-            return "upload com sucesso : "+ file.getOriginalFilename();
+            if (fotoValida) {
+                ArquivoBanco imagem = imagensRepository.save(ArquivoBanco
+                        .builder()
+                        .nome(file.getOriginalFilename())
+                        .foto(imagemCompressada).
+                        fkUsuario(id).
+                        build());
+
+
+                if (imagem != null) {
+                    Utils.apagarArquivo(caminho);
+                    return "upload com sucesso : " + file.getOriginalFilename();
+                }
+
+            }
         }
+        Utils.apagarArquivo(caminho);
         return  null;
     }
     public byte[] dowloadImagem(Long id) throws DataFormatException {

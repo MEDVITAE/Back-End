@@ -12,28 +12,32 @@ import java.util.zip.DataFormatException;
 
 @RestController
 @RequestMapping("/Api/arquivos")
-@CrossOrigin(origins = "http://52.204.157.192:3000/",allowedHeaders = "*")
+@CrossOrigin(origins = "http://52.204.157.192:3000/", allowedHeaders = "*")
 public class ArquivoController {
     @Autowired
     private ArquivoCsvService service;
-    @PostMapping
-   public  ResponseEntity<?> upload(@RequestParam ("image") MultipartFile file,@RequestParam Long id) throws IOException{
 
-       String upload = service.uploadImagem(file,id);
-       return ResponseEntity.ok().body(upload);
-   }
+    @PostMapping
+    public ResponseEntity<?> upload(@RequestParam("image") MultipartFile file, @RequestParam Long id) throws IOException {
+
+        String upload = service.uploadImagem(file, id);
+        if (upload != null) {
+            return ResponseEntity.ok().body(upload);
+        }
+        return ResponseEntity.noContent().build();
+
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<byte[]> dowload(@PathVariable Long id) throws DataFormatException {
 
         byte[] imagem = service.dowloadImagem(id);
 
-        if(imagem == null){
+        if (imagem == null) {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imagem);
     }
-
-
 
 
 }
