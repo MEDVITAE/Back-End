@@ -61,7 +61,7 @@ public class Utils {
     public static Boolean lerArquivo(String caminho) {
         File imageFile = new File(caminho);
         Tesseract tess4j = new Tesseract();
-        tess4j.setDatapath("C:\\Users\\jvtenorio\\AppData\\Local\\Programs\\Tesseract-OCR\\tessdata");
+        tess4j.setDatapath("\\home\\ubuntu\\Tesseract-OCR\\tessdata");
         String textoTesseract = "";
         String palavrasDoc = palavras();
         try {
@@ -173,7 +173,7 @@ public class Utils {
             }
         } else {
             System.err.println("Arquivo nao surportado ");
-            return 1;
+            return 0;
         }
         return 0;
     }

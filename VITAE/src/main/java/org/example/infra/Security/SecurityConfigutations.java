@@ -38,6 +38,7 @@ public class SecurityConfigutations {
                                 .requestMatchers(HttpMethod.GET, "/Api/Doacao/Posicao/**").permitAll()
                                 .requestMatchers(HttpMethod.POST,"/Api/auth/login").permitAll()
                                 .requestMatchers(HttpMethod.GET,"/Api/usuario/detalhes/**").permitAll()
+                                .requestMatchers(HttpMethod.GET,"/Api/usuario/ler").permitAll()
                                 .requestMatchers(HttpMethod.GET,"/Api/usuario/arquivoTxT").permitAll()
                                 .requestMatchers(HttpMethod.PUT,"/Api/usuario/detalhesUser/**").permitAll()
                                 .requestMatchers(HttpMethod.PUT,"/Api/Caracteristicas/detalhes/**").permitAll()

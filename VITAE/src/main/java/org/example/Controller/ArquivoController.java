@@ -24,7 +24,7 @@ public class ArquivoController {
         if (upload != null) {
             return ResponseEntity.ok().body(upload);
         }
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().body("nao foi possivel ler a imagem");
 
     }
 

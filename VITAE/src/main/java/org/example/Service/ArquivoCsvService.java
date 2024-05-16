@@ -345,7 +345,7 @@ public int doadorAgendamento(LocalTime horarioBuscado) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
         byte[] imagemCompressada = Utils.compressaoImagem(
                 file.getBytes());
-        String caminho = "C:\\Users\\jvtenorio\\teste.jpeg";
+        String caminho = "\\home\\ubuntu\\teste.jpeg";
         Boolean fotoValida = false;
 
         if (Utils.salvarArquivo(file, caminho) > 0) {
@@ -367,7 +367,7 @@ public int doadorAgendamento(LocalTime horarioBuscado) {
 
             }
         }
-        Utils.apagarArquivo(caminho);
+
         return  null;
     }
     public byte[] dowloadImagem(Long id) throws DataFormatException {

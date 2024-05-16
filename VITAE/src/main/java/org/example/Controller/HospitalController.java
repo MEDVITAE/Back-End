@@ -31,7 +31,6 @@ public class HospitalController {
         return ResponseEntity.status(200).body(repository.findAll());
     }
     @GetMapping("/detalhes/{id}")
-    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN')")
     public ResponseEntity<DestalhesHospDTO> detahesHosp(@PathVariable int id){
         var detalhes = repository.findByHospitalEndereco(id);
         DestalhesHospDTO hospDTO = new DestalhesHospDTO(detalhes.getNome(), detalhes.getCep(), detalhes.getRua(), detalhes.getNumero(), detalhes.getBairro());

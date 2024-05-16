@@ -158,6 +158,7 @@
         }
 
         @PutMapping("/detalhesUser/{id}")
+        @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN') ")
         public ResponseEntity atualizarInfoUser(@PathVariable Long id, @RequestBody String dados) {
             if (repository.existsById(id)) {
                 System.out.println(dados);
@@ -246,7 +247,7 @@
 
         }
 
-        private static final String UPLOAD_DIR = "C:\\Users\\jvtenorio\\OneDrive - Stefanini\\Desktop\\sprint_api\\Back-End\\VITAE"; // Caminho do diretório onde os arquivos serão salvos
+        private static final String UPLOAD_DIR = "\\home\\ubuntu"; // Caminho do diretório onde os arquivos serão salvos
 
 
     }
