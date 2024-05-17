@@ -10,9 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 
 
-@RequestMapping(("/Api/pilha"))
 @RestController
-@CrossOrigin(origins = "http://52.204.157.192:3000/",allowedHeaders = "*")
+@RequestMapping(("/Api/pilha"))
 public class PilhaControler {
 
     PilhaObg<String> pilhaNegativos = new PilhaObg<>();

@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/Api/auth")
-@CrossOrigin(origins = "http://52.204.157.192:3000/",allowedHeaders = "*")
 public class AuthencationController {
 
     @Autowired

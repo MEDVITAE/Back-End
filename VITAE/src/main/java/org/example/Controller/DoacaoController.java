@@ -19,10 +19,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-@RestController
-@CrossOrigin(origins = "http://52.204.157.192:3000/",allowedHeaders = "*")
-@RequestMapping("/Api/Doacao")
 
+@RestController
+@RequestMapping("/Api/Doacao")
 public class DoacaoController {
     @Autowired
     private DoacaoRepository repository;

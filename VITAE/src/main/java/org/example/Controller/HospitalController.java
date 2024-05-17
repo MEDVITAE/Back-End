@@ -19,7 +19,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Api/hospital")
-@CrossOrigin(origins = "http://52.204.157.192:3000/",allowedHeaders = "*")
 public class HospitalController {
 
     @Autowired

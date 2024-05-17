@@ -23,9 +23,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.atomic.AtomicInteger;
-@RequestMapping("/Api/fila")
 @RestController
-@CrossOrigin(origins = "http://52.204.157.192:3000/",allowedHeaders = "*")
+@RequestMapping("/Api/fila")
 public class FilaEmalsController {
 
 

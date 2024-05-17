@@ -18,7 +18,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Api/Caracteristicas")
-@CrossOrigin(origins = "http://52.204.157.192:3000/",allowedHeaders = "*")
 public class CaracteristicasController {
     @Autowired
     private CaractetisticasRepository repository;

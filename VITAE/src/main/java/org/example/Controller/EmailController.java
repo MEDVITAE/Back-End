@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/Api/email")
-@CrossOrigin(origins = "http://52.204.157.192:3000/",allowedHeaders = "*")
 public class EmailController {
     @Autowired
     EmailService emailService;
