@@ -5,6 +5,7 @@ import jakarta.transaction.Transactional;
 import org.example.DTO.DadosUserDTO;
 import org.example.DTO.FuncionarioHospitalDTO;
 import org.example.DTO.RecuperaValoresConfirmaDoacaoDTO;
+import org.example.DTO.UsuarioPorTipoSangue;
 import org.example.Domain.*;
 import org.example.Enums.Usuarios.UserRole;
 import org.example.Records.Usuario.AtualizarUser;
@@ -50,6 +51,13 @@ public class UsuarioController {
     EmailRepository emailRepository;
     @Autowired
     ArquivoCsvService service;
+    @GetMapping("/tipoSangue/{tipoSangue}")
+    public ResponseEntity<List<UsuarioPorTipoSangue>> listarUsuarioPorTipoSanguineo(@PathVariable String tipoSangue){
+        List<RecuperaValoresUsuario> valoresUsuario = repository.findByUsuarioPorTipoSangue(tipoSangue);
+        List<UsuarioPorTipoSangue> listaUsuarios =  valoresUsuario.stream().map(usuario ->
+                new UsuarioPorTipoSangue(usuario.getNome(), usuario.getEmail())).toList();
+        return ResponseEntity.ok().body(listaUsuarios);
+    }
 
 
     @PostMapping("/register/lista")
@@ -90,6 +98,7 @@ public class UsuarioController {
 
         return ResponseEntity.status(200).body(lista);
     }
+
 
     @PostMapping("/register")
     public ResponseEntity Cadastro(@RequestBody RecordUsuario dados) {
@@ -147,7 +156,6 @@ public class UsuarioController {
 
     @GetMapping("/detalhesDoacao/{cpf}")
     public ResponseEntity<Object> detalhesDoacao(@PathVariable String cpf) {
-
         RecuperaDetalhesUsuarioDoaco usuario = repository.findByCpf(cpf);
         LocalDate apenasData = usuario.getNascimento();
         String dataFormatada = apenasData.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
