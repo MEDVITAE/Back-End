@@ -3,7 +3,9 @@ name: Exemplo
 on:
     pull_request:
         branches: 
+          - main
           - testePipeline
+          - linkTo
         types: [ opened, reopened ]
 
 jobs:
