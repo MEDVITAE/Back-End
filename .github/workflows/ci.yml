@@ -1,25 +1,27 @@
 name: Exemplo
 
 on:
-    pull_request:
-        branches: [ main ]
-        #   - main
-        #   - testePipeline
-        #   - linkTo
-        # types: [ opened, reopened ]
+  pull_request:
+    branches: 
+      - main
+      # Uncomment and add more branches if needed
+      # - testePipeline
+      # - linkTo
+    types: [opened, reopened]
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v4
+  build:
+    runs-on: ubuntu-latest
 
-            - name: Set up JDK 17
-              uses: actions/setup-java@v4
-              with:
-                distribution: 'temurin'
-                java-verson: '17'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-            - name: Build with Maven
-              run: mvn -B package -DskipTests
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build with Maven
+        run: mvn -B package -DskipTests
