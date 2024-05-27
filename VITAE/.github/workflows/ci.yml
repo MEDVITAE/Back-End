@@ -1,8 +1,10 @@
 name: Exemplo
 
 on:
-    push:
-        branches: [ testePipeline ]
+    pull_request:
+        branches: 
+          - testePipeline
+        types: [ opened, reopened ]
 
 jobs:
     build:
