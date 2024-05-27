@@ -2,7 +2,7 @@ name: Exemplo
 
 on:
     push:
-        branches: [linkTo]
+        branches: [testePipeline]
 
 jobs:
     build:
