@@ -1,0 +1,24 @@
+name: "Exemplo de CD"
+
+on:
+  push:
+  branches:
+  - main
+  - swagger
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Pull Docker image
+      run: docker pull maessio/exemplo-actions:latest
+
+      - name: Stop Docker container
+      run: docker stop exemplo-actions || true
+
+      - name: Remove Docker container
+      run: docker rm exemplo-actions || true
+
+      - name: Run Docker container
+      run: docker run --name exemplo-actions -d -p 8082:8082
+      maessio/exemplo-actions:latest
