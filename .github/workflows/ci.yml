@@ -44,4 +44,4 @@ jobs:
 
       - name: Run tests with Maven
         run: mvn test
-        working-directory: ./ci-cd
+        working-directory: ./VITAE
