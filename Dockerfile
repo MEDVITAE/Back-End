@@ -3,7 +3,7 @@ LABEL authors="MaessioSptech"
 
 WORKDIR /build
 
-COPY . .
+COPY VITAE /build
 
 RUN mvn clean package -DskipTests -Dcheckstyle.skip=true
 
