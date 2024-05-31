@@ -1,7 +1,7 @@
 name: Exemplo
 
 on:
-  pull_request:
+  push:
     branches: [ main ]
       # - main
       # Uncomment and add more branches if needed
