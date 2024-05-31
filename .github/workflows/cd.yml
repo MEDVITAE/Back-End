@@ -11,7 +11,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Pull Docker image
-        run: docker pull maessio/exemplo-actions:latest
+        run: docker pull maessio/ci-example:latest
 
       - name: Stop Docker container
         run: docker stop exemplo-actions || true
@@ -20,4 +20,4 @@ jobs:
         run: docker rm exemplo-actions || true
 
       - name: Run Docker container
-        run: docker run --name exemplo-actions -d -p 8082:8082 maessio/exemplo-actions:latest
+        run: docker run --name exemplo-actions -d -p 8082:8082 maessio/ci-example:latest
