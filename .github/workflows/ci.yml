@@ -1,4 +1,4 @@
-name: Exemplo teste
+name: Exemplo
 
 on:
   pull_request:
