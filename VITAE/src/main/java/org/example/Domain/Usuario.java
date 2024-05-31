@@ -18,14 +18,13 @@ import java.util.List;
 
 @Table(name = "Usuario")
 @Entity(name = "Usuario")
-@Getter
-@Setter
 @EqualsAndHashCode(of= "id")
 public  abstract class Usuario implements UserDetails {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long idUsuario;
     @Column(name = "Email")
     private String email;
@@ -33,28 +32,116 @@ public  abstract class Usuario implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
+    private String cpf;
+    private Integer FkHospital;
+    @ManyToOne
+    @JoinColumn(name = "fkHospitals")
+    private Hospital hospital;
+    @OneToMany(mappedBy = "fkUsuario", cascade = CascadeType.ALL)
+    private List<ArquivoBanco> imagens = new ArrayList<>();
 
 
+    public Usuario( String email, String senha, UserRole role, String cpf, int fkHospital) {
 
-
-    public Usuario(String email, String senha, UserRole role){
         this.email = email;
         this.senha = senha;
         this.role = role;
+        this.cpf = cpf;
+        this.FkHospital = fkHospital;
+
+    }
+
+    public Long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Integer getFkHospital() {
+        return FkHospital;
+    }
+
+    public void setFkHospital(Integer fkHospital) {
+        FkHospital = fkHospital;
+    }
+
+    public Hospital getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(Hospital hospital) {
+        this.hospital = hospital;
+    }
+
+    public List<ArquivoBanco> getImagens() {
+        return imagens;
+    }
+
+    public void setImagens(List<ArquivoBanco> imagens) {
+        this.imagens = imagens;
+    }
+
+    public Usuario(String email, String senha, UserRole role, String cpf) {
+
+        this.email = email;
+        this.senha = senha;
+        this.role = role;
+        this.cpf = cpf;
+    }
+    public Usuario( long id,String email, String senha, UserRole role, String cpf, int fkHospital) {
+        this.idUsuario = id;
+        this.email = email;
+        this.senha = senha;
+        this.role = role;
+        this.cpf = cpf;
+        this.FkHospital = fkHospital;
     }
 
     protected Usuario() {
     }
 
 
-    public void Atualiza(AtualizarUser atualizarDados) {
+
+    public void Atualiza(AtualizarUser atualizarDados,String senhaCrip) {
         this.email = atualizarDados.email();
-        this.senha = atualizarDados.senha();
+        this.senha = senhaCrip;
+
     }
     public abstract List<Usuario> buscarRelatorio(String nome);
-
-
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -75,6 +162,10 @@ public  abstract class Usuario implements UserDetails {
 
 
     }
+
+
+
+
     @Override
     public String getPassword() {
         return senha; // Retorne a senha do usuário

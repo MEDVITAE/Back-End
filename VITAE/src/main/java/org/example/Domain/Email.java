@@ -2,8 +2,6 @@ package org.example.Domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.example.Enums.Usuarios.EnumEmail;
 
 import java.io.Serializable;
@@ -20,7 +18,6 @@ public class  Email  implements Serializable {
     private String ownerRef;
     private String emailFrom;
     private String emailTo;
-
     private String subject;
     @Column(columnDefinition = "TEXT")
     private String text;
@@ -101,4 +98,5 @@ public class  Email  implements Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
 }

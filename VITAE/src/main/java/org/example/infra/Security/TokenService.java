@@ -22,7 +22,7 @@ public class TokenService {
             Algorithm algorithm = Algorithm.HMAC256(secret);
             String token = JWT.create().withIssuer("vitae-servicos").
                     withSubject(usuario.getUsername()).
-                    withExpiresAt(gerarTempoExpiracao())
+                    withExpiresAt(gerarTempoExpiracao(1))
                     .sign(algorithm);
             System.out.println("token gerado :" + token);
             return token;
@@ -45,7 +45,11 @@ public class TokenService {
         }
     }
 
-    private Instant gerarTempoExpiracao() {
-        return LocalDateTime.now().plusMinutes(5).toInstant(ZoneOffset.of("-03:00"));
+    public Instant gerarTempoExpiracao(int situacao) {
+
+        if(situacao != 1){
+            return LocalDateTime.now().plusSeconds(1).toInstant(ZoneOffset.of("-03:00"));
+        }
+        return LocalDateTime.now().plusMinutes(50).toInstant(ZoneOffset.of("-03:00"));
     }
 }

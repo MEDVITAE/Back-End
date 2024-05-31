@@ -3,6 +3,7 @@ package org.example.Domain;
 import jakarta.persistence.*;
 import lombok.*;
 import org.example.Records.Endereco.AtualizaEndereco;
+import org.example.Records.Endereco.AtualizaEnderecoNumeroCep;
 import org.example.Records.Endereco.RecordEndereco;
 
 import java.util.ArrayList;
@@ -48,6 +49,18 @@ public class Endereco {
         this.fkHospital = atualizar.fkHospital();
 
     }
+
+    public Endereco(String cidade, String bairro, String cep, String logradouro, String rua, int numero, Long fkUsuario, Long fkHospital) {
+        this.cidade =cidade;
+        this.bairro = bairro;
+        this.cep = cep;
+        this.logradouro = logradouro;
+        this.rua = rua;
+        this.numero = numero;
+        this.fkUsuario = fkUsuario;
+        this.fkHospital = fkHospital;
+    }
+
     public void AtualizaEndereco(AtualizaEndereco atualizar){
         this.cidade = atualizar.cidade();
         this.bairro = atualizar.bairro();
@@ -58,6 +71,14 @@ public class Endereco {
         this.fkUsuario = atualizar.fkUsuario();
         this.fkHospital = atualizar.fkHospital();
     }
+    public void AtualizaEnderecoNumeroCep(AtualizaEnderecoNumeroCep atualizar){
+
+        this.cep = atualizar.cep();
+
+        this.numero = atualizar.numero();
+
+    }
+
 
     public Long getId() {
         return id;

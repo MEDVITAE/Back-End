@@ -6,7 +6,8 @@ public record AtualizarHospital(
                                  String nome,
                                  String email,
                                  String senha,
-                                 String cnpj) {
+                                 String cnpj
+) {
     public AtualizarHospital(Hospital hospital) {
             this(hospital.getNome(), hospital.getEmail(), hospital.getSenha(), hospital.getCnpj());
     }

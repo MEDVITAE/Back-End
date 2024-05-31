@@ -1,5 +1,6 @@
 package org.example.Controller;
 
+import org.example.Domain.Enfermeira;
 import org.example.Domain.Usuario;
 import org.example.Enums.Usuarios.UserRole;
 import org.example.Records.Autorizacao.recordAuth;
@@ -11,15 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/Api/auth")
 public class AuthencationController {
 
     @Autowired
@@ -34,6 +33,10 @@ public class AuthencationController {
         var usuarioEmaileSenha = new UsernamePasswordAuthenticationToken(dados.email(),dados.senha());
         var auth = this.autencador.authenticate(usuarioEmaileSenha);
         var token = tokenService.gerarToken((Usuario) auth.getPrincipal());
-        return ResponseEntity.ok(new Login(token));
+        Usuario usuario =  repository.findByEmail(dados.email());
+        String nome  = repository.findByNome(usuario.getIdUsuario());
+        var tokenRetorno = new Login(token, usuario.getIdUsuario(),usuario.getRole(),nome,usuario.getFkHospital());
+
+        return ResponseEntity.ok(tokenRetorno);
     }
 }

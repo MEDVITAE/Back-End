@@ -16,4 +16,6 @@ public AtualizaEndereco(Endereco endereco){
     this(endereco.getCidade(), endereco.getBairro(),endereco.getCep(),endereco.getLogradouro(),
             endereco.getRua(),endereco.getNumero(),endereco.getFkUsuario(), endereco.getFkHospital());
     }
+
+
 }

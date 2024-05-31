@@ -8,10 +8,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="api" />
+        <module name="VITAE" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="VITAE" target="17" />
+      <module name="api" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

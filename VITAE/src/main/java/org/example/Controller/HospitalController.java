@@ -2,7 +2,10 @@ package org.example.Controller;
 
 import jakarta.transaction.Transactional;
 import jdk.swing.interop.SwingInterOpUtils;
+import org.example.DTO.DestalhesHospDTO;
+import org.example.Domain.Endereco;
 import org.example.Domain.Hospital;
+import org.example.Records.Endereco.RecordEndereco;
 import org.example.Records.Hospital.AtualizarHospital;
 import org.example.Records.Hospital.RecordHospital;
 import org.example.interfaces.HospitalRepository;
@@ -11,10 +14,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/hospital")
+@RequestMapping("/Api/hospital")
 public class HospitalController {
 
     @Autowired
@@ -25,13 +29,36 @@ public class HospitalController {
 
         return ResponseEntity.status(200).body(repository.findAll());
     }
+    @GetMapping("/detalhes/{id}")
+    public ResponseEntity<DestalhesHospDTO> detahesHosp(@PathVariable int id){
+        var detalhes = repository.findByHospitalEndereco(id);
+        DestalhesHospDTO hospDTO = new DestalhesHospDTO(detalhes.getNome(), detalhes.getCep(), detalhes.getRua(), detalhes.getNumero(), detalhes.getBairro());
+        System.out.println(detalhes.getNome());
+        System.out.println(detalhes.getCep());
+        System.out.println(detalhes.getRua());
+        System.out.println(detalhes.getNumero());
+        System.out.println(detalhes.getBairro());
+
+        return ResponseEntity.status(200).body(hospDTO);
+    }
 
     @PostMapping
     @Transactional
-
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN')")
     public ResponseEntity cadastrar(@RequestBody RecordHospital dados){
         System.out.println(dados);
         return ResponseEntity.status(201).body(repository.save(new Hospital(dados)));
+    }
+    @PostMapping("/register/lista")
+    @PreAuthorize("hasRole('RECEPCAO') || hasRole('PACIENTE') || hasRole('ENFERMEIRA') || hasRole('ADMIN')")
+    public ResponseEntity CadastroLista(@RequestBody List<RecordHospital> dados){
+        List<Object> lista= new ArrayList<>();
+        for(int i = 0;i < dados.size();i++) {
+            Hospital hospital = new Hospital(dados.get(i));
+            lista.add(hospital);
+            repository.save(hospital);
+        }
+        return  ResponseEntity.status(200).body(lista);
     }
 
     @PutMapping("/{id}")

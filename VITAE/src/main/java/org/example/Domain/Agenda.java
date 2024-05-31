@@ -14,8 +14,6 @@ import java.util.List;
 
 @Table(name = "Agenda")
 @Entity(name = "Agenda")
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of= "idAgenda")
@@ -62,5 +60,45 @@ public class Agenda {
 
     public void setHorario(LocalDateTime horario) {
         Horario = horario;
+    }
+
+    public Long getIdAgenda() {
+        return idAgenda;
+    }
+
+    public void setIdAgenda(Long idAgenda) {
+        this.idAgenda = idAgenda;
+    }
+
+    public int getFkUsuario() {
+        return fkUsuario;
+    }
+
+    public void setFkUsuario(int fkUsuario) {
+        this.fkUsuario = fkUsuario;
+    }
+
+    public int getFkHospital() {
+        return fkHospital;
+    }
+
+    public void setFkHospital(int fkHospital) {
+        this.fkHospital = fkHospital;
+    }
+
+    public Usuario getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Usuario usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    public Hospital getHospitals() {
+        return hospitals;
+    }
+
+    public void setHospitals(Hospital hospitals) {
+        this.hospitals = hospitals;
     }
 }

@@ -1,5 +1,6 @@
 package org.example.Domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,19 +13,16 @@ import java.util.List;
 
 @Table(name = "ENFERMEIRA")
 @Entity(name = "ENFERMEIRA")
-@Getter
-@Setter
 @NoArgsConstructor
 
 public class Enfermeira extends Usuario{
 
     private String nome;
-
-
-
     public Enfermeira(RecordUsuario dados) {
-        super(dados.email(), dados.senha(), dados.role());
+        super(dados.email(), dados.senha(), dados.role(), dados.cpf(), dados.fkHospital());
         this.nome = nome;
+
+
 
     }
     public Enfermeira(String nome) {
@@ -32,10 +30,18 @@ public class Enfermeira extends Usuario{
         this.nome = nome;
 
     }
+    public Enfermeira(String nomem,int fkHospital) {
 
-    public Enfermeira(String email, String encripitando, UserRole role, String nome) {
-        super(email, encripitando, role);
         this.nome = nome;
+
+
+    }
+
+
+    public Enfermeira(String email, String encripitando, UserRole role, String nome,int fkHospital,String cpf) {
+        super(email, encripitando, role,cpf,fkHospital);
+        this.nome = nome;
+
     }
 
     @Override
@@ -44,9 +50,17 @@ public class Enfermeira extends Usuario{
     }
 
     @Override
-    public void Atualiza(AtualizarUser dados) {
-        super.Atualiza(dados);
+    public void Atualiza(AtualizarUser dados,String senha) {
+        super.Atualiza(dados,senha);
         this.nome =  dados.nome();
 
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

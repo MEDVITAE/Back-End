@@ -9,10 +9,12 @@ public class AgendamentoDTO {
 
     private String nome;
     private LocalDateTime horario;
+    private  String cpf;
 
-    public AgendamentoDTO(String nome, LocalDateTime horario) {
+    public AgendamentoDTO(String nome, LocalDateTime horario, String cpf) {
         this.nome = nome;
         this.horario = horario;
+        this.cpf = cpf;
     }
 
     public String getNome() {
@@ -31,11 +33,20 @@ public class AgendamentoDTO {
         this.horario = horario;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
     @Override
     public String toString() {
         return "AgendamentoDTO{" +
                 "nome='" + nome + '\'' +
                 ", horario=" + horario +
+                ", cpf='" + cpf + '\'' +
                 '}';
     }
 }

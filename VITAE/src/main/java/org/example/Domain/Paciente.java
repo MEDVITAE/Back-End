@@ -11,8 +11,6 @@ import java.util.List;
 
 @Table(name = "Paciente")
 @Entity(name = "Paciente")
-@Getter
-@Setter
 @NoArgsConstructor
 public class Paciente extends Usuario{
 
@@ -27,17 +25,22 @@ public class Paciente extends Usuario{
         this.nome = nome;
     }
 
-    public Paciente(String email, String senha, UserRole role, String nome) {
-        super(email, senha, role);
+    public Paciente(Long id, String nome,String email, String senha, UserRole role, String cpf, int fkHospital) {
+        super(id,email, senha, role, cpf, fkHospital);
         this.nome = nome;
-
+    }
+    public Paciente(String email, String senha, UserRole role,String nome, int fkHospital, String cpf ) {
+        super(email, senha, role, cpf, fkHospital);
+        this.nome = nome;
     }
 
     public Paciente(RecordUsuario dados) {
-        super(dados.email(), dados.senha(), dados.role());
+        super(dados.email(), dados.senha(), dados.role(), dados.cpf(), dados.fkHospital());
         this.nome = dados.nome();
 
     }
+
+
 
     @Override
     public List<Usuario> buscarRelatorio(String nome) {
@@ -45,8 +48,24 @@ public class Paciente extends Usuario{
     }
 
     @Override
-    public void Atualiza(AtualizarUser dados) {
-        super.Atualiza(dados);
+    public void Atualiza(AtualizarUser dados,String senha) {
+        super.Atualiza(dados,senha);
         this.nome =  dados.nome();
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public List<Caracteristicas> getFkCaracteristicas() {
+        return fkCaracteristicas;
+    }
+
+    public void setFkCaracteristicas(List<Caracteristicas> fkCaracteristicas) {
+        this.fkCaracteristicas = fkCaracteristicas;
     }
 }
