@@ -1,12 +1,19 @@
 name: Exemplo
 
 on:
-  pull_request:
-    branches:
-      - main
-      - testePipeline
-      - linkTo
-    types: [opened, reopened]
+  push:
+    branches: [ main ]
+      # - main
+      # Uncomment and add more branches if needed
+      # - testePipeline
+      # - linkTo
+    # types: [opened, reopened]
+
+    pull_request:
+      branches:
+        - main
+        - linkTo
+      types: [opened, reopened]
 
 jobs:
   build:
