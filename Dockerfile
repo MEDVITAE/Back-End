@@ -3,7 +3,7 @@ LABEL authors="MaessioSptech"
 
 WORKDIR /build
 
-COPY src ./src
+COPY . .
 
 RUN mvn clean package -DskipTests -Dcheckstyle.skip=true
 
