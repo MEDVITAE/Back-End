@@ -1,7 +1,7 @@
 FROM maven:3-openjdk-17 as builder
 LABEL authors="MaessioSptech"
 
-WORKDIR /VIATE/build
+WORKDIR /VITAE/build
 
 COPY . .
 
