@@ -23,4 +23,4 @@ jobs:
         run: docker rm ci-example || true
 
       - name: Run Docker container
-        run: docker run --name ci-example -d -p 8082:8082 maessio/ci-example:latest
+        run: docker run --name ci-example -d -p 8082:8082 --restart always maessio/ci-example:latest
