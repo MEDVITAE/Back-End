@@ -9,6 +9,9 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
+    strategy:
+      matrix:
+        runner: [ip-10-0-0-181, ip-10-0-0-184]
     steps:
       - name: Pull Docker image
         run: docker pull maessio/ci-example:latest
