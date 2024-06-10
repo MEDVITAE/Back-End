@@ -30,7 +30,7 @@ public class AuthencationController {
 
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody @Validated recordAuth dados){
-        var usuarioEmaileSenha = new UsernamePasswordAuthenticationToken(dados.email(),dados.senha());
+        var     usuarioEmaileSenha = new UsernamePasswordAuthenticationToken(dados.email(),dados.senha());
         var auth = this.autencador.authenticate(usuarioEmaileSenha);
         var token = tokenService.gerarToken((Usuario) auth.getPrincipal());
         Usuario usuario =  repository.findByEmail(dados.email());

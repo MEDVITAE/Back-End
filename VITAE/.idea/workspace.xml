@@ -5,7 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b105c72-4bb6-4aa5-aca3-0e9471db4dca" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/AuthencationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Controller/AuthencationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/AgendaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/AgendaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/CaracteristicasController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/CaracteristicasController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/DoacaoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/DoacaoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/EmailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/EmailController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/EnderecoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/EnderecoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/FilaEmalsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/FilaEmalsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/HospitalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/HospitalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/PilhaControler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/PilhaControler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Controller/UsuarioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Controller/UsuarioController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/DTO/RecuperaValoresConfirmaDoacaoDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/DTO/RecuperaValoresConfirmaDoacaoDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Domain/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Domain/Usuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Service/ArquivoCsvService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Service/ArquivoCsvService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Service/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Service/Utils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/AgendaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/AgendaRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/RecuperaDetalhesUsuarioDoaco.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/RecuperaDetalhesUsuarioDoaco.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/interfaces/UsuarioRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/interfaces/UsuarioRepository.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,36 +175,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Controller/CaracteristicasController.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Controller/CaracteristicasController.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Controller/CaracteristicasController.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Controller/CaracteristicasController.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Controller/CaracteristicasController.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Controller/CaracteristicasController.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Service/ArquivoCsvService.java</url>
           <line>62</line>
           <option name="timeStamp" value="42" />
@@ -203,8 +191,39 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Domain/Usuario.java</url>
-          <line>140</line>
+          <line>152</line>
           <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Controller/UsuarioController.java</url>
+          <line>168</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Controller/UsuarioController.java</url>
+          <line>180</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="NONE" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Controller/ArquivoController.java</url>
+          <line>30</line>
+          <log-expression expression="    @GetMapping(&quot;/{id}&quot;)&#10;    public ResponseEntity&lt;byte[]&gt; dowload(@PathVariable Long id) throws DataFormatException {&#10;&#10;        byte[] imagem = service.dowloadImagem(id);&#10;&#10;        if (imagem == null) {&#10;            return ResponseEntity.noContent().build();&#10;        }&#10;        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imagem);&#10;    }&#10;&#10;" language="JAVA" />
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Controller/FilaEmalsController.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Controller/FilaEmalsController.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Controller/ArquivoController.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="72" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
