@@ -2,6 +2,7 @@ package org.example.DTO;
 
 public class RecuperaValoresConfirmaDoacaoDTO {
     private long idAgenda;
+    private long idUsuario;
 
     private String tipo;
     private String nome;
@@ -15,8 +16,9 @@ public class RecuperaValoresConfirmaDoacaoDTO {
     private String cep;
     private int numeroCasa;
 
-    public RecuperaValoresConfirmaDoacaoDTO(long idAgenda, String tipo, String nome, String cpf, String sexo, String nascimento, String email, String cep, int numeroCasa) {
+    public RecuperaValoresConfirmaDoacaoDTO(long idAgenda, long id,String tipo, String nome, String cpf, String sexo, String nascimento, String email, String cep, int numeroCasa) {
         this.idAgenda = idAgenda;
+        this.idUsuario = id;
         this.tipo = tipo;
         this.nome = nome;
         this.cpf = cpf;
@@ -89,6 +91,14 @@ public class RecuperaValoresConfirmaDoacaoDTO {
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    public long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(long idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public int getNumeroCasa() {

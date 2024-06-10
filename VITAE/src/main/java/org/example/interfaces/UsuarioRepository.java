@@ -16,6 +16,9 @@ import java.util.List;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     Usuario findByEmail(String Email);
 
+    @Query(value = "select * from usuario",nativeQuery = true)
+    List<RecuperaValoresUsuario> AllUser();
+
     @Query(value = "select horario  from agenda join doacao on fk_agenda = id_agenda join usuario on id_usuario = agenda.fk_usuario where nome =(:nome)", nativeQuery = true)
     List<Usuario> findByName(String nome);
 

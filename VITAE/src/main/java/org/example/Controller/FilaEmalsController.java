@@ -9,6 +9,7 @@ import org.example.Records.emailDto;
 import org.example.Service.EmailService;
 import org.example.infra.Security.TokenService;
 import org.example.interfaces.EmailRepository;
+import org.example.interfaces.RecuperaValoresUsuario;
 import org.example.interfaces.UsuarioRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class FilaEmalsController {
     @Autowired
     EmailService emailService;
     @Autowired
-    private UsuarioRepository repository;
+    UsuarioRepository repository;
     @Autowired
     EmailRepository emailRepository;
     FilaObj<String> enviados = new FilaObj<>();
@@ -40,7 +41,7 @@ public class FilaEmalsController {
     @PostMapping("/enviarEmails")
     public ResponseEntity<AtomicInteger> enviarEmails(@RequestBody @Valid emailDto requestEmail) {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-        List<Usuario> usuarios = repository.findAll();
+        List<RecuperaValoresUsuario> usuarios = repository.AllUser();
         AtomicInteger quantidadeEmail = new AtomicInteger();
 
         while (!usuarios.isEmpty()) {
@@ -48,7 +49,7 @@ public class FilaEmalsController {
 
 
                 for (int i = 0; i < usuarios.size(); i++) {
-                    Usuario usuario = usuarios.get(i);
+                    RecuperaValoresUsuario usuario = usuarios.get(i);
                     String usuarioEmail = usuario.getEmail();
                     enviados.enfileirar(usuarioEmail);
                     System.out.println(usuarioEmail);
