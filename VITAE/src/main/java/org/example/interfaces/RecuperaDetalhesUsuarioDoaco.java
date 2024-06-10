@@ -6,6 +6,7 @@ public interface RecuperaDetalhesUsuarioDoaco {
 
 
     LocalDate getNascimento();
+    Long getFk_Usuario();
 
     String getSexo();
 

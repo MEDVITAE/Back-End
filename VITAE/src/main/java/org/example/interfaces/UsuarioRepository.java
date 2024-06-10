@@ -16,6 +16,9 @@ import java.util.List;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     Usuario findByEmail(String Email);
 
+    @Query(value = "select * from usuario",nativeQuery = true)
+    List<RecuperaValoresUsuario> AllUser();
+
     @Query(value = "select horario  from agenda join doacao on fk_agenda = id_agenda join usuario on id_usuario = agenda.fk_usuario where nome =(:nome)", nativeQuery = true)
     List<Usuario> findByName(String nome);
 
@@ -42,6 +45,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     @Query(value = "select usuario.*,h.nome as nomeHospital,h.senha as senhaHospital,h.email as emailHospital,h.cnpj   from usuario join hospital h on h.id_hospital = fk_hospital where role = 'ENFERMEIRA' or 'RECEPCAO';", nativeQuery = true)
     List<RecuperaValoresFuncionarioHospital> findByFuncionario();
 
-    @Query(value = "select usuario.nome,usuario.email from usuario join agenda on usuario.id_usuario = agenda.fk_usuario JOIN doacao ON agenda.id_agenda = doacao.fk_agenda where tipo = :tipoSangue",nativeQuery = true)
+    @Query(value = "select distinct usuario.nome,usuario.email from usuario join agenda on usuario.id_usuario = agenda.fk_usuario JOIN doacao ON agenda.id_agenda = doacao.fk_agenda where tipo = :tipoSangue",nativeQuery = true)
     List<RecuperaValoresUsuario> findByUsuarioPorTipoSangue(String tipoSangue);
 }

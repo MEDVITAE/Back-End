@@ -345,28 +345,29 @@ public int doadorAgendamento(LocalTime horarioBuscado) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
         byte[] imagemCompressada = Utils.compressaoImagem(
                 file.getBytes());
-        String caminho = "\\home\\ubuntu\\teste.jpeg";
-        Boolean fotoValida = false;
+        
+        String caminho = "C:\\Users\\jvtenorio\\teste.jpeg";
+      /*  Boolean fotoValida = false;
 
         if (Utils.salvarArquivo(file, caminho) > 0) {
-            fotoValida = Utils.lerArquivo(caminho);
+            fotoValida = Utils.lerArquivo(caminho);*/
 
-            if (fotoValida) {
-                ArquivoBanco imagem = imagensRepository.save(ArquivoBanco
-                        .builder()
-                        .nome(file.getOriginalFilename())
-                        .foto(imagemCompressada).
-                        fkUsuario(id).
-                        build());
+        /*       if (fotoValida) {*/
+        ArquivoBanco imagem = imagensRepository.save(ArquivoBanco
+                .builder()
+                .nome(file.getOriginalFilename())
+                .foto(imagemCompressada).
+                fkUsuario(id).
+                build());
 
 
-                if (imagem != null) {
-                    Utils.apagarArquivo(caminho);
-                    return "upload com sucesso : " + file.getOriginalFilename();
-                }
-
-            }
+        if (imagem != null) {
+      /*      Utils.apagarArquivo(caminho);*/
+            return "upload com sucesso : " + file.getOriginalFilename();
         }
+
+        /*      }*/
+    /*}*/
 
         return  null;
     }

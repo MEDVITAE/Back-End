@@ -131,8 +131,20 @@ public  abstract class Usuario implements UserDetails {
         this.FkHospital = fkHospital;
     }
 
-    protected Usuario() {
+    public Usuario(Long idUsuario, String email, String senha, UserRole role, String cpf, Integer fkHospital, Hospital hospital, List<ArquivoBanco> imagens) {
+        this.idUsuario = idUsuario;
+        this.email = email;
+        this.senha = senha;
+        this.role = role;
+        this.cpf = cpf;
+        FkHospital = fkHospital;
+        this.hospital = hospital;
+        this.imagens = imagens;
     }
+
+    public Usuario() {
+    }
+
 
 
 

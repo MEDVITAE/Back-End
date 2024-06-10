@@ -15,14 +15,12 @@ import org.example.Service.EmailService;
 import org.example.infra.Security.TokenService;
 import org.example.interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.io.*;
 import java.nio.file.Path;
@@ -104,7 +102,6 @@ public class UsuarioController {
     public ResponseEntity Cadastro(@RequestBody RecordUsuario dados) {
         if (this.repository.findByEmail(dados.email()) != null) {
             this.repository.findByEmail(dados.email());
-
             return ResponseEntity.badRequest().build();
         }
         String encripitando = new BCryptPasswordEncoder().encode(dados.senha());
@@ -159,7 +156,7 @@ public class UsuarioController {
         RecuperaDetalhesUsuarioDoaco usuario = repository.findByCpf(cpf);
         LocalDate apenasData = usuario.getNascimento();
         String dataFormatada = apenasData.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        RecuperaValoresConfirmaDoacaoDTO user = new RecuperaValoresConfirmaDoacaoDTO(usuario.getIdAgenda(), usuario.getTipo(), usuario.getNome(), usuario.getCpf(), usuario.getSexo(), dataFormatada, usuario.getEmail(), usuario.getCep(), usuario.getNumeroCasa());
+        RecuperaValoresConfirmaDoacaoDTO user = new RecuperaValoresConfirmaDoacaoDTO(usuario.getIdAgenda(), usuario.getFk_Usuario(), usuario.getTipo(), usuario.getNome(), usuario.getCpf(), usuario.getSexo(), dataFormatada, usuario.getEmail(), usuario.getCep(), usuario.getNumeroCasa());
         return ResponseEntity.status(200).body(user);
 
 
