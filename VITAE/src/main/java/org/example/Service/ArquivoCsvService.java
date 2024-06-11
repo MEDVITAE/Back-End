@@ -182,120 +182,82 @@ public class ArquivoCsvService {
         }*/
 
     }
- public List<Usuario> importarTxt(String nomeArq){
-        {
+    public List<Usuario> importarTxt(InputStream inputStream) {
+        BufferedReader entrada = null;
+        String tipoRegistro;
+        String registro, tipoArquivo, dataHora, versaoLayout;
+        String nome, email, senha, cpf;
+        UserRole role;
+        String nomeHospital, emailHospital, senhaHospital, cnpj;
+        Integer fk;
+        int contaRegDadosLidos = 0;
+        int qtdRegDadosGravados;
+        List<Usuario> listaLida = new ArrayList<>();
 
-            BufferedReader entrada = null;
-            String tipoRegistro;
-            String registro, tipoArquivo,dataHora,versaoLayout;
-            String  nome,email,senha,cpf;
-            UserRole role;
-            String nomeHospital,emailHospital,senhaHospital,cnpj;
-
-            Integer fk;
-
-            int contaRegDadosLidos = 0;
-            int qtdRegDadosGravados;
-
-
-            List<Usuario> listaLida = new ArrayList();
-
-
-            try {
-                entrada = new BufferedReader(new FileReader(nomeArq));
-            }
-            catch (IOException erro) {
-                System.out.println("Erro na abertura do arquivo");
-            }
-
-            // Leitura do arquivo
-            try {
-                registro = entrada.readLine();
-
-                while (registro != null) {
-                    // obtem os 2 primeiros caracteres do registro lido
-                    // 1o argumento do substring eh o indice do que se quer obter, iniciando de zero
-                    // 2o argumento do substring eh o indice final do que se deseja, MAIS UM
-                    // 012345
-                    // 00NOTA
-                    tipoRegistro = registro.substring(0,2);
-
-                    if (tipoRegistro.equals("00")) {
-                        System.out.println("É um registro de header");
-                        System.out.println("Tipo de arquivo: " + registro.substring(2,25));
-                        System.out.println("Data e hora de geração do arquivo: " + registro.substring(30,49));
-                        System.out.println("Versão do documento de layout: " + registro.substring(49,51));
-
-                    }
-                    else if (tipoRegistro.equals("02")) {
-                        System.out.println("É um registro de trailer");
-                        qtdRegDadosGravados= Integer.parseInt(registro.substring(0,2));
-                        if (contaRegDadosLidos == qtdRegDadosGravados) {
-                            System.out.println("Quantidade de reg de dados gravados é compatível com " +
-                                    "a quantidade de reg de dados lidos");
-                        }
-                        else {
-                            System.out.println("Quantidade de reg de dados gravados é incompatível com " +
-                                    "a quantidade de reg de dados lidos");
-                        }
-                    }
-                    else if (tipoRegistro.equals("01")) {
-                        System.out.println("É um registro de corpo");
-                        nome= registro.substring(2,24).trim();
-                        email= registro.substring(24,64).trim();
-                        senha=registro.substring(64,79).trim();
-                        role= UserRole.valueOf(registro.substring(79,89).trim());
-                        cpf = registro.substring(89,100).trim();
-                        fk = Integer.parseInt(registro.substring(100,102));
-                        nomeHospital = registro.substring(102,124).trim();
-                        emailHospital = registro.substring(124,164).trim();
-                        cnpj = registro.substring(164,178).trim();
-
-
-                        // Incrementa o contador de reg de dados lidos
-                        contaRegDadosLidos++;
-                        String encripitando = new BCryptPasswordEncoder().encode(senha);
-
-                        // Cria um objeto Aluno com os dados lidos do registro
-                        Recepcao usuario = new Recepcao(email, encripitando, role, nome, fk, cpf);
-
-                        // Se estivesse conectado a um banco de dados
-                        // repository.save(a);
-
-                        // Como não estamos conectados a um BD, vamos adicionar
-                        // na listaLida
-                        listaLida.add(usuario);
-                    }
-                    else {
-                        System.out.println("Registro inválido");
-                    }
-
-                    // Le o proximo registro
-                    registro = entrada.readLine();
-
-                }  // fim do while
-                // Fecha o arquivo
-                entrada.close();
-            } // fim do try
-            catch (IOException erro) {
-                System.out.println("Erro ao ler o arquivo");
-                erro.printStackTrace();
-            }
-
-            // Exibe a lista lida
-            System.out.println("\nLista lida do arquivo:");
-            for (Usuario a : listaLida) {
-                System.out.println(a);
-            }
-
-            // Aqui tb seria possível salvar a lista no BD
-            // repository.saveAll(listaLida);
-            return listaLida;
+        try {
+            entrada = new BufferedReader(new InputStreamReader(inputStream));
+        } catch (Exception erro) {
+            System.out.println("Erro na abertura do arquivo");
         }
 
+        try {
+            registro = entrada.readLine();
+
+            while (registro != null) {
+                tipoRegistro = registro.substring(0, 2);
+
+                if (tipoRegistro.equals("00")) {
+                    System.out.println("É um registro de header");
+                    System.out.println("Tipo de arquivo: " + registro.substring(2, 25));
+                    System.out.println("Data e hora de geração do arquivo: " + registro.substring(30, 49));
+                    System.out.println("Versão do documento de layout: " + registro.substring(49, 51));
+                } else if (tipoRegistro.equals("02")) {
+                    System.out.println("É um registro de trailer");
+                    qtdRegDadosGravados = Integer.parseInt(registro.substring(0, 2));
+                    if (contaRegDadosLidos == qtdRegDadosGravados) {
+                        System.out.println("Quantidade de reg de dados gravados é compatível com a quantidade de reg de dados lidos");
+                    } else {
+                        System.out.println("Quantidade de reg de dados gravados é incompatível com a quantidade de reg de dados lidos");
+                    }
+                } else if (tipoRegistro.equals("01")) {
+                    System.out.println("É um registro de corpo");
+                    nome = registro.substring(2, 24).trim();
+                    email = registro.substring(24, 64).trim();
+                    senha = registro.substring(64, 79).trim();
+                    role = UserRole.valueOf(registro.substring(79, 89).trim());
+                    cpf = registro.substring(89, 100).trim();
+                    fk = Integer.parseInt(registro.substring(100, 102));
+                    nomeHospital = registro.substring(102, 124).trim();
+                    emailHospital = registro.substring(124, 164).trim();
+                    cnpj = registro.substring(164, 178).trim();
+
+                    contaRegDadosLidos++;
+                    String encripitando = new BCryptPasswordEncoder().encode(senha);
+
+                    Recepcao usuario = new Recepcao(email, encripitando, role, nome, fk, cpf);
+                    listaLida.add(usuario);
+                } else {
+                    System.out.println("Registro inválido");
+                }
+
+                registro = entrada.readLine();
+            }
+            entrada.close();
+        } catch (IOException erro) {
+            System.out.println("Erro ao ler o arquivo");
+            erro.printStackTrace();
+        }
+
+        System.out.println("\nLista lida do arquivo:");
+        for (Usuario usuario : listaLida) {
+            System.out.println(usuario);
+        }
+
+        return listaLida;
     }
 
-public int doadorAgendamento(LocalTime horarioBuscado) {
+
+    public int doadorAgendamento(LocalTime horarioBuscado) {
     List<RecuperarValoresAgendamento> resultados = serviceRepository.buscaDoadorAgendado();
     List<LocalTime> horarios = new ArrayList<>();
 

@@ -227,30 +227,13 @@ public class UsuarioController {
 
     @PostMapping("/ler")
     public ResponseEntity<List<Usuario>> handleFileUpload(@RequestParam MultipartFile file, @RequestParam String nome) throws IOException {
-
-
-        // Crie o diretório se não existir
-        File uploadDir = new File(UPLOAD_DIR);
-        if (!uploadDir.exists()) {
-            uploadDir.mkdirs();
+        List<Usuario> usuarios = service.importarTxt(file.getInputStream());
+        for (Usuario usuario : usuarios) {
+            repository.save(usuario);
         }
-        // Obtenha o nome do arquivo original
-        String originalFileName = nome;
-
-        // Construa o caminho completo para o arquivo
-        Path filePath = Paths.get(UPLOAD_DIR, originalFileName);
-
-        // Salve o arquivo no diretório
-        file.transferTo(filePath.toFile());
-
-        List<Usuario> teste = service.importarTxt(nome);
-        for (Usuario a : teste) {
-            repository.save(a);
-        }
-        return ResponseEntity.status(200).body(teste);
-
-
+        return ResponseEntity.status(200).body(usuarios);
     }
+
 
     private static final String UPLOAD_DIR = "\\home\\ubuntu"; // Caminho do diretório onde os arquivos serão salvos
 
