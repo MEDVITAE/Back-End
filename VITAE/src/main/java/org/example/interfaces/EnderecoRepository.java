@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface EnderecoRepository extends JpaRepository<Endereco,Long> {
-    @Query("select e from Endereco e where fkUsuario = null")
+    @Query("select e from endereco e where fkUsuario = null")
     List<RecuperaCeps> findAllCep();
 
 

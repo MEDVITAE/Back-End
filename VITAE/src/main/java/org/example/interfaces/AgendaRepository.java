@@ -12,13 +12,13 @@ import java.util.Optional;
 public interface AgendaRepository extends JpaRepository<Agenda, Long> {
 
     @Query(value = "SELECT u.id_usuario, u.nome AS nome,u.cpf as cpf, a.Horario AS horario FROM usuario u JOIN " +
-            "Agenda a ON u.id_Usuario = a.fk_Usuario", nativeQuery = true)
+            "agenda a ON u.id_Usuario = a.fk_Usuario", nativeQuery = true)
     List<RecuperarValoresAgendamento> buscaDoadorAgendado();
 
     @Query(value = "SELECT email,cpf,nome FROM usuario where id_usuario =:id", nativeQuery = true)
     RecuperaValoresUsuario recupera(Long id);
 
-    @Query(value = "SELECT a FROM Agenda a where a.fkHospital =:hospitalId and  a.Horario = :horario ")
+    @Query(value = "SELECT a FROM agenda a where a.fkHospital =:hospitalId and  a.Horario = :horario ")
     Optional<Agenda> findByHorarioExiste(int hospitalId, LocalDateTime horario);
 
     @Query(value = "select count(*) as doacao,sum(quantidade) as quantidade from agenda join doacao on fk_agenda = id_agenda where agenda.fk_usuario = :id", nativeQuery = true)
