@@ -4,6 +4,7 @@ import org.example.DTO.AgendamentoDTO;
 import org.example.DTO.FuncionarioHospitalDTO;
 import org.example.DTO.UsuarioDTO;
 import org.example.Domain.ArquivoBanco;
+import org.example.Domain.Enfermeira;
 import org.example.Domain.Recepcao;
 import org.example.Domain.Usuario;
 import org.example.Enums.Usuarios.UserRole;
@@ -232,9 +233,10 @@ public class ArquivoCsvService {
                     cnpj = registro.substring(164, 178).trim();
 
                     contaRegDadosLidos++;
+                    System.out.println(senha);
                     String encripitando = new BCryptPasswordEncoder().encode(senha);
 
-                    Recepcao usuario = new Recepcao(email, encripitando, role, nome, fk, cpf);
+                    Enfermeira usuario = new Enfermeira(email, encripitando, role, nome, fk, cpf);
                     listaLida.add(usuario);
                 } else {
                     System.out.println("Registro inválido");
